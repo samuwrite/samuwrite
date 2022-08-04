@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    // https://parceljs.org/features/dependency-resolution/#typescript
+    "baseUrl": ".",
+    "paths": {
+      "~*": ["./*"]
+    },
+    "strict": true,
+    "jsx": "react-jsx",
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
+  },
+  "include": ["src/web/**/*"],
+  "exclude": ["node_modules"]
+}
