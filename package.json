@@ -3,10 +3,11 @@
     "web:dev": "parcel src/web/web.html"
   },
   "devDependencies": {
+    "@types/react": "^18.0.15",
+    "@types/react-dom": "^18.0.6",
     "parcel": "^2.7.0",
     "process": "^0.11.10",
-    "@types/react": "^18.0.15",
-    "@types/react-dom": "^18.0.6"
+    "typescript-plugin-css-modules": "^3.4.0"
   },
   "dependencies": {
     "react": "^18.2.0",
