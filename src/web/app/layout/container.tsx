@@ -1,14 +1,13 @@
 import { Editor } from "../editor/editor";
 import { Preview } from "../preview/preview";
-import * as s from "./workspace.module.css";
-
-export type WorkspaceLayout = "editor" | "preview" | "split";
+import { Layout } from "./type";
+import * as s from "./container.module.css";
 
 interface Props {
-  layout: WorkspaceLayout;
+  layout: Layout;
 }
 
-export const Workspace = (props: Props): JSX.Element => {
+export const LayoutContainer = (props: Props): JSX.Element => {
   const { layout } = props;
   return (
     <div className={s.container}>

@@ -1,20 +1,19 @@
-import { Dispatch, SetStateAction } from "react";
-import { WorkspaceLayout } from "../workspace/workspace";
+import { SettingsPopover } from "../settings/popover";
+import { SettingsState } from "../settings/type";
+import { LayoutState } from "../layout/type";
+import { ToolbarPreview } from "./preview";
 import * as s from "./toolbar.module.css";
 
-interface Props {
-  setLayout: Dispatch<SetStateAction<WorkspaceLayout>>;
-}
+interface Props extends SettingsState, LayoutState {}
 
 export const Toolbar = (props: Props): JSX.Element => {
-  const { setLayout } = props;
   return (
     <div className={s.container}>
       <button>open</button>
       <button>save</button>
       <h1>title</h1>
-      <button onClick={() => setLayout("preview")}>preview</button>
-      <button>settings</button>
+      <ToolbarPreview {...props} />
+      <SettingsPopover {...props} />
     </div>
   );
 };
