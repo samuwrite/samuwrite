@@ -6,7 +6,12 @@
   "devDependencies": {
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@typescript-eslint/eslint-plugin": "^5.32.0",
+    "@typescript-eslint/parser": "^5.32.0",
     "buffer": "^6.0.3",
+    "eslint": "^8.21.0",
+    "eslint-plugin-react": "^7.30.1",
+    "eslint-plugin-react-hooks": "^4.6.0",
     "parcel": "^2.7.0",
     "process": "^0.11.10",
     "typescript-plugin-css-modules": "^3.4.0"
@@ -15,6 +20,12 @@
     "@headlessui/react": "^1.6.6",
     "monaco-editor": "^0.31.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "rehype-dom-stringify": "^3.0.1",
+    "rehype-source-map": "^1.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "unified": "^10.1.2"
   }
 }

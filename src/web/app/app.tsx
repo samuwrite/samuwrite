@@ -1,18 +1,15 @@
-import { useState } from "react";
-import { useStickyState } from "../lib/state/sticky";
+import { useRef, useState } from "react";
 import "./app.css";
-import { LayoutMain } from "./layout/main";
+import { Editor } from "./editor/type";
+import { LayoutContainer } from "./layout/container";
 import { Layout } from "./layout/type";
-import { Settings } from "./settings/type";
+import { useSettingsState } from "./settings/state";
 import { Toolbar } from "./toolbar/toolbar";
 
 export const App = (): JSX.Element => {
   const [layout, setLayout] = useState<Layout>("editor");
-
-  const [settings, setSettings] = useStickyState<Settings>(
-    { preview: "split" },
-    "settings"
-  );
+  const editorRef = useRef<Editor | null>(null);
+  const { setSettings, settings } = useSettingsState();
 
   return (
     <div>
@@ -22,7 +19,7 @@ export const App = (): JSX.Element => {
         settings={settings}
         setSettings={setSettings}
       />
-      <LayoutMain layout={layout} />
+      <LayoutContainer layout={layout} editorRef={editorRef} />
     </div>
   );
 };
