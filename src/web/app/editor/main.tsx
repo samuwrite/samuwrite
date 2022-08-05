@@ -5,7 +5,6 @@ import { EditorRef } from "./type";
 
 // Setup workers
 // https://github.com/microsoft/monaco-editor/blob/main/docs/integrate-esm.md#using-parcel
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 (self as any).MonacoEnvironment = {
   getWorkerUrl: function (_moduleId, _label) {
     return "/editor.worker.js";
