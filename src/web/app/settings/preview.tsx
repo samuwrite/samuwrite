@@ -33,7 +33,7 @@ export const SettingsPreview = (props: Props): JSX.Element => {
     >
       <RadioGroup.Label>Preview</RadioGroup.Label>
       {OPTIONS.map((value) => (
-        <RadioGroup.Option<"div", Preview> value={value}>
+        <RadioGroup.Option<"div", Preview> value={value} key={value}>
           {({ checked }: OptionRenderPropArg) => (
             <div>
               {value} {checked ? "x" : ""}

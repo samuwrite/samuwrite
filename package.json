@@ -1,16 +1,19 @@
 {
   "scripts": {
-    "web:dev": "parcel src/web/web.html"
+    "web:dev": "sh scripts/web-dev.sh",
+    "web:monaco": "sh scripts/web-monaco.sh"
   },
   "devDependencies": {
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "buffer": "^6.0.3",
     "parcel": "^2.7.0",
     "process": "^0.11.10",
     "typescript-plugin-css-modules": "^3.4.0"
   },
   "dependencies": {
     "@headlessui/react": "^1.6.6",
+    "monaco-editor": "^0.31.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }

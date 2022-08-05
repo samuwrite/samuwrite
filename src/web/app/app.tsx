@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useStickyState } from "../lib/state/sticky";
 import "./app.css";
-import { LayoutContainer } from "./layout/container";
+import { LayoutMain } from "./layout/main";
 import { Layout } from "./layout/type";
 import { Settings } from "./settings/type";
 import { Toolbar } from "./toolbar/toolbar";
@@ -22,7 +22,7 @@ export const App = (): JSX.Element => {
         settings={settings}
         setSettings={setSettings}
       />
-      <LayoutContainer layout={layout} />
+      <LayoutMain layout={layout} />
     </div>
   );
 };
