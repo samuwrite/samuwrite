@@ -4,7 +4,7 @@ import { Settings, SettingsState } from "./type";
 const fallback: Settings = {
   preview: "split",
   vim: false,
-  theme: "bushido",
+  theme: "moon",
 };
 
 export const useSettingsState = (): SettingsState => {

@@ -1,9 +1,10 @@
 import { Dispatch, SetStateAction } from "react";
+import { variants } from "@rose-pine/palette";
 
 export interface Settings {
   preview: "full" | "split";
   vim: boolean;
-  theme: string;
+  theme: keyof typeof variants;
 }
 
 export interface SettingsState {

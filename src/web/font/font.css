@@ -1,0 +1,31 @@
+@font-face {
+  font-family: "Inter var";
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./Inter-roman.var.woff2") format("woff2");
+  font-named-instance: "Regular";
+}
+
+@font-face {
+  font-family: "Inter var";
+  font-style: italic;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url("./Inter-italic.var.woff2") format("woff2");
+  font-named-instance: "Italic";
+}
+
+@font-face {
+  font-family: "iA Writer Duo";
+  font-weight: 100 900;
+  font-style: normal;
+  src: url("./iAWriterDuoV.ttf") format("truetype-variations");
+}
+
+@font-face {
+  font-family: "iA Writer Duo";
+  font-weight: 100 900;
+  font-style: italic;
+  src: url("./iAWriterDuoV-Italic.ttf") format("truetype-variations");
+}

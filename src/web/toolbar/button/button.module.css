@@ -5,3 +5,7 @@
   /* Default line-height is 24px */
   line-height: 16px;
 }
+
+.selected {
+  color: var(--text-color);
+}

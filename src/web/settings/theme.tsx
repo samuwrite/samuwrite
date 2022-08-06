@@ -1,6 +1,6 @@
 import { RadioGroup } from "@headlessui/react";
-import { THEME_DETAILS } from "../theme/details";
-import { Settings, SettingsState } from "./type";
+import { variants } from "@rose-pine/palette";
+import { SettingsState } from "./type";
 
 interface Props extends SettingsState {}
 
@@ -21,13 +21,12 @@ export const SettingsTheme = (props: Props): JSX.Element => {
       }}
     >
       <RadioGroup.Label>Theme</RadioGroup.Label>
-      {[...THEME_DETAILS.entries()].map((entry) => {
-        const [id, detail] = entry;
+      {Object.keys(variants).map((variant) => {
         return (
-          <RadioGroup.Option<"div", string> value={id} key={id}>
+          <RadioGroup.Option<"div", string> value={variant} key={variant}>
             {({ checked }: OptionRenderPropArg) => (
               <div>
-                {id} {checked ? "x" : ""}
+                {variant} {checked ? "x" : ""}
               </div>
             )}
           </RadioGroup.Option>

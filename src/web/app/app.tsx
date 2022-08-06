@@ -1,12 +1,13 @@
 import { useState } from "react";
-import "./app.css";
-import * as s from "./app.module.css";
 import { Editor } from "../editor/type";
+import "../font/font.css";
 import { LayoutContainer } from "../layout/container";
 import { Layout } from "../layout/type";
 import { useSettingsState } from "../settings/state";
 import { Toolbar } from "../toolbar/toolbar";
-import { ThemeInject } from "../theme/inject";
+import "./app.css";
+import * as s from "./app.module.css";
+import { AppTheme } from "./theme";
 
 export const App = (): JSX.Element => {
   const [layout, setLayout] = useState<Layout>("editor");
@@ -15,7 +16,7 @@ export const App = (): JSX.Element => {
 
   return (
     <div>
-      <ThemeInject id={settings.theme} />
+      <AppTheme settings={settings} />
       <div className={s.toolbar}>
         <Toolbar
           layout={layout}
