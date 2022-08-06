@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./app.css";
 import * as s from "./app.module.css";
-import { Editor } from "./editor/type";
-import { LayoutContainer } from "./layout/container";
-import { Layout } from "./layout/type";
-import { useSettingsState } from "./settings/state";
-import { Toolbar } from "./toolbar/toolbar";
+import { Editor } from "../editor/type";
+import { LayoutContainer } from "../layout/container";
+import { Layout } from "../layout/type";
+import { useSettingsState } from "../settings/state";
+import { Toolbar } from "../toolbar/toolbar";
 
 export const App = (): JSX.Element => {
   const [layout, setLayout] = useState<Layout>("editor");
