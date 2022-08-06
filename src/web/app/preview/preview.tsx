@@ -1,12 +1,12 @@
-import { EditorRef } from "../editor/type";
+import { Editor } from "../editor/type";
 import { usePreviewHtml } from "./html";
 
 interface Props {
-  editorRef: EditorRef;
+  editor: Editor;
 }
 
 export const Preview = (props: Props): JSX.Element => {
-  const { editorRef } = props;
-  const html = usePreviewHtml({ editorRef });
+  const { editor } = props;
+  const html = usePreviewHtml({ editor });
   return <div dangerouslySetInnerHTML={{ __html: html }} />;
 };

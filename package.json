@@ -19,6 +19,7 @@
   "dependencies": {
     "@headlessui/react": "^1.6.6",
     "monaco-editor": "^0.31.0",
+    "monaco-vim": "^0.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "rehype-dom-stringify": "^3.0.1",

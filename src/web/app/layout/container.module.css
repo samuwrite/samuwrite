@@ -5,3 +5,9 @@
 .hide {
   display: none;
 }
+
+@media print {
+  .editor {
+    display: none;
+  }
+}

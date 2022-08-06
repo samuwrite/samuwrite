@@ -1,7 +1,9 @@
 import * as monaco from "monaco-editor";
 import * as s from "./main.module.css";
 import { useEffect, useRef } from "react";
-import { EditorRef } from "./type";
+import { EditorState } from "./type";
+import { EditorVim } from "./vim";
+import { Settings } from "../settings/type";
 
 // Setup workers
 // https://github.com/microsoft/monaco-editor/blob/main/docs/integrate-esm.md#using-parcel
@@ -11,12 +13,12 @@ import { EditorRef } from "./type";
   },
 } as monaco.Environment;
 
-interface Props {
-  editorRef: EditorRef;
+interface Props extends EditorState {
+  settings: Settings;
 }
 
 export const EditorMain = (props: Props): JSX.Element => {
-  const { editorRef } = props;
+  const { editor, setEditor, settings } = props;
 
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -24,14 +26,21 @@ export const EditorMain = (props: Props): JSX.Element => {
     const container = containerRef.current;
     if (container === null) throw Error("`container` is null");
 
-    const editor = monaco.editor.create(container, {
+    const instance = monaco.editor.create(container, {
       language: "markdown",
       value: "*hello* world",
     });
-    editorRef.current = editor;
+    setEditor(instance);
 
-    return () => editor.dispose();
-  }, [editorRef]);
+    return () => instance.dispose();
+  }, [setEditor]);
 
-  return <div className={s.container} ref={containerRef} />;
+  return (
+    <div>
+      <div className={s.container} ref={containerRef} />
+      {editor !== null ? (
+        <EditorVim editor={editor} settings={settings} />
+      ) : null}
+    </div>
+  );
 };

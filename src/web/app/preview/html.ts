@@ -5,7 +5,7 @@ import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
 import { Plugin, unified } from "unified";
-import { Editor, EditorRef } from "../editor/type";
+import { Editor } from "../editor/type";
 
 const processor = unified()
   .use(remarkParse as Plugin)
@@ -15,7 +15,7 @@ const processor = unified()
   .use(rehypeSourceMap);
 
 interface Params {
-  editorRef: EditorRef;
+  editor: Editor;
 }
 
 const getHtml = async (editor: Editor): Promise<string> => {
@@ -25,14 +25,11 @@ const getHtml = async (editor: Editor): Promise<string> => {
 };
 
 export const usePreviewHtml = (params: Params): string => {
-  const { editorRef } = params;
+  const { editor } = params;
 
   const [html, setHtml] = useState("");
 
   useEffect(() => {
-    const editor = editorRef.current;
-    if (editor === null) return;
-
     // Set initial value
     getHtml(editor).then((text) => setHtml(text));
 
@@ -43,7 +40,7 @@ export const usePreviewHtml = (params: Params): string => {
       editor.onDidChangeModel(handler), // Open new file
     ];
     return () => listeners.forEach((l) => l.dispose());
-  }, [editorRef]);
+  }, [editor]);
 
   return html;
 };

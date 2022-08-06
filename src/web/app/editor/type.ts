@@ -1,9 +1,14 @@
 import type * as monaco from "monaco-editor";
-import { MutableRefObject } from "react";
+import { Dispatch, SetStateAction } from "react";
 
 export type Editor = monaco.editor.IStandaloneCodeEditor;
 
-export type EditorRef = MutableRefObject<Editor | null>;
+// Use state instead of ref because some effects rely on the existence of an
+// editor (e.g. see EditorVim)
+export interface EditorState {
+  editor: Editor | null;
+  setEditor: Dispatch<SetStateAction<Editor | null>>;
+}
 
 export type EditorModel = monaco.editor.ITextModel;
 
