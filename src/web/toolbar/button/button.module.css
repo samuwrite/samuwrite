@@ -2,4 +2,6 @@
   background: none;
   border: none;
   padding: 8px;
+  /* Default line-height is 24px */
+  line-height: 16px;
 }

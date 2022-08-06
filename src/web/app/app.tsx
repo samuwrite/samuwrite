@@ -6,6 +6,7 @@ import { LayoutContainer } from "../layout/container";
 import { Layout } from "../layout/type";
 import { useSettingsState } from "../settings/state";
 import { Toolbar } from "../toolbar/toolbar";
+import { ThemeInject } from "../theme/inject";
 
 export const App = (): JSX.Element => {
   const [layout, setLayout] = useState<Layout>("editor");
@@ -14,6 +15,7 @@ export const App = (): JSX.Element => {
 
   return (
     <div>
+      <ThemeInject id={settings.theme} />
       <div className={s.toolbar}>
         <Toolbar
           layout={layout}

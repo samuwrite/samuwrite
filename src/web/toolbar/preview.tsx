@@ -1,7 +1,7 @@
 import { LogIcon } from "@primer/octicons-react";
 import { Layout, LayoutState } from "../layout/type";
+import { getLayoutFromPreview } from "../settings/preview";
 import { Settings } from "../settings/type";
-import { getLayoutFromSettings } from "../settings/utils";
 import { ToolbarButton } from "./button/button";
 
 interface Props extends LayoutState {
@@ -11,7 +11,7 @@ interface Props extends LayoutState {
 const getLayout = (props: Props): Layout => {
   const { layout, settings } = props;
   if (layout !== "editor") return "editor";
-  return getLayoutFromSettings(settings.preview);
+  return getLayoutFromPreview(settings.preview);
 };
 
 export const ToolbarPreview = (props: Props): JSX.Element => {

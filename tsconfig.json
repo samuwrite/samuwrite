@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
+    "target": "ESNext",
+    "moduleResolution": "node",
     "strict": true,
     "jsx": "react-jsx",
-    "plugins": [{ "name": "typescript-plugin-css-modules" }],
-    "lib": ["ES2015"]
+    "plugins": [{ "name": "typescript-plugin-css-modules" }]
   },
   "include": ["src/web/**/*"],
   "exclude": ["node_modules"]

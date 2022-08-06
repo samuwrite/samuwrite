@@ -1,16 +1,17 @@
-import { Popover } from "@headlessui/react";
 import { LayoutState } from "../layout/type";
 import { SettingsPreview } from "../settings/preview";
 import { SettingsVim } from "../settings/vim";
+import { SettingsTheme } from "./theme";
 import { SettingsState } from "./type";
 
 interface Props extends SettingsState, LayoutState {}
 
 export const SettingsPanel = (props: Props): JSX.Element => {
   return (
-    <Popover.Panel>
+    <div>
       <SettingsPreview {...props} />
       <SettingsVim {...props} />
-    </Popover.Panel>
+      <SettingsTheme {...props} />
+    </div>
   );
 };

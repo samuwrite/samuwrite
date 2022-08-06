@@ -1,7 +1,6 @@
 import { RadioGroup } from "@headlessui/react";
-import { LayoutState } from "../layout/type";
+import { Layout, LayoutState } from "../layout/type";
 import { Settings, SettingsState } from "./type";
-import { getLayoutFromSettings } from "./utils";
 
 interface Props extends SettingsState, LayoutState {}
 
@@ -16,6 +15,10 @@ interface OptionRenderPropArg {
   disabled: boolean;
 }
 
+export const getLayoutFromPreview = (preview: Settings["preview"]): Layout => {
+  return preview === "full" ? "preview" : "split";
+};
+
 export const SettingsPreview = (props: Props): JSX.Element => {
   const { setSettings, settings, layout, setLayout } = props;
   return (
@@ -26,7 +29,7 @@ export const SettingsPreview = (props: Props): JSX.Element => {
 
         // Also update Layout if currently in preview mode
         if (layout === "editor") return;
-        const next = getLayoutFromSettings(preview);
+        const next = getLayoutFromPreview(preview);
         if (layout === next) return;
         setLayout(next);
       }}
