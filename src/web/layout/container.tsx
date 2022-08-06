@@ -21,7 +21,9 @@ export const LayoutContainer = (props: Props): JSX.Element => {
       {/* Only render Preview when necessary to avoid re-calculating HTML
       unnecessarily */}
       {layout !== "editor" && editor !== null ? (
-        <Preview editor={editor} />
+        <div className={s.preview}>
+          <Preview editor={editor} />
+        </div>
       ) : null}
     </div>
   );

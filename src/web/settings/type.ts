@@ -5,6 +5,7 @@ export interface Settings {
   preview: "full" | "split";
   vim: boolean;
   theme: keyof typeof variants;
+  size: string;
 }
 
 export interface SettingsState {

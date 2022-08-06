@@ -1,11 +1,12 @@
 import { Popover } from "@headlessui/react";
+import * as s from "./settings.module.css";
 import { GearIcon } from "@primer/octicons-react";
 import { useState } from "react";
 import { usePopper } from "react-popper";
-import { LayoutState } from "../layout/type";
-import { SettingsPanel } from "../settings/panel";
-import { SettingsState } from "../settings/type";
-import { ToolbarButton } from "./button/button";
+import { LayoutState } from "../../layout/type";
+import { SettingsPanel } from "../../settings/panel";
+import { SettingsState } from "../../settings/type";
+import { ToolbarButton } from "./../button/button";
 
 interface Props extends SettingsState, LayoutState {}
 
@@ -29,6 +30,7 @@ export const ToolbarSettings = (props: Props): JSX.Element => {
             ref={setPopover}
             style={styles.popper}
             {...attributes.popper}
+            className={s.popover}
           >
             <SettingsPanel {...props} />
           </Popover.Panel>

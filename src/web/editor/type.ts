@@ -9,7 +9,3 @@ export interface EditorState {
   editor: Editor | null;
   setEditor: Dispatch<SetStateAction<Editor | null>>;
 }
-
-export type EditorModel = monaco.editor.ITextModel;
-
-export type EditorOptions = monaco.editor.IStandaloneEditorConstructionOptions;

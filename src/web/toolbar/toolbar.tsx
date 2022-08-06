@@ -9,7 +9,7 @@ import {
   PlusIcon,
   ThreeBarsIcon,
 } from "@primer/octicons-react";
-import { ToolbarSettings } from "./settings";
+import { ToolbarSettings } from "./settings/settings";
 
 interface Props extends SettingsState, LayoutState {}
 
