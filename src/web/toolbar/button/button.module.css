@@ -2,10 +2,23 @@
   background: none;
   border: none;
   padding: 8px;
-  /* Default line-height is 24px */
-  line-height: 16px;
+  border-radius: 6px;
 }
 
-.selected {
-  color: var(--text-color);
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  outline: solid 2px var(--color-rose);
+}
+
+.button:hover,
+.button.selected {
+  background-color: var(--color-overlay);
+}
+
+.button svg {
+  /* octicon put "inline-block" at style */
+  display: block !important;
 }

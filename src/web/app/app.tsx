@@ -15,7 +15,7 @@ export const App = (): JSX.Element => {
   const { setSettings, settings } = useSettingsState();
 
   return (
-    <div>
+    <div className={s.container}>
       <AppTheme settings={settings} />
       <div className={s.toolbar}>
         <Toolbar
@@ -25,12 +25,14 @@ export const App = (): JSX.Element => {
           setSettings={setSettings}
         />
       </div>
-      <LayoutContainer
-        layout={layout}
-        settings={settings}
-        editor={editor}
-        setEditor={setEditor}
-      />
+      <div className={s.body}>
+        <LayoutContainer
+          layout={layout}
+          settings={settings}
+          editor={editor}
+          setEditor={setEditor}
+        />
+      </div>
     </div>
   );
 };

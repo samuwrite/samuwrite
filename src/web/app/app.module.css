@@ -1,3 +1,21 @@
+.container {
+  height: 100%;
+  position: relative;
+  isolation: isolate;
+}
+
+.toolbar {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1;
+}
+
+.body {
+  height: 100%;
+}
+
 @media print {
   .toolbar {
     display: none;

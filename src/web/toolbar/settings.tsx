@@ -16,19 +16,24 @@ export const ToolbarSettings = (props: Props): JSX.Element => {
 
   return (
     <Popover>
-      <ToolbarButton
-        ref={setButton}
-        as={Popover.Button}
-        Icon={GearIcon}
-        label="Settings"
-      />
-      <Popover.Panel
-        ref={setPopover}
-        style={styles.popper}
-        {...attributes.popper}
-      >
-        <SettingsPanel {...props} />
-      </Popover.Panel>
+      {({ open }) => (
+        <>
+          <ToolbarButton
+            ref={setButton}
+            as={Popover.Button}
+            Icon={GearIcon}
+            label="Settings"
+            selected={open}
+          />
+          <Popover.Panel
+            ref={setPopover}
+            style={styles.popper}
+            {...attributes.popper}
+          >
+            <SettingsPanel {...props} />
+          </Popover.Panel>
+        </>
+      )}
     </Popover>
   );
 };

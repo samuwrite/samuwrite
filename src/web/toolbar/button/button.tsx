@@ -14,9 +14,13 @@ export const ToolbarButton = forwardRef<HTMLElement, Props>(
     const { Icon, label, selected, as, ...rest } = props;
     const Button = as ?? "button";
     return (
-      <Button {...rest} type="button" className={s.button} ref={ref}>
+      <Button
+        {...rest}
+        type="button"
+        className={[s.button, selected ? s.selected : ""].join(" ")}
+        ref={ref}
+      >
         <Icon size={16} aria-label={label} />
-        {selected ? "x" : ""}
       </Button>
     );
   }

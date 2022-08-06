@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import { EditorState } from "./type";
 import { EditorVim } from "./vim";
 import { Settings } from "../settings/type";
+import { SAMPLE_TAILWIND } from "../samples/tailwind";
 
 // Setup workers
 // https://github.com/microsoft/monaco-editor/blob/main/docs/integrate-esm.md#using-parcel
@@ -28,7 +29,7 @@ export const EditorMain = (props: Props): JSX.Element => {
 
     const instance = monaco.editor.create(container, {
       language: "markdown",
-      value: "*hello* world",
+      value: SAMPLE_TAILWIND,
     });
     setEditor(instance);
 

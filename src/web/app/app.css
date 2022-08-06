@@ -84,9 +84,7 @@ body {
   background-color: var(--color-base);
   color: var(--color-text);
   font-family: "Inter var", sans-serif;
-}
 
-html {
   /* https://developers.google.com/web/fundamentals/design-and-ux/animations/choosing-the-right-easing */
   --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
 }
