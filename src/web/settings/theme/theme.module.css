@@ -1,0 +1,9 @@
+.container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.options {
+  display: flex;
+  gap: 16px;
+}

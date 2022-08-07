@@ -2,20 +2,31 @@ import { LayoutState } from "../layout/type";
 import { SettingsPreview } from "../settings/preview";
 import { SettingsVim } from "../settings/vim";
 import { SettingsFontSize } from "./font-size";
-import { SettingsTheme } from "./theme";
+import { SettingsTheme } from "./theme/theme";
 import { SettingsState } from "./type";
 import { SettingsWrapColumn } from "./wrap-column";
+import * as s from "./panel.module.css";
 
 interface Props extends SettingsState, LayoutState {}
 
 export const SettingsPanel = (props: Props): JSX.Element => {
   return (
-    <div>
-      <SettingsPreview {...props} />
-      <SettingsVim {...props} />
-      <SettingsTheme {...props} />
-      <SettingsWrapColumn {...props} />
-      <SettingsFontSize {...props} />
+    <div className={s.wrapper}>
+      <div className={s.container}>
+        <div className={s.group}>
+          <SettingsVim {...props} />
+          <hr className={s.line} />
+          <SettingsTheme {...props} />
+        </div>
+        <div className={s.group}>
+          <SettingsPreview {...props} />
+        </div>
+        <div className={s.group}>
+          <SettingsWrapColumn {...props} />
+          <hr className={s.line} />
+          <SettingsFontSize {...props} />
+        </div>
+      </div>
     </div>
   );
 };

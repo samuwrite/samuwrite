@@ -84,6 +84,7 @@ body {
   background-color: var(--color-base);
   color: var(--color-text);
   font-family: "Inter var", sans-serif;
+  font-size: 14px;
 
   /* https://developers.google.com/web/fundamentals/design-and-ux/animations/choosing-the-right-easing */
   /* Better ease
