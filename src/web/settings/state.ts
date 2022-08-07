@@ -5,7 +5,8 @@ const fallback: Settings = {
   preview: "split",
   vim: false,
   theme: "moon",
-  size: "XL",
+  fontSize: 20,
+  wrapColumn: 80,
 };
 
 export const useSettingsState = (): SettingsState => {

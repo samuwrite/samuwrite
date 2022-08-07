@@ -1,35 +1,24 @@
-import * as monaco from "monaco-editor";
-import { useEffect, useRef } from "react";
-import { SAMPLE_TAILWIND } from "../../samples/tailwind";
+import { useRef } from "react";
+import { Settings } from "../../settings/type";
 import { EditorState } from "../type";
-import { createEditorEnv } from "./env";
-import { EDITOR_CREATE_OPTIONS } from "./options";
+import { useEditorCreate } from "./create";
 import * as s from "./input.module.css";
-import "./monaco.css";
+import { useEditorLayout } from "./layout";
+import "./input.css";
+import { useEditorTypography } from "./typography";
 
-interface Props extends Pick<EditorState, "setEditor"> {}
+interface Props extends EditorState {
+  settings: Settings;
+}
 
 export const EditorInput = (props: Props): JSX.Element => {
-  const { setEditor } = props;
+  const { setEditor, editor, settings } = props;
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEffect(() => {
-    const container = containerRef.current;
-    if (container === null) throw Error("`container` is null");
-
-    createEditorEnv();
-    const editor = monaco.editor.create(container, {
-      ...EDITOR_CREATE_OPTIONS,
-      value: SAMPLE_TAILWIND,
-    });
-    setEditor(editor);
-
-    return () => {
-      setEditor(null);
-      editor.dispose();
-    };
-  }, [setEditor]);
+  useEditorCreate({ containerRef, setEditor });
+  useEditorLayout({ containerRef, editor, settings });
+  useEditorTypography({ editor, settings });
 
   return <div className={s.container} ref={containerRef} />;
 };
