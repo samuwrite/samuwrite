@@ -1,0 +1,25 @@
+.container {
+  padding: 12px 0;
+  border: solid 1px var(--color-highlightHigh);
+  background-color: var(--color-overlay);
+  border-radius: 6px;
+  display: flex;
+  width: 72px;
+  justify-content: center;
+  color: var(--color-subtle);
+}
+
+.line {
+  width: 1px;
+  background-color: var(--color-highlightHigh);
+  margin: 0px 8px;
+  height: 16px;
+}
+
+.preview {
+  color: var(--color-text);
+}
+
+.preview svg {
+  display: block !important;
+}

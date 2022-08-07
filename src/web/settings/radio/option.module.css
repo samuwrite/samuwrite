@@ -17,11 +17,11 @@
 }
 
 .icon {
-  padding: 8px;
-  width: fit-content;
   border-radius: 6px;
+  overflow: hidden;
 }
 
 .selected .icon {
   outline: solid 2px var(--color-rose);
+  outline-offset: 2px;
 }

@@ -1,30 +1,21 @@
-import { RadioGroup } from "@headlessui/react";
-import * as s from "./theme.module.css";
-import { variants } from "@rose-pine/palette";
+import { SettingsRadioGroup } from "../radio/group";
 import { Settings, SettingsState } from "../type";
-import { ThemeOption } from "./option";
+import { ThemeIcon } from "./icon";
 
 interface Props extends SettingsState {}
-
-type Theme = Settings["theme"];
 
 export const SettingsTheme = (props: Props): JSX.Element => {
   const { setSettings, settings } = props;
   return (
-    <RadioGroup<"div", Theme>
+    <SettingsRadioGroup<Settings["theme"]>
       value={settings.theme}
-      onChange={(theme: Theme) => {
-        setSettings((prev) => ({ ...prev, theme }));
-      }}
-      className={s.container}
-    >
-      <RadioGroup.Label>Theme</RadioGroup.Label>
-      <div className={s.options}>
-        {Object.keys(variants).map((variant) => {
-          const theme = variant as keyof typeof variants;
-          return <ThemeOption key={theme} theme={theme} />;
-        })}
-      </div>
-    </RadioGroup>
+      onChange={(theme) => setSettings((prev) => ({ ...prev, theme }))}
+      options={[
+        { label: "Main", value: "main", icon: <ThemeIcon theme="main" /> },
+        { label: "Moon", value: "moon", icon: <ThemeIcon theme="moon" /> },
+        { label: "Dawn", value: "dawn", icon: <ThemeIcon theme="dawn" /> },
+      ]}
+      label="Theme"
+    />
   );
 };

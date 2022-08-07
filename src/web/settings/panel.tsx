@@ -1,5 +1,5 @@
 import { LayoutState } from "../layout/type";
-import { SettingsPreview } from "../settings/preview";
+import { SettingsPreview } from "./preview/preview";
 import { SettingsVim } from "../settings/vim";
 import { SettingsFontSize } from "./font-size";
 import { SettingsTheme } from "./theme/theme";
@@ -14,14 +14,14 @@ export const SettingsPanel = (props: Props): JSX.Element => {
     <div className={s.wrapper}>
       <div className={s.container}>
         <div className={s.group}>
-          <SettingsVim {...props} />
-          <hr className={s.line} />
           <SettingsTheme {...props} />
         </div>
         <div className={s.group}>
           <SettingsPreview {...props} />
         </div>
         <div className={s.group}>
+          <SettingsVim {...props} />
+          <hr className={s.line} />
           <SettingsWrapColumn {...props} />
           <hr className={s.line} />
           <SettingsFontSize {...props} />

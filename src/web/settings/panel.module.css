@@ -10,7 +10,7 @@
 
   background-color: var(--color-base);
   border: solid 1px var(--color-highlightMed);
-  border-radius: 16px;
+  border-radius: 20px;
 
   display: flex;
   flex-direction: column;

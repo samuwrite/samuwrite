@@ -1,4 +1,5 @@
 import { EDITOR_TYPOGRAPHY_OPTIONS } from "../editor/input/typography";
+import { Range } from "../range/range";
 import { SettingsState } from "./type";
 
 interface Props extends SettingsState {}
@@ -11,8 +12,7 @@ export const SettingsFontSize = (props: Props): JSX.Element => {
     <label>
       <span>Text size</span>
       <span>{settings.fontSize}</span>
-      <input
-        type="range"
+      <Range
         min={0}
         max={SIZES.length - 1}
         step={1}

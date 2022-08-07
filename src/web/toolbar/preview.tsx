@@ -1,6 +1,6 @@
 import { LogIcon } from "@primer/octicons-react";
 import { Layout, LayoutState } from "../layout/type";
-import { getLayoutFromPreview } from "../settings/preview";
+import { getLayoutFromPreview } from "../settings/preview/preview";
 import { Settings } from "../settings/type";
 import { ToolbarButton } from "./button/button";
 
