@@ -19,7 +19,7 @@ export const SettingsRadioGroup = <T extends string | number>(
       onChange={onChange}
       className={s.container}
     >
-      <RadioGroup.Label>{label}</RadioGroup.Label>
+      <RadioGroup.Label className={s.label}>{label}</RadioGroup.Label>
       <div className={s.options}>
         {options.map((option) => (
           <SettingsRadioOption

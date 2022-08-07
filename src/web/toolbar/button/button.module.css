@@ -3,11 +3,16 @@
   border: none;
   padding: 8px;
   border-radius: 6px;
+  color: var(--color-subtle);
 }
 
 .button:hover,
 .button.selected {
   background-color: var(--color-overlay);
+}
+
+.button.selected {
+  color: var(--color-text);
 }
 
 .button svg {

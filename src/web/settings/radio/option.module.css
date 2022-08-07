@@ -3,6 +3,9 @@
   flex-direction: column;
   align-items: center;
   gap: 8px;
+
+  padding: 6px;
+  border-radius: calc(6px + 6px / 2);
 }
 
 .label {
@@ -21,7 +24,6 @@
   overflow: hidden;
 }
 
-.selected .icon {
-  outline: solid 2px var(--color-rose);
-  outline-offset: 2px;
+.selected {
+  background-color: var(--color-overlay);
 }

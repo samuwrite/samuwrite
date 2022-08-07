@@ -1,7 +1,6 @@
 .container {
   padding: 12px 0;
-  border: solid 1px var(--color-highlightHigh);
-  background-color: var(--color-overlay);
+  background-color: var(--color-surface);
   border-radius: 6px;
   display: flex;
   width: 72px;

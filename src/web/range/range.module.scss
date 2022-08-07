@@ -26,7 +26,7 @@
   // "--step" is set dynamically in TSX at "input"
   background-size: var(--step) 100%;
   background-repeat: repeat;
-  --mark: var(--color-highlightHigh);
+  --mark: var(--color-highlightMed);
   background-image: linear-gradient(
     to left,
     var(--mark) 0px 2px,
