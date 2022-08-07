@@ -8,6 +8,19 @@ interface Params {
   containerRef: RefObject<HTMLDivElement>;
 }
 
+export const getEditorContentWidth = (params: {
+  fontSize: Settings["fontSize"];
+  wrapColumn: Settings["wrapColumn"];
+}): number => {
+  const { fontSize, wrapColumn } = params;
+
+  // The ratio of font size over a character's width. This is a magic number
+  // sepecific for our iA Writer Duo font
+  const RATIO = 0.6;
+  const content = fontSize * RATIO * wrapColumn;
+  return content;
+};
+
 // lineDecorationsWidth is how we can achieve real center align (like iA
 // Writer) and not the pseudo align (like VS Code)
 // https://microsoft.github.io/monaco-editor/api/interfaces/monaco.editor.IEditorOptions.html#lineDecorationsWidth
@@ -18,11 +31,7 @@ const getLeftPad = (params: {
 }): number => {
   const { container, fontSize, wrapColumn } = params;
 
-  // The ratio of font size over a character's width. This is a magic number
-  // sepecific for our iA Writer Duo font
-  const RATIO = 0.6;
-  const content = fontSize * RATIO * wrapColumn;
-
+  const content = getEditorContentWidth({ fontSize, wrapColumn });
   const free = container.clientWidth - content;
   const expected = Math.round(free / 2);
   const bounded = Math.max(expected, 48);

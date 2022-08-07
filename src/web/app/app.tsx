@@ -17,14 +17,17 @@ export const App = (): JSX.Element => {
   return (
     <div className={s.container}>
       <AppTheme settings={settings} />
-      <div className={s.toolbar}>
-        <Toolbar
-          layout={layout}
-          setLayout={setLayout}
-          settings={settings}
-          setSettings={setSettings}
-        />
-      </div>
+      {editor !== null ? (
+        <div className={s.toolbar}>
+          <Toolbar
+            layout={layout}
+            setLayout={setLayout}
+            settings={settings}
+            setSettings={setSettings}
+            editor={editor}
+          />
+        </div>
+      ) : null}
       <div className={s.body}>
         <LayoutContainer
           layout={layout}

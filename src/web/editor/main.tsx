@@ -1,9 +1,9 @@
 import { Settings } from "../settings/type";
 import { EditorInput } from "./input/input";
 import * as s from "./main.module.css";
+import { EditorStatus } from "./status/status";
 import { useEditorTheme } from "./theme/theme";
 import { EditorState } from "./type";
-import { EditorVim } from "./vim";
 
 interface Props extends EditorState {
   settings: Settings;
@@ -25,7 +25,7 @@ export const EditorMain = (props: Props): JSX.Element => {
       </div>
       {editor !== null ? (
         <div className={s.status}>
-          <EditorVim editor={editor} settings={settings} />
+          <EditorStatus editor={editor} settings={settings} />
         </div>
       ) : null}
     </div>

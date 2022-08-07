@@ -4,6 +4,7 @@ import { Settings } from "../../settings/type";
 import themeMain from "./themes/rose-pine-color-theme.json";
 import themeMoon from "./themes/rose-pine-moon-color-theme.json";
 import themeDawn from "./themes/rose-pine-dawn-color-theme.json";
+import { variants } from "@rose-pine/palette";
 
 // Heads-up: these infer types are very complicated
 type VscodeTheme = typeof themeMain | typeof themeMoon | typeof themeDawn;
@@ -27,12 +28,24 @@ const toMonacoTokens = (vscode: VscodeToken): MonacoToken[] => {
   return rules;
 };
 
-const toMonacoTheme = (vscode: VscodeTheme): MonacoTheme => ({
-  base: vscode.type === "dark" ? "vs-dark" : "vs",
-  colors: vscode.colors,
-  inherit: false,
-  rules: vscode.tokenColors.flatMap(toMonacoTokens),
-});
+const getMonacoTheme = (params: {
+  vscode: VscodeTheme;
+  variant: typeof variants["dawn"];
+}): MonacoTheme => {
+  const { variant, vscode } = params;
+
+  const theme: MonacoTheme = {
+    base: vscode.type === "dark" ? "vs-dark" : "vs",
+    colors: {
+      ...vscode.colors,
+      "editorCursor.foreground": variant.love.hex,
+    },
+    inherit: false,
+    rules: vscode.tokenColors.flatMap(toMonacoTokens),
+  };
+
+  return theme;
+};
 
 interface Params {
   settings: Settings;
@@ -43,7 +56,8 @@ export const useEditorTheme = (params: Params): void => {
 
   useEffect(() => {
     const vscode = VSCODE_THEMES[theme];
-    editor.defineTheme("custom", toMonacoTheme(vscode));
+    const variant = variants[theme];
+    editor.defineTheme("custom", getMonacoTheme({ vscode, variant }));
     editor.setTheme("custom");
   }, [theme]);
 };
