@@ -36,6 +36,8 @@ const OPTION_ENTRIES: [number, Options][] = [
 
 const OPTIONS: Map<number, Options> = new Map(OPTION_ENTRIES);
 
+export { OPTIONS as EDITOR_TYPOGRAPHY_OPTIONS };
+
 const OPTION_FALLBACK = (() => {
   const fallback = OPTIONS.get(20);
   if (fallback === undefined) throw Error("`fallback` is undefined");
