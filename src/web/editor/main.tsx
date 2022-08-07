@@ -1,6 +1,7 @@
 import { Settings } from "../settings/type";
 import { EditorInput } from "./input/input";
 import * as s from "./main.module.css";
+import { useEditorTheme } from "./theme/theme";
 import { EditorState } from "./type";
 import { EditorVim } from "./vim";
 
@@ -10,6 +11,8 @@ interface Props extends EditorState {
 
 export const EditorMain = (props: Props): JSX.Element => {
   const { editor, setEditor, settings } = props;
+
+  useEditorTheme({ settings });
 
   return (
     <div className={s.container}>
