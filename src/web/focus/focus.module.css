@@ -1,0 +1,12 @@
+.focus {
+  transition: outline 300ms var(--ease);
+}
+
+.focus,
+.focus:focus {
+  outline: solid 8px transparent;
+}
+
+.focus:focus-visible {
+  outline: solid 2px var(--color-rose);
+}

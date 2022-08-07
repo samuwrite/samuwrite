@@ -5,14 +5,6 @@
   border-radius: 6px;
 }
 
-.button:focus {
-  outline: none;
-}
-
-.button:focus-visible {
-  outline: solid 2px var(--color-rose);
-}
-
 .button:hover,
 .button.selected {
   background-color: var(--color-overlay);

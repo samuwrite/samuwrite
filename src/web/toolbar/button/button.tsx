@@ -1,5 +1,6 @@
 import { Icon } from "@primer/octicons-react";
 import { ButtonHTMLAttributes, ElementType, forwardRef } from "react";
+import { focusStyle } from "../../focus/focus";
 import * as s from "./button.module.css";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
@@ -17,7 +18,7 @@ export const ToolbarButton = forwardRef<HTMLElement, Props>(
       <Button
         {...rest}
         type="button"
-        className={[s.button, selected ? s.selected : ""].join(" ")}
+        className={[s.button, selected ? s.selected : "", focusStyle].join(" ")}
         ref={ref}
       >
         <Icon size={16} aria-label={label} />

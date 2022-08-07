@@ -4,6 +4,7 @@
     "web:monaco": "sh scripts/web-monaco.sh"
   },
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.7.0",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
     "@typescript-eslint/eslint-plugin": "^5.32.0",

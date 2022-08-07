@@ -17,6 +17,9 @@
   display: flex;
   align-items: center;
   gap: 8px;
+
+  /* Vertical padding for outline to be visible */
+  padding: 8px 0;
 }
 
 .left > *,

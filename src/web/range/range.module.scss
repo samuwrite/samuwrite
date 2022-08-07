@@ -1,0 +1,53 @@
+.range {
+  appearance: none;
+  padding: 0;
+  display: block;
+  width: 100%;
+  height: 4px;
+  background-color: var(--color-overlay);
+}
+
+@mixin thumb {
+  appearance: none;
+  border: none;
+
+  background-color: var(--color-muted);
+  height: 20px;
+  width: 8px;
+  border-radius: 8px;
+}
+
+// Track is always render on top of the Range itself so we use it to render
+// tracks
+@mixin track {
+  appearance: none;
+  height: 8px;
+
+  // "--step" is set dynamically in TSX at "input"
+  background-size: var(--step) 100%;
+  background-repeat: repeat;
+  --mark: var(--color-highlightHigh);
+  background-image: linear-gradient(
+    to left,
+    var(--mark) 0px 2px,
+    transparent 2px
+  );
+  // start mark
+  border-left: solid 2px var(--mark);
+}
+
+// Webkit
+.range::-webkit-slider-thumb {
+  @include thumb;
+}
+.range::-webkit-slider-runnable-track {
+  @include track;
+}
+
+// Firefox
+.range::-moz-range-thumb {
+  @include thumb;
+}
+.range::-moz-range-track {
+  @include track;
+}

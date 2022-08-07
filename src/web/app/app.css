@@ -86,5 +86,7 @@ body {
   font-family: "Inter var", sans-serif;
 
   /* https://developers.google.com/web/fundamentals/design-and-ux/animations/choosing-the-right-easing */
-  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+  /* Better ease
+  https://www.joshwcomeau.com/animation/css-transitions/ */
+  --ease: cubic-bezier(0.44, 0.21, 0, 1);
 }

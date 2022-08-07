@@ -1,3 +1,4 @@
+import { Range } from "../range/range";
 import { SettingsState } from "./type";
 
 interface Props extends SettingsState {}
@@ -10,8 +11,7 @@ export const SettingsWrapColumn = (props: Props): JSX.Element => {
     <label>
       <span>Line length</span>
       <span>{settings.wrapColumn}</span>
-      <input
-        type="range"
+      <Range
         min={0}
         max={COLUMNS.length - 1}
         step={1}
