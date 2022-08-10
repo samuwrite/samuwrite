@@ -1,7 +1,6 @@
 .container {
   padding: 12px 0;
-  background-color: var(--color-surface);
-  border-radius: 6px;
+  background-color: var(--color-base);
   display: flex;
   width: 72px;
   justify-content: center;

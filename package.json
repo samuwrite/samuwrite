@@ -18,6 +18,7 @@
     "typescript-plugin-css-modules": "^3.4.0"
   },
   "dependencies": {
+    "@floating-ui/react-dom": "^1.0.0",
     "@headlessui/react": "^1.6.6",
     "@primer/octicons-react": "^17.4.0",
     "@rose-pine/palette": "^3.0.1",
@@ -25,7 +26,6 @@
     "monaco-vim": "^0.3.4",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-popper": "^2.3.0",
     "rehype-dom-stringify": "^3.0.1",
     "rehype-source-map": "^1.0.1",
     "remark-gfm": "^3.0.1",
