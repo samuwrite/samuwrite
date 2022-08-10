@@ -5,8 +5,8 @@
   /* Mac's toolbar height */
   height: 52px;
 
-  background-color: rgba(var(--color-base-rgb), 0.5);
-  backdrop-filter: blur(10px);
+  background-color: rgba(var(--color-base-rgb), 0.7);
+  backdrop-filter: blur(20px);
 }
 
 .left,

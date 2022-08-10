@@ -1,20 +1,50 @@
 import { Settings } from "../settings/type";
-import { Roles, roles, variants } from "@rose-pine/palette";
+import { Roles, variants } from "@rose-pine/palette";
 
 interface Props {
   settings: Settings;
 }
 
+interface ThemeExtra {
+  shadowOpacity: number;
+  blurOpacity: number;
+}
+
+const EXTRAS: Record<Settings["theme"], ThemeExtra> = {
+  dawn: {
+    blurOpacity: 0.7,
+    shadowOpacity: 0.02,
+  },
+  main: {
+    blurOpacity: 0.9,
+    shadowOpacity: 0.2,
+  },
+  moon: {
+    blurOpacity: 0.9,
+    shadowOpacity: 0.1,
+  },
+};
+
 export const AppTheme = (props: Props): JSX.Element => {
   const { settings } = props;
   const variant = variants[settings.theme];
-  const variables = Object.keys(variant).map((key) => {
+  const variables: string[] = [];
+
+  // Theme colors
+  Object.keys(variant).map((key) => {
     const role = key as keyof Roles<unknown, unknown>;
     const color = variant[role];
-    return [
-      `--color-${role}: ${color.hex};`,
-      `--color-${role}-rgb: ${color.rgb.replace("rgb(", "").replace(")", "")};`,
-    ].join("\n");
+    variables.push(`--color-${role}: ${color.hex}`);
+    // RGB parts for alpha mixing
+    const rgb = color.rgb.replace("rgb(", "").replace(")", "");
+    variables.push(`--color-${role}-rgb: ${rgb}`);
   });
-  return <style>{`:root { ${variables.join("\n")} }`}</style>;
+
+  // Other theme details like shadow opacity (dark themes need stronger shadow
+  // than light themes)
+  const extra = EXTRAS[settings.theme];
+  variables.push(`--shadow-opacity: ${extra.shadowOpacity}`);
+  variables.push(`--blur-opacity: ${extra.blurOpacity}`);
+
+  return <style>{`:root { ${variables.join(";")} }`}</style>;
 };
