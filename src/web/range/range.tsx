@@ -1,5 +1,5 @@
 import { CSSProperties } from "react";
-import { focusStyle } from "../focus/focus";
+import { outline } from "../outline/outline";
 import * as s from "./range.module.scss";
 
 type Props = JSX.IntrinsicElements["input"] & {
@@ -23,7 +23,7 @@ export const Range = (props: Props): JSX.Element => {
     <input
       {...native}
       type="range"
-      className={[s.range, focusStyle].join(" ")}
+      className={[s.range, outline.onFocus].join(" ")}
       style={getCss(props)}
     />
   );

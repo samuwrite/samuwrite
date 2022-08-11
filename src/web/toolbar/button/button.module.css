@@ -11,6 +11,10 @@
   background-color: var(--color-overlay);
 }
 
+.button:active {
+  background-color: var(--color-highlightMed);
+}
+
 .button.selected {
   color: var(--color-text);
 }

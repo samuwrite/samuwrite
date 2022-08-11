@@ -1,0 +1,40 @@
+.container {
+  display: flex;
+  position: relative;
+
+  appearance: none;
+  background-color: var(--color-overlay);
+  border: none;
+  border-radius: 999px;
+  padding: 3px;
+}
+
+.container:active {
+  background-color: var(--color-highlightMed);
+}
+
+.icon {
+  flex: 0 0 auto;
+}
+
+.icon svg {
+  display: block !important;
+  transform: scale(0.75);
+}
+
+.thumb {
+  width: 18px;
+  height: 18px;
+  border-radius: 20px;
+  background-color: var(--color-subtle);
+
+  position: absolute;
+  top: 2px;
+  left: 2px;
+
+  transition: transform 200ms var(--ease);
+}
+
+.active .thumb {
+  transform: translateX(16px);
+}

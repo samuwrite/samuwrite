@@ -1,7 +1,9 @@
 import { shift, useFloating } from "@floating-ui/react-dom";
 import { Popover } from "@headlessui/react";
 import { GearIcon } from "@primer/octicons-react";
+import { Fragment } from "react";
 import { LayoutState } from "../../layout/type";
+import { outline } from "../../outline/outline";
 import { SettingsPanel } from "../../settings/panel";
 import { SettingsState } from "../../settings/type";
 import { ToolbarButton } from "./../button/button";
@@ -15,13 +17,9 @@ export const ToolbarSettings = (props: Props): JSX.Element => {
     <Popover>
       {({ open }) => (
         <>
-          <ToolbarButton
-            ref={float.reference}
-            as={Popover.Button}
-            Icon={GearIcon}
-            label="Settings"
-            selected={open}
-          />
+          <Popover.Button ref={float.reference} as="div">
+            <ToolbarButton Icon={GearIcon} label="Settings" selected={open} />
+          </Popover.Button>
           <Popover.Panel
             ref={float.floating}
             style={{

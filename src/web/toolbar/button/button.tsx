@@ -1,28 +1,25 @@
 import { Icon } from "@primer/octicons-react";
-import { ButtonHTMLAttributes, ElementType, forwardRef } from "react";
-import { focusStyle } from "../../focus/focus";
+import { ButtonHTMLAttributes } from "react";
+import { outline } from "../../outline/outline";
 import * as s from "./button.module.css";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   Icon: Icon;
   label: string;
   selected?: boolean;
-  as?: ElementType;
 }
 
-export const ToolbarButton = forwardRef<HTMLElement, Props>(
-  (props, ref): JSX.Element => {
-    const { Icon, label, selected, as, ...rest } = props;
-    const Button = as ?? "button";
-    return (
-      <Button
-        {...rest}
-        type="button"
-        className={[s.button, selected ? s.selected : "", focusStyle].join(" ")}
-        ref={ref}
-      >
-        <Icon size={16} aria-label={label} />
-      </Button>
-    );
-  }
-);
+export const ToolbarButton = (props: Props): JSX.Element => {
+  const { Icon, label, selected, ...rest } = props;
+  return (
+    <button
+      {...rest}
+      type="button"
+      className={[s.button, selected ? s.selected : "", outline.onFocus].join(
+        " "
+      )}
+    >
+      <Icon size={16} aria-label={label} />
+    </button>
+  );
+};
