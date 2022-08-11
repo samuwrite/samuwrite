@@ -1,6 +1,6 @@
 import { Switch } from "@headlessui/react";
 import { SwitchButton } from "../../switch/switch";
-import s from "./switch.module.css";
+import * as s from "./switch.module.css";
 
 interface Props {
   checked: boolean;
