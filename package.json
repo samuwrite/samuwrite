@@ -1,8 +1,7 @@
 {
   "scripts": {
-    "dev": "sh scripts/web-dev.sh",
-    "build": "sh scripts/web-dev.sh",
-    "monaco": "sh scripts/web-monaco.sh"
+    "dev": "sh scripts/dev.sh",
+    "build": "sh scripts/build.sh"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
