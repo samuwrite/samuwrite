@@ -1,3 +1,3 @@
 sh scripts/monaco.sh
 
-parcel build src/web/web.html
+parcel build src/web/index.html
