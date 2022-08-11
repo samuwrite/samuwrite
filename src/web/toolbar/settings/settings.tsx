@@ -1,4 +1,4 @@
-import { shift, useFloating } from "@floating-ui/react-dom";
+import { shift, size, useFloating } from "@floating-ui/react-dom";
 import { Popover } from "@headlessui/react";
 import { GearIcon } from "@primer/octicons-react";
 import { Fragment } from "react";
@@ -11,7 +11,18 @@ import { ToolbarButton } from "./../button/button";
 interface Props extends SettingsState, LayoutState {}
 
 export const ToolbarSettings = (props: Props): JSX.Element => {
-  const float = useFloating({ middleware: [shift()] });
+  const sizeMdw = size({
+    apply: ({ elements, availableHeight, availableWidth }) => {
+      Object.assign(elements.floating.style, {
+        maxWidth: `${availableWidth}px`,
+        maxHeight: `${availableHeight}px`,
+      });
+    },
+  });
+
+  const float = useFloating({
+    middleware: [shift(), sizeMdw],
+  });
 
   return (
     <Popover>
@@ -26,6 +37,7 @@ export const ToolbarSettings = (props: Props): JSX.Element => {
               position: float.strategy,
               top: float.y ?? 0,
               left: float.x ?? 0,
+              height: "100vh",
             }}
           >
             <SettingsPanel {...props} />

@@ -6,7 +6,10 @@ type Props = JSX.IntrinsicElements["input"] & {
   step: number;
   min: number;
   max: number;
+  value: number;
 };
+
+export type { Props as RangeProps };
 
 const getCss = (props: Props): CSSProperties => {
   const { min, max, step } = props;

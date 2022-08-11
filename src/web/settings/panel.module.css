@@ -1,12 +1,13 @@
 .wrapper {
   /* Reliable offset to anchor and screen */
   padding: 6px;
+  height: 100%;
 }
 
 .container {
   width: 320px;
-  max-height: 70vh;
   overflow: auto;
+  height: 100%;
 
   padding: 18px;
   /* inner radius + padding / 2 */

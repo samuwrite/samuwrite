@@ -1,5 +1,6 @@
 import { EDITOR_TYPOGRAPHY_OPTIONS } from "../editor/input/typography";
-import { Range } from "../range/range";
+import { SettingsRange } from "./range/range";
+import { TypographyIcon } from "@primer/octicons-react";
 import { SettingsState } from "./type";
 
 interface Props extends SettingsState {}
@@ -9,22 +10,26 @@ const SIZES: number[] = [...EDITOR_TYPOGRAPHY_OPTIONS.keys()];
 export const SettingsFontSize = (props: Props): JSX.Element => {
   const { setSettings, settings } = props;
   return (
-    <label>
-      <span>Text size</span>
-      <span>{settings.fontSize}</span>
-      <Range
-        min={0}
-        max={SIZES.length - 1}
-        step={1}
-        value={SIZES.indexOf(settings.fontSize)}
-        onChange={(event) => {
+    <SettingsRange
+      label="Text size"
+      value={`${settings.fontSize} px`}
+      input={{
+        min: 0,
+        max: SIZES.length - 1,
+        step: 1,
+        onChange: (event) => {
           const index = event.currentTarget.valueAsNumber;
           const value = SIZES.at(index);
           if (value === undefined) console.warn(`Unknown index "${index}"`);
           const fontSize = value ?? 20;
           setSettings((prev) => ({ ...prev, fontSize }));
-        }}
-      />
-    </label>
+        },
+        value: SIZES.indexOf(settings.fontSize),
+      }}
+      icons={{
+        left: <TypographyIcon size={16} />,
+        right: <TypographyIcon size={24} />,
+      }}
+    />
   );
 };

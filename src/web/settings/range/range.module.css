@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.label {
+  flex: 0 0 auto;
+}
+
+.value {
+  font-variant-numeric: tabular-nums;
+  color: var(--color-subtle);
+}
+
+.control {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.icon {
+  flex: 0 0 auto;
+  color: var(--color-subtle);
+}
+
+.icon svg {
+  display: block !important;
+}
+
+.input {
+  flex: 1 1 0px;
+}

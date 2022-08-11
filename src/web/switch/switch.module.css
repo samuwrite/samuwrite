@@ -15,11 +15,15 @@
 
 .icon {
   flex: 0 0 auto;
+  padding: 2px;
 }
 
 .icon svg {
   display: block !important;
-  transform: scale(0.75);
+}
+
+.on {
+  transform: rotate(90deg);
 }
 
 .thumb {
