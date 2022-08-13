@@ -1,14 +1,15 @@
 import { Menu as LibMenu } from "@headlessui/react";
-import { useFloating } from "./hook";
-import { FloatingPanel } from "./panel";
+import { ReactNode } from "react";
+import { useFloating } from "../floating/hook";
+import { FloatingPanel } from "../floating/panel";
 
 interface Props {
   button: (props: { open: boolean }) => JSX.Element;
-  panel: JSX.Element;
+  children: ReactNode;
 }
 
-export const FloatingMenu = (props: Props): JSX.Element => {
-  const { button, panel } = props;
+export const Menu = (props: Props): JSX.Element => {
+  const { button, children } = props;
   const float = useFloating();
 
   return (
@@ -17,7 +18,7 @@ export const FloatingMenu = (props: Props): JSX.Element => {
         {button}
       </LibMenu.Button>
       <FloatingPanel Panel={LibMenu.Items} float={float}>
-        {panel}
+        {children}
       </FloatingPanel>
     </LibMenu>
   );

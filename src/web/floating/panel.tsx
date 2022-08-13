@@ -1,12 +1,12 @@
 import { UseFloatingReturn } from "@floating-ui/react-dom";
 import { Popover, Menu, Transition } from "@headlessui/react";
-import { useRef } from "react";
+import { ReactNode, useRef } from "react";
 import { outline } from "../outline/outline";
 import * as s from "./panel.module.css";
 
 interface Props {
   float: UseFloatingReturn;
-  children: JSX.Element;
+  children: ReactNode;
   Panel: typeof Popover.Panel | typeof Menu.Items;
 }
 
