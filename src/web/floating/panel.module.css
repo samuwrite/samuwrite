@@ -21,13 +21,11 @@
     0 32px 64px rgba(0, 0, 0, var(--shadow-opacity));
 }
 
-/* Transition */
-
 .wrapper {
   perspective: 100vh;
 }
 
-.always {
+.transition {
   transition-property: transform opacity;
   transform-origin: top;
   transition-timing-function: var(--ease-out-quint);
