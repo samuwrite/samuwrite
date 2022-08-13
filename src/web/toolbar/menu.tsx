@@ -1,4 +1,5 @@
 import { ThreeBarsIcon } from "@primer/octicons-react";
+import { MenuDivider } from "../menu/divider";
 import { MenuLink } from "../menu/link";
 import { Menu } from "../menu/menu";
 import { ToolbarButton } from "./button/button";
@@ -11,7 +12,12 @@ export const ToolbarMenu = (): JSX.Element => {
       )}
     >
       <MenuLink href="https://github.com/thien-do/rosepine.dev">
-        GitHub ahihi
+        GitHub
+      </MenuLink>
+      <MenuLink href="https://twitter.com/_thiendo">Twitter</MenuLink>
+      <MenuDivider />
+      <MenuLink href="https://github.com/thien-do/rosepine.dev/issues/new">
+        Support
       </MenuLink>
       <MenuLink href="https://docs.rosepine.dev/docs/privacy.md">
         Privacy Policy

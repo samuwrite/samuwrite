@@ -1,0 +1,8 @@
+.container {
+  padding: 6px 12px;
+}
+
+.hr {
+  border: none;
+  border-top: solid 1px var(--color-highlightMed);
+}

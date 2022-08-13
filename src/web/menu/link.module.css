@@ -1,0 +1,12 @@
+.container {
+  display: block;
+  padding: 6px 12px;
+  border-radius: 6px;
+
+  text-decoration: none;
+  color: var(--color-text);
+}
+
+.active {
+  background-color: var(--color-overlay);
+}

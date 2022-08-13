@@ -2,6 +2,7 @@ import { Popover as LibPopover } from "@headlessui/react";
 import { ReactNode } from "react";
 import { useFloating } from "../floating/hook";
 import { FloatingPanel } from "../floating/panel";
+import * as s from "./popover.module.css";
 
 interface Props {
   button: (props: { open: boolean }) => JSX.Element;
@@ -17,9 +18,11 @@ export const Popover = (props: Props): JSX.Element => {
       <LibPopover.Button ref={float.reference} as="div">
         {button}
       </LibPopover.Button>
-      <FloatingPanel Panel={LibPopover.Panel} float={float}>
-        {children}
-      </FloatingPanel>
+      <div className={s.wrapper}>
+        <FloatingPanel Panel={LibPopover.Panel} float={float}>
+          <div className={s.container}>{children}</div>
+        </FloatingPanel>
+      </div>
     </LibPopover>
   );
 };

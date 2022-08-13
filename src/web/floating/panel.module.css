@@ -1,13 +1,10 @@
 .container {
-  width: 320px;
   /* Provided by the "size" middleware of floating-ui
      See Popover code */
   max-height: var(--max-height);
   overflow: auto;
-
-  padding: 18px;
-  /* inner radius + padding / 2 */
-  border-radius: calc(6px + 18px / 2);
+  /* Provided by host (Popover, Menu) */
+  border-radius: var(--panel-radius);
 
   background-color: rgba(var(--color-surface-rgb), 0.7);
   backdrop-filter: blur(20px);

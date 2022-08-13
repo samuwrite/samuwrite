@@ -1,5 +1,6 @@
 import { Menu } from "@headlessui/react";
 import { ReactNode } from "react";
+import * as s from "./link.module.css";
 
 interface Props {
   href: string;
@@ -11,9 +12,12 @@ export const MenuLink = (props: Props): JSX.Element => {
   return (
     <Menu.Item>
       {({ active }) => (
-        <a href={href} target="_blank">
+        <a
+          className={[s.container, active ? s.active : ""].join(" ")}
+          href={href}
+          target="_blank"
+        >
           {children}
-          {active ? "active" : ""}
         </a>
       )}
     </Menu.Item>

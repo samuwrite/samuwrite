@@ -1,0 +1,8 @@
+.wrapper {
+  /* panel radius = control radius + panel padding / 2 */
+  --panel-radius: calc(6px + 18px / 2);
+}
+
+.container {
+  padding: 18px;
+}
