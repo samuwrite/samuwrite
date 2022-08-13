@@ -8,7 +8,7 @@ import { LayoutState } from "../layout/type";
 import { SettingsState } from "../settings/type";
 import { ToolbarButton } from "./button/button";
 import { ToolbarPreview } from "./preview";
-import { ToolbarSettings } from "./settings/settings";
+import { ToolbarSettings } from "./settings";
 import * as s from "./toolbar.module.css";
 
 interface Props extends SettingsState, LayoutState {

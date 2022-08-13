@@ -1,32 +1,7 @@
-.wrapper {
-  /* Reliable offset to anchor and screen */
-  padding: 6px;
-  height: 100%;
-}
-
 .container {
-  width: 320px;
-  overflow: auto;
-  height: 100%;
-
-  padding: 18px;
-  /* inner radius + padding / 2 */
-  border-radius: calc(6px + 18px / 2);
-
-  background-color: rgba(var(--color-surface-rgb), 0.7);
-  backdrop-filter: blur(20px);
-  border: solid 1px var(--color-highlightHigh);
-
   display: flex;
   flex-direction: column;
   gap: 18px;
-
-  box-shadow: 0 1px 2px rgba(0, 0, 0, var(--shadow-opacity)),
-    0 2px 4px rgba(0, 0, 0, var(--shadow-opacity)),
-    0 4px 8px rgba(0, 0, 0, var(--shadow-opacity)),
-    0 8px 16px rgba(0, 0, 0, var(--shadow-opacity)),
-    0 16px 32px rgba(0, 0, 0, var(--shadow-opacity)),
-    0 32px 64px rgba(0, 0, 0, var(--shadow-opacity));
 }
 
 .item + .item {

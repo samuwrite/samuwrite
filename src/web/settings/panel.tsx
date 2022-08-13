@@ -11,20 +11,18 @@ interface Props extends SettingsState, LayoutState {}
 
 export const SettingsPanel = (props: Props): JSX.Element => {
   return (
-    <div className={s.wrapper}>
-      <div className={s.container}>
-        {[
-          <SettingsTheme {...props} />,
-          <SettingsPreview {...props} />,
-          <SettingsVim {...props} />,
-          <SettingsWrapColumn {...props} />,
-          <SettingsFontSize {...props} />,
-        ].map((element, index) => (
-          <div className={s.item} key={index}>
-            {element}
-          </div>
-        ))}
-      </div>
+    <div className={s.container}>
+      {[
+        <SettingsTheme {...props} />,
+        <SettingsPreview {...props} />,
+        <SettingsVim {...props} />,
+        <SettingsWrapColumn {...props} />,
+        <SettingsFontSize {...props} />,
+      ].map((element, index) => (
+        <div className={s.item} key={index}>
+          {element}
+        </div>
+      ))}
     </div>
   );
 };
