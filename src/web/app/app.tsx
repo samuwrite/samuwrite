@@ -7,12 +7,14 @@ import { useSettingsState } from "../settings/state";
 import { Toolbar } from "../toolbar/toolbar";
 import "./app.css";
 import * as s from "./app.module.css";
+import { useAppMessage } from "./message";
 import { AppTheme } from "./theme";
 
 export const App = (): JSX.Element => {
   const [layout, setLayout] = useState<Layout>("editor");
   const [editor, setEditor] = useState<Editor | null>(null);
   const { setSettings, settings } = useSettingsState();
+  useAppMessage();
 
   return (
     <div className={s.container}>

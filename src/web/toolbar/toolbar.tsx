@@ -1,12 +1,10 @@
-import {
-  DownloadIcon,
-  FileDirectoryIcon,
-  ThreeBarsIcon,
-} from "@primer/octicons-react";
+import { DownloadIcon } from "@primer/octicons-react";
 import { Editor } from "../editor/type";
 import { LayoutState } from "../layout/type";
 import { SettingsState } from "../settings/type";
 import { ToolbarButton } from "./button/button";
+import { ToolbarMenu } from "./menu";
+import { ToolbarOpen } from "./open";
 import { ToolbarPreview } from "./preview";
 import { ToolbarSettings } from "./settings";
 import * as s from "./toolbar.module.css";
@@ -20,14 +18,14 @@ export const Toolbar = (props: Props): JSX.Element => {
     <div className={s.container}>
       <div className={s.left}>
         <div className={s.macPad} />
-        <ToolbarButton Icon={FileDirectoryIcon} label="Open" />
+        <ToolbarOpen />
         <ToolbarButton Icon={DownloadIcon} label="Save" />
       </div>
       <h1 className={s.title}>title</h1>
       <div className={s.right}>
         <ToolbarPreview {...props} />
         <ToolbarSettings {...props} />
-        <ToolbarButton Icon={ThreeBarsIcon} label="Menu" />
+        <ToolbarMenu />
       </div>
     </div>
   );
