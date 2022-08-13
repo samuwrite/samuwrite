@@ -20,3 +20,33 @@
     0 16px 32px rgba(0, 0, 0, var(--shadow-opacity)),
     0 32px 64px rgba(0, 0, 0, var(--shadow-opacity));
 }
+
+/* Transition */
+
+.wrapper {
+  perspective: 100vh;
+}
+
+.always {
+  transition-property: transform opacity;
+  transform-origin: top;
+  transition-timing-function: var(--ease-out-quint);
+}
+
+.enter {
+  transition-duration: 300ms;
+}
+
+.leave {
+  transition-duration: 900ms;
+}
+
+.hide {
+  opacity: 0;
+  transform: rotateX(-10deg);
+}
+
+.show {
+  opacity: 1;
+  transform: rotateX(0deg);
+}
