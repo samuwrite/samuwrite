@@ -1,6 +1,7 @@
 import { UseFloatingReturn } from "@floating-ui/react-dom";
 import { Popover, Transition } from "@headlessui/react";
 import { useRef } from "react";
+import { outline } from "../outline/outline";
 import * as s from "./panel.module.css";
 
 interface Props {
@@ -34,7 +35,10 @@ export const PopoverPanel = (props: Props): JSX.Element => {
         afterLeave={() => floating(null)}
       >
         <Popover.Panel>
-          <div className={s.container}>{children()}</div>
+          {/* Focus outline is put at scroll container */}
+          <div className={[s.container, outline.onFocus].join(" ")}>
+            {children()}
+          </div>
         </Popover.Panel>
       </Transition>
     </div>

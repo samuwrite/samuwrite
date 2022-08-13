@@ -34,11 +34,11 @@
 }
 
 .enter {
-  transition-duration: 300ms;
+  transition-duration: 200ms;
 }
 
 .leave {
-  transition-duration: 900ms;
+  transition-duration: 800ms;
 }
 
 .hide {
