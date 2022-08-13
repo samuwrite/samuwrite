@@ -1,15 +1,10 @@
 import { FileDirectoryIcon } from "@primer/octicons-react";
+import { sendHostMessage } from "../host/send";
 import { ToolbarButton } from "./button/button";
 
-const open = (): void => {
-  try {
-    (window as any).webkit.messageHandlers.samuwriteMessageHandler.postMessage({
-      type: "open",
-      payload: { foo: "bar" },
-    });
-  } catch (e: unknown) {
-    console.log("error", e);
-  }
+const open = async (): Promise<void> => {
+  const res = await sendHostMessage("open-file", {});
+  console.log("open file", res);
 };
 
 export const ToolbarOpen = (): JSX.Element => {

@@ -11,7 +11,10 @@ export const ToolbarMenu = (): JSX.Element => {
       )}
     >
       <MenuLink href="https://github.com/thien-do/rosepine.dev">
-        GitHub
+        GitHub ahihi
+      </MenuLink>
+      <MenuLink href="https://docs.rosepine.dev/docs/privacy.md">
+        Privacy Policy
       </MenuLink>
     </Menu>
   );
