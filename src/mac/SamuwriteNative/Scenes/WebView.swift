@@ -13,6 +13,8 @@ import Cocoa
 struct WebView: NSViewRepresentable {
     var environment: Environment
     
+    @ObservedObject var viewModel: ViewModel
+    
     func makeNSView(context: Context) -> WKWebView {
         let configuration = WKWebViewConfiguration()
         configuration.defaultWebpagePreferences.allowsContentJavaScript = true
@@ -44,7 +46,10 @@ struct WebView: NSViewRepresentable {
     
     private func injectTo(_ userContentController: WKUserContentController) {
         JSInterfaceName.interfaces().forEach {
-            userContentController.add(self.makeCoordinator(), name: $0)
+            userContentController.addScriptMessageHandler(
+                self.makeCoordinator(),
+                contentWorld: .page,
+                name: $0)
         }
     }
 }

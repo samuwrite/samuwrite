@@ -6,21 +6,34 @@
 //
 
 import SwiftUI
+import Combine
 
 struct ContentView: View {
+    @ObservedObject private var viewModel = ViewModel()
+    
     var body: some View {
-        WebView(environment: .webDebug)
+        WebView(environment: .webDebug, viewModel: viewModel)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.top)
-            .onOpenFile {
-                print("Open file")
-                let panel = NSOpenPanel()
-                panel.allowsMultipleSelection = false
-                panel.canChooseDirectories = false
-                if panel.runModal() == .OK {
-                    print(panel.url?.lastPathComponent)
-                }
-            }
+            .onOpenFile { handleOpenFile() }
+    }
+    
+    private func handleOpenFile() {
+        let panel = NSOpenPanel()
+        panel.allowsMultipleSelection = false
+        panel.canChooseDirectories = false
+        panel.allowedFileTypes = ["TXT", "txt", "md", "MD"]
+        panel.runModal()
+        if let chosenFile = panel.url {
+            let path = chosenFile.path
+            let data = FileManager.default.contents(atPath: path)
+            let content = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            let jsonData: [String: Any] = [
+                "path": path,
+                "content": content!
+            ]
+            viewModel.contentValuePublisher.send(jsonData)
+        }
     }
 }
 

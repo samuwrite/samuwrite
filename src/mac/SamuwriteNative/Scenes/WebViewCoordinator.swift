@@ -6,11 +6,21 @@
 //
 
 import WebKit
+import Combine
 
 final class WebViewCoordinator: NSObject, WKNavigationDelegate {
+    
+    // MARK: - Dependencies
+    
     private let webView: WebView
     
-    var delegate: JavaScriptInterfaceDelegate?
+    private var delegate: JavaScriptInterfaceDelegate?
+    
+    // MARK: - Misc
+    
+    private var cancellables = Set<AnyCancellable>()
+    
+    // MARK: - Init
     
     init(webView: WebView) {
         self.webView = webView
@@ -19,19 +29,30 @@ final class WebViewCoordinator: NSObject, WKNavigationDelegate {
     
 }
 
-extension WebViewCoordinator: WKScriptMessageHandler {
+// MARK: - WKScriptMessageHandlerWithReply
+
+extension WebViewCoordinator: WKScriptMessageHandlerWithReply {
     func userContentController(
         _ userContentController: WKUserContentController,
-        didReceive message: WKScriptMessage
+        didReceive message: WKScriptMessage,
+        replyHandler: @escaping (Any?, String?) -> Void
     ) {
+        webView
+            .viewModel
+            .contentValuePublisher
+            .receive(on: RunLoop.main)
+            .sink(receiveValue: { jsonData in
+                replyHandler(jsonData, nil)
+            })
+            .store(in: &cancellables)
+        
         switch message.name {
         case JSInterfaceName.openFile:
-            if let body = message.body as? String {
-                print(body)
-                delegate?.openFile()
-            }
+            delegate?.openFile()
         default:
             break
         }
+
+
     }
 }
