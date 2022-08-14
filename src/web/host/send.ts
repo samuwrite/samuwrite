@@ -51,12 +51,11 @@ type Res<T extends Name> = T extends OpenFile.Name
   ? OpenUrl.Res
   : unknown;
 
-export const sendHostMessage = async <T extends Name>(
-  type: T,
-  req: Req<T>
-): Promise<Res<T>> => {
+export const sendHostMessage = <T extends Name>(type: T, req: Req<T>): void => {
   const handler = (window as any).webkit.messageHandlers[type];
-  const response = (await handler.postMessage(req)) as Res<T> | ErrorRes;
-  if (response.ok === false) throw Error(response.message);
-  return response;
+  const foo = handler.postMessage("test");
+  console.log({ foo });
+  // console.log({ response });
+  // if (response.ok === false) throw Error(response.message);
+  // return response;
 };
