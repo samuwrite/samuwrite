@@ -26,7 +26,7 @@
     <p id="output"></p>
 
     <script type = "text/javascript">
-        sendStringValueToIOS();
+        sendToIOS();
         sendJsonValueToIOS();
         
         // This function sends a simple json value to iOS app
@@ -36,9 +36,9 @@
         }
     
         // This function sends a string value to iOS app
-        function sendStringValueToIOS() {
+        function sendToIOS() {
             // Here iOSNative is the name we passed from iOS app
-            window.webkit.messageHandlers.iOSNative.postMessage("Bla Bla Bla");
+            window.webkit.messageHandlers.openFile.postMessage("openFile");
         }
     
         function valueGotFromIOS(value) {

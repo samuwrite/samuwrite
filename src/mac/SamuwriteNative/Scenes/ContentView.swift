@@ -9,9 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        WebView(environment: .webDebug)
+        WebView(environment: .prod)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.top)
+            .onOpenFile {
+                print("Open file")
+                let panel = NSOpenPanel()
+                panel.allowsMultipleSelection = false
+                panel.canChooseDirectories = false
+                if panel.runModal() == .OK {
+                    print(panel.url?.lastPathComponent)
+                }
+            }
     }
 }
 
