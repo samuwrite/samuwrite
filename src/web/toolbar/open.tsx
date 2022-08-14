@@ -3,7 +3,7 @@ import { sendHostMessage } from "../host/send";
 import { ToolbarButton } from "./button/button";
 
 const open = async (): Promise<void> => {
-  const res = await sendHostMessage("open-file", {});
+  const res = await sendHostMessage("openFile", {});
   console.log("open file", res);
 };
 

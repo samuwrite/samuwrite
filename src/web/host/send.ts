@@ -8,7 +8,7 @@ interface SuccessRes {
 }
 
 namespace OpenFile {
-  export type Name = "open-file";
+  export type Name = "openFile";
   export interface Req {}
   export interface Res extends SuccessRes {
     path: string;
@@ -17,7 +17,7 @@ namespace OpenFile {
 }
 
 namespace SaveFile {
-  export type Name = "save-file";
+  export type Name = "saveFile";
   export interface Req {
     path: string;
     content: string;
@@ -26,7 +26,7 @@ namespace SaveFile {
 }
 
 namespace OpenUrl {
-  export type Name = "open-url";
+  export type Name = "openUrl";
   export interface Req {
     url: string;
   }
