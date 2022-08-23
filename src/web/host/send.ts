@@ -1,16 +1,7 @@
-interface ErrorRes {
-  ok: false;
-  message: string;
-}
-
-interface SuccessRes {
-  ok: true;
-}
-
 namespace OpenFile {
   export type Name = "openFile";
   export interface Req {}
-  export interface Res extends SuccessRes {
+  export interface Res {
     path: string;
     content: string;
   }
@@ -22,7 +13,7 @@ namespace SaveFile {
     path: string;
     content: string;
   }
-  export interface Res extends SuccessRes {}
+  export interface Res {}
 }
 
 namespace OpenUrl {
@@ -30,7 +21,7 @@ namespace OpenUrl {
   export interface Req {
     url: string;
   }
-  export interface Res extends SuccessRes {}
+  export interface Res {}
 }
 
 type Name = OpenUrl.Name | OpenFile.Name | SaveFile.Name;
@@ -51,11 +42,11 @@ type Res<T extends Name> = T extends OpenFile.Name
   ? OpenUrl.Res
   : unknown;
 
-export const sendHostMessage = <T extends Name>(type: T, req: Req<T>): void => {
+export const sendHostMessage = async <T extends Name>(
+  type: T,
+  req: Req<T>
+): Promise<Res<T>> => {
   const handler = (window as any).webkit.messageHandlers[type];
-  const foo = handler.postMessage("test");
-  console.log({ foo });
-  // console.log({ response });
-  // if (response.ok === false) throw Error(response.message);
-  // return response;
+  const response = await handler.postMessage(req);
+  return response;
 };
