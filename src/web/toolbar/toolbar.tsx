@@ -1,4 +1,4 @@
-import { DocState } from "../doc/type";
+import { Doc, DocState } from "../doc/type";
 import { Editor } from "../editor/type";
 import { LayoutState } from "../layout/type";
 import { SettingsState } from "../settings/type";
@@ -13,6 +13,15 @@ interface Props extends SettingsState, LayoutState, DocState {
   editor: Editor;
 }
 
+const getTitle = (props: Props): string => {
+  const { editor, doc } = props;
+  const name = doc.path?.split("/").at(-1) ?? "Untitled";
+  // change in editor.getValue does not trigger re-render
+  // const suffix = editor.getValue() === doc.content ? "*" : "";
+  const title = [name].join(" ");
+  return title;
+};
+
 export const Toolbar = (props: Props): JSX.Element => {
   const { editor, doc, setDoc } = props;
   return (
@@ -22,7 +31,7 @@ export const Toolbar = (props: Props): JSX.Element => {
         <ToolbarOpen {...{ editor, doc, setDoc }} />
         <ToolbarSave {...{ editor, doc, setDoc }} />
       </div>
-      <h1 className={s.title}>title</h1>
+      <h1 className={s.title}>{getTitle(props)}</h1>
       <div className={s.right}>
         <ToolbarPreview {...props} />
         <ToolbarSettings {...props} />
