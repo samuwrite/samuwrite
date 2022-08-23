@@ -2,9 +2,18 @@
   display: block;
   padding: 6px 12px;
   border-radius: 6px;
-
-  text-decoration: none;
   color: var(--color-text);
+
+  /* for button */
+  appearance: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+
+  /* for link */
+  text-decoration: none;
+  cursor: default;
 }
 
 .active {
