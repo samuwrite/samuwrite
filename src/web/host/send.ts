@@ -16,6 +16,16 @@ namespace SaveFile {
   export interface Res {}
 }
 
+namespace SaveFileAs {
+  export type Name = "saveFileAs";
+  export interface Req {
+    content: string;
+  }
+  export interface Res {
+    path: string;
+  }
+}
+
 namespace OpenUrl {
   export type Name = "openUrl";
   export interface Req {
@@ -24,12 +34,14 @@ namespace OpenUrl {
   export interface Res {}
 }
 
-type Name = OpenUrl.Name | OpenFile.Name | SaveFile.Name;
+type Name = OpenUrl.Name | OpenFile.Name | SaveFile.Name | SaveFileAs.Name;
 
 type Req<T extends Name> = T extends OpenFile.Name
   ? OpenFile.Req
   : T extends SaveFile.Name
   ? SaveFile.Req
+  : T extends SaveFileAs.Name
+  ? SaveFileAs.Req
   : T extends OpenUrl.Name
   ? OpenUrl.Req
   : never;
@@ -38,6 +50,8 @@ type Res<T extends Name> = T extends OpenFile.Name
   ? OpenFile.Res
   : T extends SaveFile.Name
   ? SaveFile.Res
+  : T extends SaveFileAs.Name
+  ? SaveFileAs.Res
   : T extends OpenUrl.Name
   ? OpenUrl.Res
   : unknown;

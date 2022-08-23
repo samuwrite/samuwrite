@@ -1,12 +1,11 @@
-import { DownloadIcon } from "@primer/octicons-react";
 import { DocState } from "../doc/type";
 import { Editor } from "../editor/type";
 import { LayoutState } from "../layout/type";
 import { SettingsState } from "../settings/type";
-import { ToolbarButton } from "./button/button";
 import { ToolbarMenu } from "./menu";
 import { ToolbarOpen } from "./open";
 import { ToolbarPreview } from "./preview";
+import { ToolbarSave } from "./save";
 import { ToolbarSettings } from "./settings";
 import * as s from "./toolbar.module.css";
 
@@ -21,7 +20,7 @@ export const Toolbar = (props: Props): JSX.Element => {
       <div className={s.left}>
         <div className={s.macPad} />
         <ToolbarOpen {...{ editor, doc, setDoc }} />
-        <ToolbarButton Icon={DownloadIcon} label="Save" />
+        <ToolbarSave {...{ editor, doc, setDoc }} />
       </div>
       <h1 className={s.title}>title</h1>
       <div className={s.right}>

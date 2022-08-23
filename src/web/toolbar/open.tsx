@@ -18,15 +18,7 @@ const open = async (props: Props): Promise<void> => {
   }
 
   const response = await sendHostMessage("openFile", {});
-
-  const model = editor.getModel();
-  if (model === null) throw Error("Editor model is null");
-  const range = model.getFullModelRange();
-  // From Monaco team: editor.executeEdits should be preferred over
-  // model.pushEditOperations
-  // - https://github.com/microsoft/monaco-editor/issues/1811#issuecomment-582612219
-  editor.executeEdits(null, [{ range, text: response.content }]);
-
+  editor.setValue(response.content);
   setDoc(response);
 };
 
