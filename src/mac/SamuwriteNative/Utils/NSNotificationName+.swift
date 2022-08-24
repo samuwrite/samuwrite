@@ -8,7 +8,11 @@
 import Foundation
 
 extension NSNotification.Name {
-    static let openFile = Notification.Name("openFile")
-    static let saveFile = Notification.Name("saveFile")
-    static let saveFileAs = Notification.Name("saveFileAs")
+    static let openFile = makeName(.openFile)
+    static let saveFile = makeName(.saveFile)
+    static let saveFileAs = makeName(.saveFileAs)
+    
+    private static func makeName(_ interfaceName: JSInterfaceName) -> Notification.Name {
+        Notification.Name(interfaceName.rawValue)
+    }
 }

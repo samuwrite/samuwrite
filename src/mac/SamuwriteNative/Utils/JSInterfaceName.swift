@@ -7,16 +7,8 @@
 
 import Foundation
 
-struct JSInterfaceName {
-    static let openFile = "openFile"
-    static let saveFile = "saveFile"
-    static let saveFileAs = "saveFileAs"
-    
-    static func interfaces() -> [String] {
-        [
-            openFile,
-            saveFile,
-            saveFileAs
-        ]
-    }
+enum JSInterfaceName: String, CaseIterable {
+    case openFile
+    case saveFile
+    case saveFileAs
 }

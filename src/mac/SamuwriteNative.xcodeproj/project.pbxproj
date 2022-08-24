@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6A2F551628A7942F003DE456 /* JavaScriptInterfaceDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F551528A7942F003DE456 /* JavaScriptInterfaceDelegate.swift */; };
-		6A2F551828A794F6003DE456 /* Constant+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F551728A794F6003DE456 /* Constant+String.swift */; };
 		6A2F551C28A79DE8003DE456 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F551B28A79DE8003DE456 /* Environment.swift */; };
 		6A2F551E28A8D6C4003DE456 /* JSInterfaceName.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F551D28A8D6C4003DE456 /* JSInterfaceName.swift */; };
 		6A2F552328A8D77E003DE456 /* WebViewCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F552228A8D77E003DE456 /* WebViewCoordinator.swift */; };
@@ -26,7 +25,6 @@
 
 /* Begin PBXFileReference section */
 		6A2F551528A7942F003DE456 /* JavaScriptInterfaceDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JavaScriptInterfaceDelegate.swift; sourceTree = "<group>"; };
-		6A2F551728A794F6003DE456 /* Constant+String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Constant+String.swift"; sourceTree = "<group>"; };
 		6A2F551B28A79DE8003DE456 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		6A2F551D28A8D6C4003DE456 /* JSInterfaceName.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSInterfaceName.swift; sourceTree = "<group>"; };
 		6A2F552228A8D77E003DE456 /* WebViewCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewCoordinator.swift; sourceTree = "<group>"; };
@@ -62,7 +60,6 @@
 				6A2F552828A8E459003DE456 /* NSNotificationName+.swift */,
 				6A2F552628A8E39F003DE456 /* View+NotificationCenter.swift */,
 				6A2F551B28A79DE8003DE456 /* Environment.swift */,
-				6A2F551728A794F6003DE456 /* Constant+String.swift */,
 				6A2F551D28A8D6C4003DE456 /* JSInterfaceName.swift */,
 			);
 			path = Utils;
@@ -221,7 +218,6 @@
 				6A2F551628A7942F003DE456 /* JavaScriptInterfaceDelegate.swift in Sources */,
 				6A2F551C28A79DE8003DE456 /* Environment.swift in Sources */,
 				6A2F552728A8E39F003DE456 /* View+NotificationCenter.swift in Sources */,
-				6A2F551828A794F6003DE456 /* Constant+String.swift in Sources */,
 				6AC673B62855DDDE009D58A2 /* ContentView.swift in Sources */,
 				6AC66F3828B691A2000D75B2 /* Document.swift in Sources */,
 				6AC673C32855E8DE009D58A2 /* WebView.swift in Sources */,

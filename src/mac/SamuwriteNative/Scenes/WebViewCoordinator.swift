@@ -43,7 +43,7 @@ extension WebViewCoordinator: WKScriptMessageHandlerWithReply {
         replyHandler: @escaping (Any?, String?) -> Void
     ) {
         switch message.name {
-        case JSInterfaceName.openFile:
+        case JSInterfaceName.openFile.rawValue:
             contentValueSubscriber = webView
                 .viewModel
                 .contentValuePublisher
@@ -52,10 +52,10 @@ extension WebViewCoordinator: WKScriptMessageHandlerWithReply {
                     replyHandler(jsonData, nil)
                 })
             delegate?.openFile()
-        case JSInterfaceName.saveFile:
+        case JSInterfaceName.saveFile.rawValue:
             guard let document = parseDocument(from: message.body) else { return }
             delegate?.saveFile(with: document)
-        case JSInterfaceName.saveFileAs:
+        case JSInterfaceName.saveFileAs.rawValue:
             pathValueSubscriber = webView
                 .viewModel
                 .pathValuePublisher

@@ -45,11 +45,11 @@ struct WebView: NSViewRepresentable {
     }
     
     private func injectTo(_ userContentController: WKUserContentController) {
-        JSInterfaceName.interfaces().forEach {
+        JSInterfaceName.allCases.forEach {
             userContentController.addScriptMessageHandler(
                 self.makeCoordinator(),
                 contentWorld: .page,
-                name: $0)
+                name: $0.rawValue)
         }
     }
 }
