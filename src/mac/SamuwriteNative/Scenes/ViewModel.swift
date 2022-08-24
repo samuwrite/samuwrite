@@ -10,4 +10,5 @@ import Combine
 
 final class ViewModel: ObservableObject {
     var contentValuePublisher = PassthroughSubject<[String: Any], Never>()
+    var pathValuePublisher = PassthroughSubject<String, Never>()
 }

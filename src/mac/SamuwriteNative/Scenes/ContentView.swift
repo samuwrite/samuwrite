@@ -15,7 +15,9 @@ struct ContentView: View {
         WebView(environment: .webDebug, viewModel: viewModel)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.top)
-            .onOpenFile { handleOpenFile() }
+            .onReceive(.openFile) { _ in handleOpenFile() }
+            .onReceive(.saveFile) { notification in handleSaveFile(notification) }
+            .onReceive(.saveFileAs) { notification in handleSaveFileAs(notification) }
     }
     
     private func handleOpenFile() {
@@ -26,13 +28,52 @@ struct ContentView: View {
         panel.runModal()
         if let chosenFile = panel.url {
             let path = chosenFile.path
-            let data = FileManager.default.contents(atPath: path)
-            let content = NSString(data: data!, encoding: NSUTF8StringEncoding)
+            guard let data = FileManager.default.contents(atPath: path) else { return }
+            let content = NSString(data: data, encoding: NSUTF8StringEncoding)
+            // TODO: Use `Document` object.
             let jsonData: [String: Any] = [
                 "path": path,
                 "content": content ?? ""
             ]
             viewModel.contentValuePublisher.send(jsonData)
+        }
+    }
+    
+    private func handleSaveFile(_ notification: Notification) {
+        guard
+            let document = notification.object as? Document,
+            let path = document.path
+        else {
+            return
+        }
+        let filePath = "file://" + path
+        if let filePathUrl = URL(string: filePath) {
+            do {
+                try document.content?.write(to: filePathUrl, atomically: true, encoding: .utf8)
+            } catch {
+                print("Failed to save file \(error.localizedDescription)")
+            }
+        }
+    }
+    
+    private func handleSaveFileAs(_ notification: Notification) {
+        guard let content = notification.object as? String else { return }
+        let savePanel = NSSavePanel()
+        savePanel.canCreateDirectories = true
+        savePanel.level = .modalPanel
+        savePanel.title = "Save file"
+        savePanel.allowedFileTypes = ["md", "MD", "TXT", "txt"]
+        savePanel.begin {
+            if $0 == .OK {
+                do {
+                    if let pathUrl = savePanel.url {
+                        try content.write(to: pathUrl, atomically: true, encoding: .utf8)
+                        viewModel.pathValuePublisher.send(pathUrl.path)
+                    }
+                } catch {
+                    print("Failed to save file \(error.localizedDescription)")
+                }
+            }
         }
     }
 }

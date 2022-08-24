@@ -58,6 +58,18 @@ struct WebView: NSViewRepresentable {
 
 extension WebView: JavaScriptInterfaceDelegate {
     func openFile() {
-        NotificationCenter.default.post(name: .openFile, object: nil)
+        post(name: .openFile)
+    }
+    
+    func saveFile(with document: Document) {
+        post(name: .saveFile, object: document)
+    }
+    
+    func saveFileAs(with content: String) {
+        post(name: .saveFileAs, object: content)
+    }
+    
+    private func post(name: NSNotification.Name, object: Any? = nil) {
+        NotificationCenter.default.post(name: name, object: object)
     }
 }

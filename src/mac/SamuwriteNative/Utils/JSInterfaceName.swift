@@ -9,10 +9,14 @@ import Foundation
 
 struct JSInterfaceName {
     static let openFile = "openFile"
+    static let saveFile = "saveFile"
+    static let saveFileAs = "saveFileAs"
     
     static func interfaces() -> [String] {
         [
-            openFile
+            openFile,
+            saveFile,
+            saveFileAs
         ]
     }
 }

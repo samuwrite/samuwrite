@@ -9,4 +9,6 @@ import Foundation
 
 protocol JavaScriptInterfaceDelegate {
     func openFile()
+    func saveFile(with document: Document)
+    func saveFileAs(with content: String)
 }

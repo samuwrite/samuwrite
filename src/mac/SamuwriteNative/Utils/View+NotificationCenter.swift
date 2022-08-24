@@ -8,22 +8,15 @@
 import SwiftUI
 
 extension View {
-    func onNotification(
+    func onReceive(
         _ notificationName: Notification.Name,
-        perform action: @escaping () -> Void
+        object: AnyObject? = nil,
+        perform action: @escaping (Notification) -> Void
     ) -> some View {
-        onReceive(NotificationCenter.default.publisher(
-            for: notificationName
-        )) { _ in
-            action()
-        }
-    }
-    
-    func onOpenFile(
-        perform action: @escaping () -> Void
-    ) -> some View {
-        onNotification(
-            .openFile,
+        onReceive(
+            NotificationCenter.default.publisher(
+                for: notificationName,
+                object: object),
             perform: action
         )
     }

@@ -19,6 +19,7 @@ final class WebViewCoordinator: NSObject, WKNavigationDelegate {
     // MARK: - Misc
     
     private var contentValueSubscriber: AnyCancellable? = nil
+    private var pathValueSubscriber: AnyCancellable? = nil
     
     // MARK: - Init
     
@@ -29,6 +30,7 @@ final class WebViewCoordinator: NSObject, WKNavigationDelegate {
     
     deinit {
         contentValueSubscriber?.cancel()
+        pathValueSubscriber?.cancel()
     }
 }
 
@@ -50,8 +52,32 @@ extension WebViewCoordinator: WKScriptMessageHandlerWithReply {
                     replyHandler(jsonData, nil)
                 })
             delegate?.openFile()
+        case JSInterfaceName.saveFile:
+            guard let document = parseDocument(from: message.body) else { return }
+            delegate?.saveFile(with: document)
+        case JSInterfaceName.saveFileAs:
+            pathValueSubscriber = webView
+                .viewModel
+                .pathValuePublisher
+                .receive(on: RunLoop.main)
+                .sink(receiveValue: { path in
+                    replyHandler(path, nil)
+                })
+            guard let document = parseDocument(from: message.body), let content = document.content else { return }
+            delegate?.saveFileAs(with: content)
         default:
             break
         }
+    }
+    
+    private func parseDocument(from body: Any) -> Document? {
+        guard
+            let body = body as? [String: Any],
+            let data =  try? JSONSerialization.data(withJSONObject: body),
+            let document = try? JSONDecoder().decode(Document.self, from: data)
+        else {
+            return nil
+        }
+        return document
     }
 }
