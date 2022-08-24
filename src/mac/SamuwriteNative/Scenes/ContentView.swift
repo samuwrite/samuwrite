@@ -30,7 +30,7 @@ struct ContentView: View {
             let content = NSString(data: data!, encoding: NSUTF8StringEncoding)
             let jsonData: [String: Any] = [
                 "path": path,
-                "content": content!
+                "content": content ?? ""
             ]
             viewModel.contentValuePublisher.send(jsonData)
         }

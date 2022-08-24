@@ -18,7 +18,7 @@ final class WebViewCoordinator: NSObject, WKNavigationDelegate {
     
     // MARK: - Misc
     
-    private var cancellables = Set<AnyCancellable>()
+    private var contentValueSubscriber: AnyCancellable? = nil
     
     // MARK: - Init
     
@@ -27,6 +27,9 @@ final class WebViewCoordinator: NSObject, WKNavigationDelegate {
         self.delegate = webView
     }
     
+    deinit {
+        contentValueSubscriber?.cancel()
+    }
 }
 
 // MARK: - WKScriptMessageHandlerWithReply
@@ -37,22 +40,18 @@ extension WebViewCoordinator: WKScriptMessageHandlerWithReply {
         didReceive message: WKScriptMessage,
         replyHandler: @escaping (Any?, String?) -> Void
     ) {
-        webView
-            .viewModel
-            .contentValuePublisher
-            .receive(on: RunLoop.main)
-            .sink(receiveValue: { jsonData in
-                replyHandler(jsonData, nil)
-            })
-            .store(in: &cancellables)
-        
         switch message.name {
         case JSInterfaceName.openFile:
+            contentValueSubscriber = webView
+                .viewModel
+                .contentValuePublisher
+                .receive(on: RunLoop.main)
+                .sink(receiveValue: { jsonData in
+                    replyHandler(jsonData, nil)
+                })
             delegate?.openFile()
         default:
             break
         }
-
-
     }
 }
