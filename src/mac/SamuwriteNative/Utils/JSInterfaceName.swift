@@ -11,4 +11,5 @@ enum JSInterfaceName: String, CaseIterable {
     case openFile
     case saveFile
     case saveFileAs
+    case openUrl
 }

@@ -70,6 +70,12 @@ extension WebView: JavaScriptInterfaceDelegate {
         post(name: .saveFileAs, object: content)
     }
     
+    func openUrL(with urlString: String) {
+        if let url = NSURL(string: urlString) {
+            post(name: .openUrl, object: url)
+        }
+    }
+    
     private func post(name: NSNotification.Name, object: Any? = nil) {
         NotificationCenter.default.post(name: name, object: object)
     }

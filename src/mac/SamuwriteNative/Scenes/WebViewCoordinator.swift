@@ -65,6 +65,15 @@ extension WebViewCoordinator: WKScriptMessageHandlerWithReply {
                 })
             guard let document = parseDocument(from: message.body), let content = document.content else { return }
             delegate?.saveFileAs(with: content)
+        case JSInterfaceName.openUrl.rawValue:
+            guard
+                let body = message.body as? [String: Any],
+                let urlString = body["url"] as? String
+            else {
+                return
+            }
+            print("Open URL: \(urlString)")
+            delegate?.openUrL(with: urlString)
         default:
             break
         }

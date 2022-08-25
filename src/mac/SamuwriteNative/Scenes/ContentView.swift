@@ -16,8 +16,9 @@ struct ContentView: View {
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.top)
             .onReceive(.openFile) { _ in handleOpenFile() }
-            .onReceive(.saveFile) { notification in handleSaveFile(notification) }
-            .onReceive(.saveFileAs) { notification in handleSaveFileAs(notification) }
+            .onReceive(.saveFile) { handleSaveFile($0) }
+            .onReceive(.saveFileAs) { handleSaveFileAs($0) }
+            .onReceive(.openUrl) { handleOpenURL($0) }
     }
     
     private func handleOpenFile() {
@@ -75,6 +76,11 @@ struct ContentView: View {
                 }
             }
         }
+    }
+    
+    private func handleOpenURL(_ notification: Notification) {
+        guard let url = notification.object as? NSURL else { return }
+        NSWorkspace.shared.open(url as URL)
     }
 }
 

@@ -11,4 +11,5 @@ protocol JavaScriptInterfaceDelegate {
     func openFile()
     func saveFile(with document: Document)
     func saveFileAs(with content: String)
+    func openUrL(with urlString: String)
 }
