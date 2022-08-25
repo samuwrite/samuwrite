@@ -13,6 +13,29 @@ const save = async (props: Props): Promise<void> => {
 
   const content = editor.getValue();
 
+  const isMac = (window as any).webkit !== undefined;
+  if (!isMac) {
+
+    //@ts-ignore This API is experimental and Typescript doesn't support it yet.
+    const fileHandle = doc.fileHandle ||await window.showSaveFilePicker();
+
+    // create a FileSystemWritableFileStream to write to
+    const writableStream = await fileHandle.createWritable();
+
+    // create blog from content
+    const contentBlob = new Blob([content]);
+
+    // write our file
+    await writableStream.write(contentBlob);
+
+    // close the file and write the contents to disk.
+    await writableStream.close();
+
+    setDoc({ content, fileHandle: fileHandle });
+
+    return;
+  }
+
   if (doc.path === null) {
     // New file
     const { path } = await sendHostMessage("saveFileAs", { content });
