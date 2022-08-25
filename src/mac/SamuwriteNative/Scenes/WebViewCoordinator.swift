@@ -55,6 +55,7 @@ extension WebViewCoordinator: WKScriptMessageHandlerWithReply {
         case JSInterfaceName.saveFile.rawValue:
             guard let document = parseDocument(from: message.body) else { return }
             delegate?.saveFile(with: document)
+            replyHandler(true, nil)
         case JSInterfaceName.saveFileAs.rawValue:
             pathValueSubscriber = webView
                 .viewModel
