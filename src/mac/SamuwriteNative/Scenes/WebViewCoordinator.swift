@@ -81,3 +81,27 @@ extension WebViewCoordinator: WKScriptMessageHandlerWithReply {
         return document
     }
 }
+
+// MARK: - WKUIDelegate
+
+extension WebViewCoordinator: WKUIDelegate {
+    func webView(
+        _ webView: WKWebView,
+        runJavaScriptConfirmPanelWithMessage message: String,
+        initiatedByFrame frame: WKFrameInfo,
+        completionHandler: @escaping (Bool) -> Void
+    ) {
+        let alert = NSAlert()
+        alert.messageText = message
+        alert.alertStyle = .warning
+        alert.addButton(withTitle: "Yes")
+        alert.addButton(withTitle: "No")
+        
+        if alert.runModal() == NSApplication.ModalResponse.alertFirstButtonReturn {
+            completionHandler(true)
+        } else {
+            completionHandler(false)
+        }
+        
+    }
+}

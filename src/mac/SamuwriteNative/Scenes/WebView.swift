@@ -32,6 +32,7 @@ struct WebView: NSViewRepresentable {
     }
     
     func updateNSView(_ nsView: WKWebView, context: Context) {
+        nsView.uiDelegate = context.coordinator
         switch environment {
         case .prod:
             if let url = Bundle.main.url(forResource: "LocalSite", withExtension: "html") {
