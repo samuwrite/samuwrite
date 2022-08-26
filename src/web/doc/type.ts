@@ -4,7 +4,7 @@ export interface Doc {
   /**
    * null: Not saved yet
    */
-  path: string | null;
+  path?: string | null;
   /**
    * This is like path but for the Web Version.
    * File Access System API is still experimental. 

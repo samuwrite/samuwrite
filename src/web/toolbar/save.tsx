@@ -17,7 +17,7 @@ const save = async (props: Props): Promise<void> => {
   if (!isMac) {
 
     //@ts-ignore This API is experimental and Typescript doesn't support it yet.
-    const fileHandle = doc.fileHandle ||await window.showSaveFilePicker();
+    const fileHandle = doc.fileHandle || await window.showSaveFilePicker();
 
     // create a FileSystemWritableFileStream to write to
     const writableStream = await fileHandle.createWritable();
@@ -31,7 +31,9 @@ const save = async (props: Props): Promise<void> => {
     // close the file and write the contents to disk.
     await writableStream.close();
 
-    setDoc({ content, fileHandle: fileHandle });
+    const file: File = await fileHandle.getFile();
+
+    setDoc({ content, fileHandle: fileHandle, path: file.name});
 
     return;
   }
@@ -42,7 +44,7 @@ const save = async (props: Props): Promise<void> => {
     setDoc({ content, path });
   } else {
     // Current file
-    await sendHostMessage("saveFile", { path: doc.path, content });
+    await sendHostMessage("saveFile", { path: doc.path as string, content });
     setDoc({ ...doc, content });
   }
 };
