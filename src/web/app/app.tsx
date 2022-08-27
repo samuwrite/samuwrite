@@ -12,7 +12,7 @@ import { AppTheme } from "./theme";
 
 export const App = (): JSX.Element => {
   const [layout, setLayout] = useState<Layout>("editor");
-  const [doc, setDoc] = useState<Doc>({ path: null, content: "" });
+  const [doc, setDoc] = useState<Doc>({ handle: null, content: "" });
   const [editor, setEditor] = useState<Editor | null>(null);
   const { setSettings, settings } = useSettingsState();
 

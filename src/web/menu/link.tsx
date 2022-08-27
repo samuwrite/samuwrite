@@ -1,6 +1,6 @@
 import { Menu } from "@headlessui/react";
 import { ReactNode } from "react";
-import { sendHostMessage } from "../host/send";
+import { postMacMessage } from "../host/mac";
 import * as s from "./link.module.css";
 
 interface Props {
@@ -18,7 +18,7 @@ export const MenuLink = (props: Props): JSX.Element => {
     return isMac ? (
       <button
         onClick={async () => {
-          await sendHostMessage("openUrl", { url: href });
+          await postMacMessage("openUrl", { url: href });
         }}
         className={className}
       >

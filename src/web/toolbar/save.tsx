@@ -1,7 +1,9 @@
 import { DownloadIcon } from "@primer/octicons-react";
 import { DocState } from "../doc/type";
 import { Editor } from "../editor/type";
-import { sendHostMessage } from "../host/send";
+import { getErrorMessage } from "../error/message";
+import { saveDoc } from "../host/save";
+import { saveDocAs } from "../host/save-as";
 import { ToolbarButton } from "./button/button";
 
 interface Props extends DocState {
@@ -13,14 +15,20 @@ const save = async (props: Props): Promise<void> => {
 
   const content = editor.getValue();
 
-  if (doc.path === null) {
-    // New file
-    const { path } = await sendHostMessage("saveFileAs", { content });
-    setDoc({ content, path });
-  } else {
-    // Current file
-    await sendHostMessage("saveFile", { path: doc.path, content });
-    setDoc({ ...doc, content });
+  try {
+    if (doc.handle === null) {
+      // New file, never save -> Save as
+      const newDoc = await saveDocAs(content);
+      if (newDoc === null) return;
+      setDoc(newDoc);
+    } else {
+      // Opened file -> Save
+      await saveDoc(doc.handle, content);
+      setDoc({ ...doc, content });
+    }
+  } catch (error: unknown) {
+    window.alert(`Cannot save: ${getErrorMessage(error)}`);
+    return;
   }
 };
 

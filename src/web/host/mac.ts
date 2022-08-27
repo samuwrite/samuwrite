@@ -56,7 +56,7 @@ type Res<T extends Name> = T extends OpenFile.Name
   ? OpenUrl.Res
   : unknown;
 
-export const sendHostMessage = async <T extends Name>(
+export const postMacMessage = async <T extends Name>(
   type: T,
   req: Req<T>
 ): Promise<Res<T>> => {
