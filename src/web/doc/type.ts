@@ -1,11 +1,11 @@
 import { Dispatch, SetStateAction } from "react";
 
-interface DocHandleMac {
+export interface DocHandleMac {
   type: "mac";
   path: string;
 }
 
-interface DocHandleWeb {
+export interface DocHandleWeb {
   type: "web";
   handle: FileSystemFileHandle;
 }

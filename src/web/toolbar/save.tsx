@@ -1,7 +1,9 @@
 import { DownloadIcon } from "@primer/octicons-react";
 import { DocState } from "../doc/type";
 import { Editor } from "../editor/type";
-import { postMacMessage } from "../host/mac";
+import { getErrorMessage } from "../error/message";
+import { saveDoc } from "../host/save";
+import { saveDocAs } from "../host/save-as";
 import { ToolbarButton } from "./button/button";
 
 interface Props extends DocState {
@@ -13,38 +15,20 @@ const save = async (props: Props): Promise<void> => {
 
   const content = editor.getValue();
 
-  const isMac = (window as any).webkit !== undefined;
-  if (!isMac) {
-    //@ts-ignore This API is experimental and Typescript doesn't support it yet.
-    const fileHandle = doc.fileHandle || (await window.showSaveFilePicker());
-
-    // create a FileSystemWritableFileStream to write to
-    const writableStream = await fileHandle.createWritable();
-
-    // create blog from content
-    const contentBlob = new Blob([content]);
-
-    // write our file
-    await writableStream.write(contentBlob);
-
-    // close the file and write the contents to disk.
-    await writableStream.close();
-
-    const file: File = await fileHandle.getFile();
-
-    setDoc({ content, fileHandle: fileHandle, path: file.name });
-
+  try {
+    if (doc.handle === null) {
+      // New file, never save -> Save as
+      const newDoc = await saveDocAs(content);
+      if (newDoc === null) return;
+      setDoc(newDoc);
+    } else {
+      // Opened file -> Save
+      await saveDoc(doc.handle, content);
+      setDoc({ ...doc, content });
+    }
+  } catch (error: unknown) {
+    window.alert(`Cannot save: ${getErrorMessage(error)}`);
     return;
-  }
-
-  if (doc.path === null) {
-    // New file
-    const { path } = await postMacMessage("saveFileAs", { content });
-    setDoc({ content, path });
-  } else {
-    // Current file
-    await postMacMessage("saveFile", { path: doc.path as string, content });
-    setDoc({ ...doc, content });
   }
 };
 
