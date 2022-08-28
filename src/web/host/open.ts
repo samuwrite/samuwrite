@@ -4,7 +4,9 @@ import { postMacMessage } from "./mac";
 
 const openMac = async (): Promise<Doc> => {
   const { content, path } = await postMacMessage("openFile", {});
-  const doc: Doc = { content, handle: { type: "mac", path } };
+  const name = path.split("/").at(-1);
+  if (name === undefined) throw Error(`Cannot get name from path: "${path}"`);
+  const doc: Doc = { content, name, handle: { type: "mac", path } };
   return doc;
 };
 
@@ -36,8 +38,11 @@ const openWeb = async (): Promise<Doc | null> => {
   }
 
   const file = await handle.getFile();
-  const content = await file.text();
-  const doc: Doc = { content, handle: { type: "web", handle } };
+  const doc: Doc = {
+    content: await file.text(),
+    name: file.name,
+    handle: { type: "web", handle },
+  };
   return doc;
 };
 

@@ -4,7 +4,9 @@ import { postMacMessage } from "./mac";
 
 const saveAsMac = async (content: string): Promise<Doc> => {
   const { path } = await postMacMessage("saveFileAs", { content });
-  const doc: Doc = { content, handle: { type: "mac", path } };
+  const name = path.split("/").at(-1);
+  if (name === undefined) throw Error(`Cannot get name from path: "${path}"`);
+  const doc: Doc = { content, name, handle: { type: "mac", path } };
   return doc;
 };
 
@@ -37,7 +39,8 @@ const saveAsWeb = async (content: string): Promise<Doc | null> => {
   await writable.write(content);
   await writable.close();
 
-  const doc: Doc = { content, handle: { type: "web", handle } };
+  const name = handle.name;
+  const doc: Doc = { content, name, handle: { type: "web", handle } };
   return doc;
 };
 

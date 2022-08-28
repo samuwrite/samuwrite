@@ -10,9 +10,15 @@ import "./app.css";
 import * as s from "./app.module.css";
 import { AppTheme } from "./theme";
 
+const initialDoc: Doc = {
+  handle: null,
+  name: "Untitled",
+  content: "",
+};
+
 export const App = (): JSX.Element => {
   const [layout, setLayout] = useState<Layout>("editor");
-  const [doc, setDoc] = useState<Doc>({ handle: null, content: "" });
+  const [doc, setDoc] = useState<Doc>(initialDoc);
   const [editor, setEditor] = useState<Editor | null>(null);
   const { setSettings, settings } = useSettingsState();
 

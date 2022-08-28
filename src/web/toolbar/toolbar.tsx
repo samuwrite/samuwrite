@@ -1,4 +1,4 @@
-import { Doc, DocState } from "../doc/type";
+import { DocState } from "../doc/type";
 import { Editor } from "../editor/type";
 import { LayoutState } from "../layout/type";
 import { SettingsState } from "../settings/type";
@@ -15,10 +15,9 @@ interface Props extends SettingsState, LayoutState, DocState {
 
 const getTitle = (props: Props): string => {
   const { editor, doc } = props;
-  const name = doc.path?.split("/").at(-1) ?? "Untitled";
   // change in editor.getValue does not trigger re-render
   // const suffix = editor.getValue() === doc.content ? "*" : "";
-  const title = [name].join(" ");
+  const title = [doc.name].join(" ");
   return title;
 };
 

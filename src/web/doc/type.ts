@@ -16,6 +16,7 @@ export interface Doc {
    * document when we load it, or since last save.
    */
   content: string;
+  name: string;
   /**
    * null: not saved
    */
