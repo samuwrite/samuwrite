@@ -1,5 +1,8 @@
+import { IDisposable } from "monaco-editor";
+import { useEffect, useState } from "react";
 import { DocState } from "../doc/type";
 import { Editor } from "../editor/type";
+import { getHost } from "../host/get";
 import { LayoutState } from "../layout/type";
 import { SettingsState } from "../settings/type";
 import { ToolbarMenu } from "./menu";
@@ -23,10 +26,24 @@ const getTitle = (props: Props): string => {
 
 export const Toolbar = (props: Props): JSX.Element => {
   const { editor, doc, setDoc } = props;
+
+  const [show, setShow] = useState(true);
+
+  useEffect(() => {
+    const disposables: IDisposable[] = [];
+    disposables.push(editor.onDidChangeModelContent(() => setShow(false)));
+    return () => {
+      disposables.forEach((disposable) => disposable.dispose());
+    };
+  }, [editor]);
+
   return (
-    <div className={s.container}>
+    <div
+      className={[s.container, show ? s.show : s.hide].join(" ")}
+      onMouseEnter={() => setShow(true)}
+    >
       <div className={s.left}>
-        <div className={s.macPad} />
+        {getHost() === "mac" ? <div className={s.macPad} /> : null}
         <ToolbarOpen {...{ editor, doc, setDoc }} />
         <ToolbarSave {...{ editor, doc, setDoc }} />
       </div>
