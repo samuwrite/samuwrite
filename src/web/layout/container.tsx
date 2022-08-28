@@ -22,7 +22,7 @@ export const LayoutContainer = (props: Props): JSX.Element => {
       unnecessarily */}
       {layout !== "editor" && editor !== null ? (
         <div className={s.preview}>
-          <Preview editor={editor} />
+          <Preview settings={settings} editor={editor} />
         </div>
       ) : null}
     </div>

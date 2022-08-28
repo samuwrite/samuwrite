@@ -7,6 +7,7 @@ export interface Settings {
   theme: keyof typeof variants;
   fontSize: number;
   wrapColumn: number;
+  template: string;
 }
 
 export interface SettingsState {

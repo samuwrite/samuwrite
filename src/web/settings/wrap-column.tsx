@@ -1,5 +1,4 @@
 import { ArrowBothIcon } from "@primer/octicons-react";
-import { Range } from "../range/range";
 import { SettingsRange } from "./range/range";
 import { SettingsState } from "./type";
 

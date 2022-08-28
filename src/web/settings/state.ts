@@ -7,6 +7,7 @@ const fallback: Settings = {
   theme: "moon",
   fontSize: 20,
   wrapColumn: 80,
+  template: "tailwind",
 };
 
 export const useSettingsState = (): SettingsState => {
