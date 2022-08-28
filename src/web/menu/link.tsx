@@ -1,5 +1,6 @@
 import { Menu } from "@headlessui/react";
 import { ReactNode } from "react";
+import { postMacMessage } from "../host/mac";
 import * as s from "./link.module.css";
 
 interface Props {
@@ -9,17 +10,26 @@ interface Props {
 
 export const MenuLink = (props: Props): JSX.Element => {
   const { children, href } = props;
-  return (
-    <Menu.Item>
-      {({ active }) => (
-        <a
-          className={[s.container, active ? s.active : ""].join(" ")}
-          href={href}
-          target="_blank"
-        >
-          {children}
-        </a>
-      )}
-    </Menu.Item>
-  );
+
+  const render = ({ active }: { active: boolean }): JSX.Element => {
+    const isMac = (window as any).webkit !== undefined;
+    const className = [s.container, active ? s.active : ""].join(" ");
+
+    return isMac ? (
+      <button
+        onClick={async () => {
+          await postMacMessage("openUrl", { url: href });
+        }}
+        className={className}
+      >
+        {children}
+      </button>
+    ) : (
+      <a className={className} href={href} target="_blank">
+        {children}
+      </a>
+    );
+  };
+
+  return <Menu.Item>{render}</Menu.Item>;
 };

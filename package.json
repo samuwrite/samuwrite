@@ -1,4 +1,5 @@
 {
+  "name": "samuwrite.com",
   "scripts": {
     "dev": "sh scripts/dev.sh",
     "build": "sh scripts/build.sh"
@@ -7,6 +8,7 @@
     "@parcel/transformer-sass": "^2.7.0",
     "@types/react": "^18.0.15",
     "@types/react-dom": "^18.0.6",
+    "@types/wicg-file-system-access": "^2020.9.5",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
     "buffer": "^6.0.3",

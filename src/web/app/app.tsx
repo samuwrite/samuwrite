@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Doc } from "../doc/type";
 import { Editor } from "../editor/type";
 import "../font/font.css";
 import { LayoutContainer } from "../layout/container";
@@ -7,14 +8,13 @@ import { useSettingsState } from "../settings/state";
 import { Toolbar } from "../toolbar/toolbar";
 import "./app.css";
 import * as s from "./app.module.css";
-import { useAppMessage } from "./message";
 import { AppTheme } from "./theme";
 
 export const App = (): JSX.Element => {
   const [layout, setLayout] = useState<Layout>("editor");
+  const [doc, setDoc] = useState<Doc>({ handle: null, content: "" });
   const [editor, setEditor] = useState<Editor | null>(null);
   const { setSettings, settings } = useSettingsState();
-  useAppMessage();
 
   return (
     <div className={s.container}>
@@ -24,6 +24,8 @@ export const App = (): JSX.Element => {
           <Toolbar
             layout={layout}
             setLayout={setLayout}
+            doc={doc}
+            setDoc={setDoc}
             settings={settings}
             setSettings={setSettings}
             editor={editor}

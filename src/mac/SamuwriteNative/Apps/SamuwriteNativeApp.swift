@@ -17,18 +17,6 @@ struct SamuwriteNativeApp: App {
                     maxWidth: .infinity,
                     minHeight: 300,
                     maxHeight: .infinity)
-            VStack {
-                
-            }
-            .navigationTitle("navigationTitle")
-            .navigationSubtitle("navigationSubtitle")
-            .toolbar {
-                ToolbarItemGroup(placement: .navigation, content: {
-                    Button(action: {}, label: {
-                        Text(verbatim: "")
-                    })
-                })
-            }
         }
         .windowStyle(.hiddenTitleBar)
         .windowToolbarStyle(.unified)
