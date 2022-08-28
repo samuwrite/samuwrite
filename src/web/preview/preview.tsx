@@ -16,9 +16,11 @@ export const Preview = (props: Props): JSX.Element => {
 
   return (
     <div className={s.container}>
-      <TemplateContainer template={settings.template}>
-        <div dangerouslySetInnerHTML={{ __html: html }} />
-      </TemplateContainer>
+      <div className={s.card}>
+        <TemplateContainer template={settings.template}>
+          <div dangerouslySetInnerHTML={{ __html: html }} />
+        </TemplateContainer>
+      </div>
     </div>
   );
 };

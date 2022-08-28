@@ -32,6 +32,7 @@ export const Toolbar = (props: Props): JSX.Element => {
   useEffect(() => {
     const disposables: IDisposable[] = [];
     disposables.push(editor.onDidChangeModelContent(() => setShow(false)));
+    disposables.push(editor.onDidFocusEditorText(() => setShow(false)));
     return () => {
       disposables.forEach((disposable) => disposable.dispose());
     };

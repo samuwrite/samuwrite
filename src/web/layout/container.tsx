@@ -1,9 +1,9 @@
-import { Preview } from "../preview/preview";
-import { Layout } from "./type";
-import * as s from "./container.module.css";
 import { EditorMain } from "../editor/main";
 import { EditorState } from "../editor/type";
+import { Preview } from "../preview/preview";
 import { Settings } from "../settings/type";
+import * as s from "./container.module.css";
+import { Layout } from "./type";
 
 interface Props extends EditorState {
   layout: Layout;
