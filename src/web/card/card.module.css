@@ -1,0 +1,16 @@
+.solid,
+.glass {
+  border: solid 1px var(--color-highlightHigh);
+  box-shadow: transparent 0 0 0 /* to align the shadows below */,
+    rgba(0, 0, 0, calc(var(--shadow-opacity) * 1)) 0px 3px 6px,
+    rgba(0, 0, 0, calc(var(--shadow-opacity) * 2)) 0px 9px 24px;
+}
+
+.solid {
+  background-color: var(--color-surface);
+}
+
+.glass {
+  background-color: rgba(var(--color-surface-rgb), 0.7);
+  backdrop-filter: blur(20px);
+}

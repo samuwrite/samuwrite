@@ -3,6 +3,7 @@ import { Popover, Menu, Transition } from "@headlessui/react";
 import { ReactNode, useRef } from "react";
 import { outline } from "../outline/outline";
 import * as s from "./panel.module.css";
+import * as sCard from "../card/card.module.css";
 
 interface Props {
   float: UseFloatingReturn;
@@ -42,7 +43,9 @@ export const FloatingPanel = (props: Props): JSX.Element => {
         afterLeave={() => floating(null)}
       >
         {/* Focus outline is put at scroll container */}
-        <Panel className={[s.container, outline.onFocus].join(" ")}>
+        <Panel
+          className={[s.container, outline.onFocus, sCard.glass].join(" ")}
+        >
           {children}
         </Panel>
       </Transition>

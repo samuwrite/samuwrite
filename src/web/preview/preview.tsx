@@ -3,6 +3,7 @@ import { Settings } from "../settings/type";
 import { TemplateContainer } from "../template/template";
 import { usePreviewHtml } from "./html";
 import * as s from "./preview.module.css";
+import * as sCard from "../card/card.module.css";
 
 interface Props {
   editor: Editor;
@@ -16,7 +17,7 @@ export const Preview = (props: Props): JSX.Element => {
 
   return (
     <div className={s.container}>
-      <div className={s.card}>
+      <div className={[s.card, sCard.solid].join(" ")}>
         <TemplateContainer template={settings.template}>
           <div dangerouslySetInnerHTML={{ __html: html }} />
         </TemplateContainer>
