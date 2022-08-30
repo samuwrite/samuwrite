@@ -1,28 +1,25 @@
-import { Popover as LibPopover } from "@headlessui/react";
-import { ReactNode } from "react";
-import { useFloating } from "../floating/hook";
-import { FloatingPanel } from "../floating/panel";
-import * as s from "./popover.module.css";
+import * as Radix from "@radix-ui/react-popover";
+import { forwardRef } from "react";
+import { Card } from "../card/card";
+import s from "./popover.module.css";
 
-interface Props {
-  button: (props: { open: boolean }) => JSX.Element;
-  children: ReactNode;
-}
+const Content = forwardRef<HTMLDivElement, Radix.PopoverContentProps>(
+  (props, ref): JSX.Element => {
+    return (
+      <Radix.Content
+        ref={ref}
+        className={[s.content, Card.solid].join(" ")}
+        sideOffset={12}
+        collisionPadding={12}
+        {...props}
+      />
+    );
+  }
+);
 
-export const Popover = (props: Props): JSX.Element => {
-  const { button, children } = props;
-  const float = useFloating();
-
-  return (
-    <LibPopover>
-      <LibPopover.Button ref={float.reference} as="div">
-        {button}
-      </LibPopover.Button>
-      <div className={s.wrapper}>
-        <FloatingPanel Panel={LibPopover.Panel} float={float}>
-          <div className={s.container}>{children}</div>
-        </FloatingPanel>
-      </div>
-    </LibPopover>
-  );
+export const Popover = {
+  Content,
+  Root: Radix.Root,
+  Trigger: Radix.Trigger,
+  Portal: Radix.Portal,
 };
