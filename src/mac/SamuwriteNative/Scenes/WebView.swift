@@ -1,82 +1,49 @@
 //
-//  WebViewController.swift
+//  WebView.swift
 //  SamuwriteNative
 //
-//  Created by Khoa Le on 12/06/2022.
+//  Created by Khoa Le on 30/08/2022.
 //
 
 import WebKit
-import SwiftUI
-import Combine
-import Cocoa
+import AppKit
 
-struct WebView: NSViewRepresentable {
-    var environment: Environment
-    
-    @ObservedObject var viewModel: ViewModel
-    
-    func makeNSView(context: Context) -> WKWebView {
-        let configuration = WKWebViewConfiguration()
-        configuration.defaultWebpagePreferences.allowsContentJavaScript = true
-        configuration.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
-        configuration.preferences.javaScriptEnabled = true
+final class DraggableWebView: WKWebView {
+    override func mouseDown(with event: NSEvent) {
+        guard let window = self.window else { return }
+        let startingPoint = event.locationInWindow
+        // Track events until the mouse is up (in which we interpret as a click), or a drag starts (in which we pass off to the Window Server to perform the drag)
+        var shouldCallSuper = false
         
-        let webView = WKWebView(frame: .zero, configuration: configuration)
-        webView.allowsBackForwardNavigationGestures = true
-        injectTo(configuration.userContentController)
-        return webView
-    }
-    
-    func makeCoordinator() -> WebViewCoordinator {
-        WebViewCoordinator(webView: self)
-    }
-    
-    func updateNSView(_ nsView: WKWebView, context: Context) {
-        nsView.uiDelegate = context.coordinator
-        switch environment {
-        case .prod:
-            if let url = Bundle.main.url(forResource: "LocalSite", withExtension: "html") {
-                nsView.loadFileURL(url, allowingReadAccessTo: url.deletingLastPathComponent())
+        window.trackEvents(
+            matching: [.leftMouseDragged, .leftMouseUp],
+            timeout:NSEvent.foreverDuration,
+            mode: RunLoop.Mode.default
+        ) { event, stop in
+            guard let event = event else { return }
+            switch event.type {
+            case .leftMouseUp:
+                // Stop on a mouse up; post it back into the queue and call super so it can handle it
+                shouldCallSuper = true
+                NSApp.postEvent(event, atStart: false)
+                stop.pointee = true
+            case .leftMouseDragged:
+                // track mouse drags, and if more than a few points are moved we start a drag
+                let currentPoint = event.locationInWindow
+                guard let appHeight = NSApp.mainWindow?.frame.height else { return }
+                let threshold = appHeight - currentPoint.y
+                guard threshold < 50 else { return }
+                if (abs(currentPoint.x - startingPoint.x) >= 5 || abs(currentPoint.y - startingPoint.y) >= 5) {
+                    stop.pointee = true
+                    window.performDrag(with: event)
+                }
+            default:
+                break
             }
-        case .webDebug:
-            if let url = URL(string: "http://localhost:1234") {
-                nsView.load(URLRequest(url: url))
-            }
         }
-    }
-    
-    private func injectTo(_ userContentController: WKUserContentController) {
-        JSInterfaceName.allCases.forEach {
-            userContentController.addScriptMessageHandler(
-                self.makeCoordinator(),
-                contentWorld: .page,
-                name: $0.rawValue)
+        
+        if (shouldCallSuper) {
+            super.mouseDown(with: event)
         }
-    }
-}
-
-// MARK: - JavaScriptInterfaceDelegate
-
-extension WebView: JavaScriptInterfaceDelegate {
-    func openFile() {
-        post(name: .openFile)
-    }
-    
-    func saveFile(with document: Document) {
-        post(name: .saveFile, object: document)
-    }
-    
-    func saveFileAs(with content: String) {
-        post(name: .saveFileAs, object: content)
-    }
-    
-    func openUrL(with urlString: String) {
-        if let url = NSURL(string: urlString) {
-            post(name: .openUrl, object: url)
-        }
-    }
-    
-    private func post(name: NSNotification.Name, object: Any? = nil) {
-        NotificationCenter.default.post(name: name, object: object)
     }
 }
