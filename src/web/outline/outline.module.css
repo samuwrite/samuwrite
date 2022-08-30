@@ -1,15 +1,19 @@
-.onActive,
+.onClassActive,
+.onDataHighlighted,
 .onFocus {
   transition: outline 300ms var(--ease);
 }
 
-.onActive,
+.none,
+.onClassActive,
+.onDataHighlighted,
 .onFocus,
 .onFocus:focus {
   outline: solid 8px transparent;
 }
 
-.onActive.active,
+.onClassActive.active,
+.onDataHighlighted[data-highlighted],
 .onFocus:focus-visible {
   outline: solid 2px var(--color-rose);
 }

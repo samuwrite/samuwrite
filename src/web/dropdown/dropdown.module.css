@@ -1,4 +1,17 @@
-.container {
+.content {
+  padding: 6px;
+  /* panel radius = control radius + panel padding / 2 */
+  border-radius: calc(6px + 6px / 2);
+  min-width: 216px;
+}
+
+.separator {
+  height: 1px;
+  background-color: var(--color-highlightMed);
+  margin: 6px 0;
+}
+
+.item {
   display: block;
   padding: 6px 12px;
   border-radius: 6px;
@@ -16,6 +29,6 @@
   cursor: default;
 }
 
-.active {
+.item[data-highlighted] {
   background-color: var(--color-overlay);
 }

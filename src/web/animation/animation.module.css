@@ -1,0 +1,27 @@
+.flip {
+  will-change: transform opacity;
+  animation-timing-function: var(--ease);
+  transform-origin: top center;
+}
+
+/* prettier-ignore */
+@keyframes in {
+  from { opacity: 0; transform: rotateX(-10deg); }
+  to { opacity: 1; transform: rotateX(0deg); }
+}
+
+/* prettier-ignore */
+@keyframes out {
+  from { opacity: 1; transform: rotateX(0deg); }
+  to { opacity: 0; transform: rotateX(-10deg); }
+}
+
+.flip[data-state="open"] {
+  animation-name: in;
+  animation-duration: 200ms;
+}
+
+.flip[data-state="closed"] {
+  animation-name: out;
+  animation-duration: 600ms;
+}

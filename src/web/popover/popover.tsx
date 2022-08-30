@@ -1,5 +1,6 @@
 import * as Radix from "@radix-ui/react-popover";
 import { forwardRef } from "react";
+import { animation } from "../animation/animation";
 import { Card } from "../card/card";
 import s from "./popover.module.css";
 
@@ -8,7 +9,7 @@ const Content = forwardRef<HTMLDivElement, Radix.PopoverContentProps>(
     return (
       <Radix.Content
         ref={ref}
-        className={[s.content, Card.solid].join(" ")}
+        className={[s.content, Card.glass, animation.flip].join(" ")}
         sideOffset={12}
         collisionPadding={12}
         {...props}

@@ -1,27 +1,37 @@
 import { ThreeBarsIcon } from "@primer/octicons-react";
-import { MenuDivider } from "../menu/divider";
-import { MenuLink } from "../menu/link";
-import { Menu } from "../menu/menu";
+import { useState } from "react";
+import { Dropdown } from "../dropdown/dropdown";
+import { Link } from "../link/link";
 import { ToolbarButton } from "./button/button";
 
 export const ToolbarMenu = (): JSX.Element => {
+  const [open, setOpen] = useState(false);
   return (
-    <Menu
-      button={({ open }) => (
+    <Dropdown.Root open={open} onOpenChange={setOpen}>
+      <Dropdown.Trigger asChild>
         <ToolbarButton Icon={ThreeBarsIcon} label="Menu" selected={open} />
-      )}
-    >
-      <MenuLink href="https://github.com/thien-do/rosepine.dev">
-        GitHub
-      </MenuLink>
-      <MenuLink href="https://twitter.com/_thiendo">Twitter</MenuLink>
-      <MenuDivider />
-      <MenuLink href="https://github.com/thien-do/rosepine.dev/issues/new">
-        Support
-      </MenuLink>
-      <MenuLink href="https://docs.rosepine.dev/docs/privacy.md">
-        Privacy Policy
-      </MenuLink>
-    </Menu>
+      </Dropdown.Trigger>
+      <Dropdown.Portal>
+        <Dropdown.Content>
+          <Dropdown.Item asChild>
+            <Link href="https://github.com/thien-do/rosepine.dev">GitHub</Link>
+          </Dropdown.Item>
+          <Dropdown.Item asChild>
+            <Link href="https://twitter.com/_thiendo">Twitter</Link>
+          </Dropdown.Item>
+          <Dropdown.Separator />
+          <Dropdown.Item asChild>
+            <Link href="https://github.com/thien-do/rosepine.dev/issues/new">
+              Support
+            </Link>
+          </Dropdown.Item>
+          <Dropdown.Item asChild>
+            <Link href="https://docs.rosepine.dev/docs/privacy.md">
+              Privacy Policy
+            </Link>
+          </Dropdown.Item>
+        </Dropdown.Content>
+      </Dropdown.Portal>
+    </Dropdown.Root>
   );
 };

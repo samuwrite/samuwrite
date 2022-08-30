@@ -1,7 +1,9 @@
 import * as s from "./outline.module.css";
 
 export const outline = {
+  none: s.none,
   onFocus: s.onFocus,
-  onActive: s.onActive,
+  onClassActive: s.onClassActive,
   active: s.active,
+  onDataHighlighted: s.onDataHighlighted,
 };
