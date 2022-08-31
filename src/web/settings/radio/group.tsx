@@ -1,25 +1,18 @@
-import { RadioGroup } from "@headlessui/react";
+import { RadioGroup, RadioGroupProps } from "@radix-ui/react-radio-group";
+import { Label } from "@radix-ui/react-label";
 import { SettingsRadioOption } from "./option";
 import * as s from "./group.module.css";
 
-interface Props<T extends string | number> {
-  value: T;
-  onChange: (value: T) => void;
+interface Props extends RadioGroupProps {
   label: string;
-  options: { value: T; label: string; icon: JSX.Element }[];
+  options: { value: string; label: string; icon: JSX.Element }[];
 }
 
-export const SettingsRadioGroup = <T extends string | number>(
-  props: Props<T>
-): JSX.Element => {
-  const { value, onChange, label, options } = props;
+export const SettingsRadioGroup = (props: Props): JSX.Element => {
+  const { label, options, ...rest } = props;
   return (
-    <RadioGroup<"div", T>
-      value={value}
-      onChange={onChange}
-      className={s.container}
-    >
-      <RadioGroup.Label>{label}</RadioGroup.Label>
+    <RadioGroup className={s.container} {...rest}>
+      <Label>{label}</Label>
       <div className={s.options}>
         {options.map((option) => (
           <SettingsRadioOption

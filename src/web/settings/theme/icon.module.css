@@ -1,3 +1,4 @@
 .container {
+  display: block;
   padding: 8px;
 }

@@ -12,9 +12,10 @@ export const getLayoutFromPreview = (preview: Settings["preview"]): Layout => {
 export const SettingsPreview = (props: Props): JSX.Element => {
   const { setSettings, settings, layout, setLayout } = props;
   return (
-    <SettingsRadioGroup<Settings["preview"]>
+    <SettingsRadioGroup
       value={settings.preview}
-      onChange={(preview) => {
+      onValueChange={(value) => {
+        const preview = value as Settings["preview"];
         setSettings((prev) => ({ ...prev, preview }));
 
         // Also update Layout if currently in preview mode

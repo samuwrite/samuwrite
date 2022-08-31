@@ -11,7 +11,7 @@ export const ThemeIcon = (props: Props): JSX.Element => {
   const variant = variants[theme];
 
   return (
-    <div className={s.container} style={{ backgroundColor: variant.base.hex }}>
+    <span className={s.container} style={{ backgroundColor: variant.base.hex }}>
       <svg width="24" height="24" viewBox="0 0 198 187">
         <path
           fill={variant.pine.hex}
@@ -27,6 +27,6 @@ export const ThemeIcon = (props: Props): JSX.Element => {
           d="M95.918 0C105.118 5.312 111.991 13.106 116.181 22.048C128.154 12.575 144.298 8.68599 160.178 12.941L147.237 61.237C142.474 79.013 128.709 91.973 112.16 96.525L112.178 96.593C107.805 97.765 103.411 98.319 99.09 98.309C94.768 98.319 90.374 97.765 86 96.593L86.018 96.525C69.47 91.973 55.704 79.013 50.941 61.237L38 12.941C54.262 8.58399 70.801 12.766 82.853 22.74C83.217 22.036 83.599 21.336 84 20.642L95.918 0Z"
         />
       </svg>
-    </div>
+    </span>
   );
 };

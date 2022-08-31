@@ -9,16 +9,16 @@ interface Props {
 export const PreviewIcon = (props: Props): JSX.Element => {
   const { mode } = props;
   return (
-    <div className={s.container}>
+    <span className={s.container}>
       {mode === "split" ? (
         <>
           <CodeIcon size={16} />
-          <div className={s.line} />
+          <span className={s.line} />
         </>
       ) : null}
-      <div className={s.preview}>
+      <span className={s.preview}>
         <LogIcon size={16} />
-      </div>
-    </div>
+      </span>
+    </span>
   );
 };
