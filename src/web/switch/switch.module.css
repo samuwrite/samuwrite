@@ -39,6 +39,6 @@
   transition: transform 200ms var(--ease);
 }
 
-.active .thumb {
+.thumb[data-state="checked"] {
   transform: translateX(16px);
 }
