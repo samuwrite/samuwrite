@@ -2,7 +2,8 @@
   "name": "samuwrite.com",
   "scripts": {
     "dev": "sh scripts/dev.sh",
-    "build": "sh scripts/build.sh"
+    "build": "sh scripts/build.sh",
+    "mac": "sh scripts/build_dist_to_mac.sh"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
