@@ -32,10 +32,14 @@ final class DraggableWebView: WKWebView {
                 let currentPoint = event.locationInWindow
                 guard let appHeight = NSApp.mainWindow?.frame.height else { return }
                 let threshold = appHeight - currentPoint.y
-                guard threshold < 50 else { return }
-                if (abs(currentPoint.x - startingPoint.x) >= 5 || abs(currentPoint.y - startingPoint.y) >= 5) {
+                if (threshold < 50) {
+                    if (abs(currentPoint.x - startingPoint.x) >= 5 || abs(currentPoint.y - startingPoint.y) >= 5) {
+                        stop.pointee = true
+                        window.performDrag(with: event)
+                    }
+                } else {
+                    shouldCallSuper = true
                     stop.pointee = true
-                    window.performDrag(with: event)
                 }
             default:
                 break
