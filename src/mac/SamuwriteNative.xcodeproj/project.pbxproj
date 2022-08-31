@@ -14,6 +14,7 @@
 		6A2F552528A8DD5D003DE456 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F552428A8DD5D003DE456 /* ViewModel.swift */; };
 		6A2F552728A8E39F003DE456 /* View+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F552628A8E39F003DE456 /* View+NotificationCenter.swift */; };
 		6A2F552928A8E459003DE456 /* NSNotificationName+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F552828A8E459003DE456 /* NSNotificationName+.swift */; };
+		6A33E93E28BFE02700973451 /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 911540BCDA0D9617E7A05991 /* dist */; };
 		6A8DB0EE28BE4492002702B1 /* DraggableWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8DB0ED28BE4492002702B1 /* DraggableWebView.swift */; };
 		6AC66F3828B691A2000D75B2 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC66F3728B691A2000D75B2 /* Document.swift */; };
 		6AC673B42855DDDE009D58A2 /* SamuwriteNativeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC673B32855DDDE009D58A2 /* SamuwriteNativeApp.swift */; };
@@ -43,6 +44,7 @@
 		6AC673BC2855DDDF009D58A2 /* SamuwriteNative.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SamuwriteNative.entitlements; sourceTree = "<group>"; };
 		6AC673C22855E8DE009D58A2 /* WebViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewRepresentable.swift; sourceTree = "<group>"; };
 		6AC673C52855EA76009D58A2 /* LocalSite.html */ = {isa = PBXFileReference; lastKnownFileType = text.html; path = LocalSite.html; sourceTree = "<group>"; };
+		911540BCDA0D9617E7A05991 /* dist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = folder; path = dist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,8 +123,9 @@
 				6A2F551F28A8D747003DE456 /* Utils */,
 				6A89EB8E28589C70006D2258 /* Info.plist */,
 				6AC673BC2855DDDF009D58A2 /* SamuwriteNative.entitlements */,
-				6AC673C42855EA55009D58A2 /* Resources */,
 				6AC673B92855DDDF009D58A2 /* Preview Content */,
+				6AC673C42855EA55009D58A2 /* Resources */,
+				911540BCDA0D9617E7A05991 /* dist */,
 			);
 			path = SamuwriteNative;
 			sourceTree = "<group>";
@@ -138,8 +141,8 @@
 		6AC673C42855EA55009D58A2 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				6AC673C52855EA76009D58A2 /* LocalSite.html */,
 				6AC673B72855DDDF009D58A2 /* Assets.xcassets */,
+				6AC673C52855EA76009D58A2 /* LocalSite.html */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6A33E93E28BFE02700973451 /* dist in Resources */,
 				6AC673BB2855DDDF009D58A2 /* Preview Assets.xcassets in Resources */,
 				6AC673B82855DDDF009D58A2 /* Assets.xcassets in Resources */,
 				6AC673C62855EA76009D58A2 /* LocalSite.html in Resources */,
