@@ -1,9 +1,8 @@
-require 'xcodeproj'
+require 'FileUtils'
 
-project_path = "#{Dir.pwd}/src/mac/SamuwriteNative.xcodeproj"
-project = Xcodeproj::Project.open(project_path)
+current_dir = Dir.pwd
+dist_path = "#{current_dir}/dist"
+mac_dist_path = "#{current_dir}/src/mac/SamuwriteNative/dist"
 
-file_group = project["SamuwriteNative"]
-file_group.new_file("#{project.project_dir}/SamuwriteNative/dist")
-
-project.save()
+FileUtils.rm_rf(mac_dist_path)
+FileUtils.copy_entry dist_path, mac_dist_path

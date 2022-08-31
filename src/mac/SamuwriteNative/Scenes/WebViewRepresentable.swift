@@ -40,6 +40,7 @@ struct WebView: NSViewRepresentable {
         switch environment {
         case .prod:
             if let url = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "dist") {
+                print("Open prod url")
                 nsView.loadFileURL(url, allowingReadAccessTo: url.deletingLastPathComponent())
             }
         case .webDebug:
