@@ -16,10 +16,12 @@ struct WebView: NSViewRepresentable {
     @ObservedObject var viewModel: ViewModel
     
     func makeNSView(context: Context) -> WKWebView {
+        let preferences = WKWebpagePreferences()
+        preferences.allowsContentJavaScript = true
         let configuration = WKWebViewConfiguration()
         configuration.defaultWebpagePreferences.allowsContentJavaScript = true
         configuration.preferences.setValue(true, forKey: "allowFileAccessFromFileURLs")
-        configuration.preferences.javaScriptEnabled = true
+        configuration.defaultWebpagePreferences = preferences
         
         let webView = DraggableWebView(
             frame: .zero,

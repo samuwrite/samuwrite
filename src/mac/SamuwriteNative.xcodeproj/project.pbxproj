@@ -14,7 +14,7 @@
 		6A2F552528A8DD5D003DE456 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F552428A8DD5D003DE456 /* ViewModel.swift */; };
 		6A2F552728A8E39F003DE456 /* View+NotificationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F552628A8E39F003DE456 /* View+NotificationCenter.swift */; };
 		6A2F552928A8E459003DE456 /* NSNotificationName+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F552828A8E459003DE456 /* NSNotificationName+.swift */; };
-		6A8DB0EE28BE4492002702B1 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8DB0ED28BE4492002702B1 /* WebView.swift */; };
+		6A8DB0EE28BE4492002702B1 /* DraggableWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8DB0ED28BE4492002702B1 /* DraggableWebView.swift */; };
 		6AC66F3828B691A2000D75B2 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC66F3728B691A2000D75B2 /* Document.swift */; };
 		6AC673B42855DDDE009D58A2 /* SamuwriteNativeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC673B32855DDDE009D58A2 /* SamuwriteNativeApp.swift */; };
 		6AC673B62855DDDE009D58A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC673B52855DDDE009D58A2 /* ContentView.swift */; };
@@ -33,7 +33,7 @@
 		6A2F552628A8E39F003DE456 /* View+NotificationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+NotificationCenter.swift"; sourceTree = "<group>"; };
 		6A2F552828A8E459003DE456 /* NSNotificationName+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotificationName+.swift"; sourceTree = "<group>"; };
 		6A89EB8E28589C70006D2258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		6A8DB0ED28BE4492002702B1 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		6A8DB0ED28BE4492002702B1 /* DraggableWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableWebView.swift; sourceTree = "<group>"; };
 		6AC66F3728B691A2000D75B2 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		6AC673B02855DDDE009D58A2 /* Samuwrite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samuwrite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC673B32855DDDE009D58A2 /* SamuwriteNativeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamuwriteNativeApp.swift; sourceTree = "<group>"; };
@@ -72,7 +72,7 @@
 			children = (
 				6AC673B52855DDDE009D58A2 /* ContentView.swift */,
 				6AC673C22855E8DE009D58A2 /* WebViewRepresentable.swift */,
-				6A8DB0ED28BE4492002702B1 /* WebView.swift */,
+				6A8DB0ED28BE4492002702B1 /* DraggableWebView.swift */,
 				6A2F552428A8DD5D003DE456 /* ViewModel.swift */,
 				6A2F552228A8D77E003DE456 /* WebViewCoordinator.swift */,
 				6A2F551528A7942F003DE456 /* JavaScriptInterfaceDelegate.swift */,
@@ -224,7 +224,7 @@
 				6AC673B62855DDDE009D58A2 /* ContentView.swift in Sources */,
 				6AC66F3828B691A2000D75B2 /* Document.swift in Sources */,
 				6AC673C32855E8DE009D58A2 /* WebViewRepresentable.swift in Sources */,
-				6A8DB0EE28BE4492002702B1 /* WebView.swift in Sources */,
+				6A8DB0EE28BE4492002702B1 /* DraggableWebView.swift in Sources */,
 				6AC673B42855DDDE009D58A2 /* SamuwriteNativeApp.swift in Sources */,
 				6A2F551E28A8D6C4003DE456 /* JSInterfaceName.swift in Sources */,
 			);

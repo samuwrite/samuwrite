@@ -17,7 +17,7 @@ final class DraggableWebView: WKWebView {
         
         window.trackEvents(
             matching: [.leftMouseDragged, .leftMouseUp],
-            timeout:NSEvent.foreverDuration,
+            timeout: NSEvent.foreverDuration,
             mode: RunLoop.Mode.default
         ) { event, stop in
             guard let event = event else { return }
@@ -32,7 +32,7 @@ final class DraggableWebView: WKWebView {
                 let currentPoint = event.locationInWindow
                 guard let appHeight = NSApp.mainWindow?.frame.height else { return }
                 let threshold = appHeight - currentPoint.y
-                if (threshold < 50) {
+                if threshold < 50 {
                     if (abs(currentPoint.x - startingPoint.x) >= 5 || abs(currentPoint.y - startingPoint.y) >= 5) {
                         stop.pointee = true
                         window.performDrag(with: event)
