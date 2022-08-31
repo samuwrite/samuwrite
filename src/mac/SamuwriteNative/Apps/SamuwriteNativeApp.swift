@@ -21,8 +21,7 @@ struct SamuwriteNativeApp: App {
             .navigationSubtitle("navigationSubtitle")
             .toolbar {
                 ToolbarItemGroup(placement: .navigation, content: {
-                    Button(action: {}, label: {
-                    })
+                    Button(action: {}, label: {}).opacity(0)
                 })
             }
         }
