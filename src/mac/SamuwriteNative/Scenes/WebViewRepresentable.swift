@@ -39,7 +39,7 @@ struct WebView: NSViewRepresentable {
         nsView.uiDelegate = context.coordinator
         switch environment {
         case .prod:
-            if let url = Bundle.main.url(forResource: "LocalSite", withExtension: "html") {
+            if let url = Bundle.main.url(forResource: "index", withExtension: "html", subdirectory: "dist") {
                 nsView.loadFileURL(url, allowingReadAccessTo: url.deletingLastPathComponent())
             }
         case .webDebug:

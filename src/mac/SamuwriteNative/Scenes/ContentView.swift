@@ -12,7 +12,15 @@ struct ContentView: View {
     @ObservedObject private var viewModel = ViewModel()
     
     var body: some View {
-        WebView(environment: .webDebug, viewModel: viewModel)
+        #if DEBUG
+        makeWebView(with: .webDebug)
+        #else
+        makeWebView(with: .prod)
+        #endif
+    }
+    
+    private func makeWebView(with env: Environment) -> some View {
+        WebView(environment: env, viewModel: viewModel)
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .edgesIgnoringSafeArea(.top)
             .onReceive(.openFile) { _ in handleOpenFile() }
