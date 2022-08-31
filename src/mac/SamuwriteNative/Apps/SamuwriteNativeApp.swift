@@ -17,8 +17,8 @@ struct SamuwriteNativeApp: App {
                     maxWidth: .infinity,
                     minHeight: 300,
                     maxHeight: .infinity)
-            .navigationTitle("navigationTitle")
-            .navigationSubtitle("navigationSubtitle")
+            .navigationTitle("Samuwrite")
+            .navigationSubtitle("")
             .toolbar {
                 ToolbarItemGroup(placement: .navigation, content: {
                     Button(action: {}, label: {}).opacity(0)
