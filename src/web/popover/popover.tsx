@@ -2,7 +2,7 @@ import * as Radix from "@radix-ui/react-popover";
 import { forwardRef } from "react";
 import { animation } from "../animation/animation";
 import { Card } from "../card/card";
-import s from "./popover.module.css";
+import * as s from "./popover.module.css";
 
 const Content = forwardRef<HTMLDivElement, Radix.PopoverContentProps>(
   (props, ref): JSX.Element => {
