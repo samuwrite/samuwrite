@@ -8,4 +8,4 @@ ROOT=$PWD/node_modules/monaco-editor/esm/vs
 OPTS="--no-source-maps $1"
 
 # Samuwrite deals with Markdown mainly
-parcel build $ROOT/editor/editor.worker.js $OPTS
+npx parcel build $ROOT/editor/editor.worker.js $OPTS
