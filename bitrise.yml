@@ -9,7 +9,7 @@ workflows:
     - cache-pull@2: {}
     - script-runner@0:
         inputs:
-        - file_path: ../scripts/mac/build.sh
+        - file_path: /scripts/mac/build.sh
     - certificate-and-profile-installer@1: {}
     - xcode-archive-mac@1:
         inputs:
@@ -32,7 +32,7 @@ app:
   envs:
   - opts:
       is_expand: false
-    BITRISE_PROJECT_PATH: src/mac/SamuwriteNative.xcodeproj
+    BITRISE_PROJECT_PATH: samuwrite.com/src/mac/SamuwriteNative.xcodeproj
   - opts:
       is_expand: false
     BITRISE_SCHEME: SamuwriteNative
