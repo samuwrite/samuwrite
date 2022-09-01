@@ -3,7 +3,7 @@
   "scripts": {
     "dev": "sh scripts/dev.sh",
     "build": "sh scripts/build.sh",
-    "mac-build": "sh scripts/mac-build.sh"
+    "mac:build": "sh scripts/mac/build.sh"
   },
   "devDependencies": {
     "@parcel/transformer-sass": "^2.7.0",
