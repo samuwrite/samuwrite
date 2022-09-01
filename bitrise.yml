@@ -1,0 +1,41 @@
+---
+format_version: '11'
+default_step_lib_source: 'https://github.com/bitrise-io/bitrise-steplib.git'
+project_type: macos
+workflows:
+  deploy:
+    steps:
+    - git-clone@6: {}
+    - cache-pull@2: {}
+    - certificate-and-profile-installer@1: {}
+    - xcode-archive-mac@1:
+        inputs:
+        - project_path: $BITRISE_PROJECT_PATH
+        - scheme: $BITRISE_SCHEME
+        - export_method: $BITRISE_EXPORT_METHOD
+    - cache-push@2: {}
+    - deploy-to-bitrise-io@2: {}
+  primary:
+    steps:
+    - git-clone@6: {}
+    - cache-pull@2: {}
+    - cache-push@2: {}
+    - deploy-to-bitrise-io@2: {}
+meta:
+  bitrise.io:
+    stack: osx-xcode-13.2.x
+    machine_type_id: g2.4core
+app:
+  envs:
+  - opts:
+      is_expand: false
+    BITRISE_PROJECT_PATH: src/mac/SamuwriteNative.xcodeproj
+  - opts:
+      is_expand: false
+    BITRISE_SCHEME: SamuwriteNative
+  - opts:
+      is_expand: false
+    BITRISE_EXPORT_METHOD: app-store
+trigger_map:
+- push_branch: ci/deploy-macos
+  workflow: deploy
