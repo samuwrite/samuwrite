@@ -11,7 +11,7 @@ const createEnv = (): void => {
   // https://github.com/microsoft/monaco-editor/blob/main/docs/integrate-esm.md#using-parcel
   window.MonacoEnvironment = {
     getWorkerUrl: function (_moduleId, _label) {
-      return "/editor.worker.js";
+      return "./editor.worker.js";
     },
   };
 
