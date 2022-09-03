@@ -2,6 +2,7 @@
   padding: 18px;
   /* panel radius = control radius + panel padding / 2 */
   border-radius: calc(6px + 18px / 2);
-  max-height: 80vh;
+  /* toolbar is about 50px */
+  max-height: calc(100vh - 70px);
   overflow: auto;
 }
