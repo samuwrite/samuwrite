@@ -1,11 +1,11 @@
 import { DownloadIcon } from "@primer/octicons-react";
-import { useEffect } from "react";
-import tinykeys from "tinykeys";
+import { useCallback } from "react";
 import { DocState } from "../doc/type";
 import { Editor } from "../editor/type";
 import { getErrorMessage } from "../error/message";
 import { saveDoc } from "../host/save";
 import { saveDocAs } from "../host/save-as";
+import { useShortcut } from "../shortcut/shortcut";
 import { Tooltip } from "../tooltip/tooltip";
 import { ToolbarButton } from "./button/button";
 
@@ -38,15 +38,10 @@ const save = async (props: Props): Promise<void> => {
 export const ToolbarSave = (props: Props): JSX.Element => {
   const { doc, editor, setDoc } = props;
 
-  useEffect(() => {
-    const unsub = tinykeys(window, {
-      "$mod+s": (event) => {
-        event.preventDefault();
-        save({ doc, editor, setDoc });
-      },
-    });
-    return () => unsub();
+  const callback = useCallback(() => {
+    save({ doc, editor, setDoc });
   }, [doc, editor, setDoc]);
+  useShortcut("$mod+s", callback);
 
   return (
     <Tooltip content="Save" shortcut="⌘ S">

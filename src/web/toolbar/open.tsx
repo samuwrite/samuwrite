@@ -1,10 +1,10 @@
 import { FileDirectoryIcon } from "@primer/octicons-react";
-import { useEffect } from "react";
-import tinykeys from "tinykeys";
+import { useCallback } from "react";
 import { Doc, DocState } from "../doc/type";
 import { Editor } from "../editor/type";
 import { getErrorMessage } from "../error/message";
 import { openDoc } from "../host/open";
+import { useShortcut } from "../shortcut/shortcut";
 import { Tooltip } from "../tooltip/tooltip";
 import { ToolbarButton } from "./button/button";
 
@@ -44,15 +44,10 @@ const open = async (props: Props): Promise<void> => {
 export const ToolbarOpen = (props: Props): JSX.Element => {
   const { doc, editor, setDoc } = props;
 
-  useEffect(() => {
-    const unsub = tinykeys(window, {
-      "$mod+o": (event) => {
-        event.preventDefault();
-        open({ doc, editor, setDoc });
-      },
-    });
-    return () => unsub();
+  const callback = useCallback(() => {
+    open({ doc, editor, setDoc });
   }, [doc, editor, setDoc]);
+  useShortcut("$mod+o", callback);
 
   return (
     <Tooltip content="Open…" shortcut="⌘ O">
