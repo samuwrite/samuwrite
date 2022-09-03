@@ -1,5 +1,5 @@
 import { useEffect, useRef } from "react";
-import { initVimMode } from "monaco-vim";
+import { initVimMode, VimMode } from "monaco-vim";
 import { Settings } from "../../settings/type";
 import { Editor } from "../type";
 import * as s from "./status.module.css";
@@ -10,6 +10,15 @@ interface Props {
   settings: Settings;
 }
 
+const envDone = { current: false };
+
+const createEnv = () => {
+  if (envDone.current) return;
+  VimMode.Vim.map("jj", "<Esc>", "insert");
+  VimMode.Vim.map("jk", "<Esc>", "insert");
+  envDone.current = true;
+};
+
 export const EditorStatus = (props: Props): JSX.Element => {
   const { editor, settings } = props;
   const statusRef = useRef<HTMLDivElement>(null);
@@ -17,6 +26,7 @@ export const EditorStatus = (props: Props): JSX.Element => {
   const { vim: settingsVim } = settings;
   useEffect(() => {
     if (settingsVim === false) return;
+    createEnv();
 
     const status = statusRef.current;
     if (status === null) throw Error("`status` is null");
