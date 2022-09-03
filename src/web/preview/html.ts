@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import rehypeDomStringify from "rehype-dom-stringify";
 import { rehypeSourceMap } from "rehype-source-map";
+import rehypeExternalLinks from "rehype-external-links";
 import remarkGfm from "remark-gfm";
 import remarkParse from "remark-parse";
 import remarkRehype from "remark-rehype";
@@ -12,8 +13,10 @@ const processor = unified()
   .use(remarkGfm)
   .use(remarkRehype)
   .use(rehypeDomStringify as Plugin)
-  .use(rehypeSourceMap);
-
+  .use(rehypeSourceMap)
+  // Always open links in new tab to avoid navigating away from the editor
+  // https://github.com/thien-do/samuwrite.com/issues/122
+  .use(rehypeExternalLinks, { target: "_blank" });
 interface Params {
   editor: Editor;
 }
