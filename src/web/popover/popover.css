@@ -1,0 +1,4 @@
+[data-radix-popper-content-wrapper] {
+  perspective: 100vh;
+  perspective-origin: top center;
+}

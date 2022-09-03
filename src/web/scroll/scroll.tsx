@@ -3,8 +3,8 @@ import { patch } from "../utils/patch";
 import * as s from "./scroll.module.css";
 
 export const Scroll = {
-  Root: patch(Radix.Root, s.root),
-  Viewport: patch(Radix.Viewport, s.viewport),
-  Track: patch(Radix.Scrollbar, s.track),
-  Thumb: patch(Radix.Thumb, s.thumb),
+  Root: patch(Radix.Root, { className: s.root }),
+  Viewport: patch(Radix.Viewport, { className: s.viewport }),
+  Track: patch(Radix.Scrollbar, { className: s.track }),
+  Thumb: patch(Radix.Thumb, { className: s.thumb }),
 };

@@ -18,7 +18,7 @@ export const Preview = (props: Props): JSX.Element => {
 
   return (
     <Scroll.Root>
-      <Scroll.Viewport id="test">
+      <Scroll.Viewport>
         <div className={s.container}>
           <div className={[s.card, sCard.solid].join(" ")}>
             <TemplateContainer template={settings.template}>
