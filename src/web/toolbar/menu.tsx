@@ -14,19 +14,19 @@ export const ToolbarMenu = (): JSX.Element => {
       <Dropdown.Portal>
         <Dropdown.Content>
           <Dropdown.Item asChild>
-            <Link href="https://github.com/thien-do/rosepine.dev">GitHub</Link>
+            <Link href="https://github.com/thien-do/samuwrite.com">GitHub</Link>
           </Dropdown.Item>
           <Dropdown.Item asChild>
             <Link href="https://twitter.com/_thiendo">Twitter</Link>
           </Dropdown.Item>
           <Dropdown.Separator />
           <Dropdown.Item asChild>
-            <Link href="https://github.com/thien-do/rosepine.dev/issues/new">
+            <Link href="https://github.com/thien-do/samuwrite.com/issues/new">
               Support
             </Link>
           </Dropdown.Item>
           <Dropdown.Item asChild>
-            <Link href="https://docs.rosepine.dev/docs/privacy.md">
+            <Link href="https://thien-do.memos.pub/samuwrite.com/docs/privacy.md">
               Privacy Policy
             </Link>
           </Dropdown.Item>

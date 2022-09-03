@@ -54,4 +54,4 @@ This is not applicable if you only use the Mac app.
 If you have any questions or concerns, please contact us:
 
 - In public at [our GitHub repo][repo]
-- In private at hi@rosepine.dev
+- In private at hi@samuwrite.com
