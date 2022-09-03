@@ -8,10 +8,10 @@ const Content = forwardRef<HTMLDivElement, Radix.PopoverContentProps>(
   (props, ref): JSX.Element => {
     return (
       <Radix.Content
-        ref={ref}
         className={[s.content, Card.glass, animation.flip].join(" ")}
         sideOffset={12}
         collisionPadding={12}
+        ref={ref}
         {...props}
       />
     );
