@@ -1,15 +1,21 @@
-.root {
-  flex: 1;
+.root,
+.viewport {
+  border-radius: inherit;
+
+  /* Traditional sizing */
   width: 100%;
   height: 100%;
-  display: flex;
-  flex-direction: column;
+
+  /* Modern fix
+  https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
+  */
+  flex: 1;
+  overflow: hidden;
 }
 
-.viewport {
-  flex: 1;
-  width: 100%;
-  height: 100%;
+.root {
+  display: flex;
+  flex-direction: column;
 }
 
 /* Ensure content takes parent and height. See:
@@ -20,6 +26,7 @@
   /* Radix injects table display inline */
   display: flex !important;
   flex-direction: column;
+
   min-width: 100%;
   min-height: 100%;
 }
