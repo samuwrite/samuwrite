@@ -4,5 +4,8 @@
   border-radius: calc(6px + 18px / 2);
   /* toolbar is about 50px */
   max-height: calc(100vh - 70px);
-  overflow: auto;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
 }
