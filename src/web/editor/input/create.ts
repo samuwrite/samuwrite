@@ -79,8 +79,8 @@ export const useEditorCreate = (params: Params): void => {
     createEnv();
     const editor = monaco.editor.create(container, {
       ...OPTIONS,
-      value: SAMPLE_TAILWIND,
-      // value: "",
+      // value: SAMPLE_TAILWIND,
+      value: "",
     });
     setEditor(editor);
 

@@ -86,10 +86,6 @@ body {
   font-family: "Inter var", sans-serif;
   font-size: 14px;
 
-  /* We use some 3D animation */
-  perspective: 100vh;
-  perspective-origin: top center;
-
   /* Better ease */
   /* https://www.joshwcomeau.com/animation/css-transitions/ */
   --ease: cubic-bezier(0.44, 0.21, 0, 1);
