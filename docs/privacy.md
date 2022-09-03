@@ -1,19 +1,18 @@
 # Privacy Policy
 
-Rosé Pine Writer (the "App") does NOT collect any data.
-This applies for both:
+Samuwrite does NOT collect any data. This applies for both:
 
 - [The Mac app][mac] distributed on App Store
-- [The web app][web] available at rosepine.dev
+- [The web app][web] available at samuwrite.com
 
 [mac]: https://apps.apple.com/app/samuwrite/id1629628152
-[web]: https://app.rosepine.dev
+[web]: https://samuwrite.com
 
 Both apps have NO trackers, ads, or analytics.
 Their complete source code is available at our [GitHub repo][repo].
 Anyone can review the source code and build the apps themselves.
 
-[repo]: https://github.com/thien-do/rosepine.dev
+[repo]: https://github.com/thien-do/samuwrite.com
 
 ## The Mac App
 
@@ -27,14 +26,14 @@ To verify our claims, use a debugging proxy app (e.g. [Proxyman]).
 
 ## The Web App
 
-The web app is served as static files.
+The web app is served completely by static files.
 It does not make any request to 3rd-party services.
 After the initial load, it is fully functional without an internet connection.
 
 To verify our claims, use browsers' built-in privacy tools such as
 [Safari's Privacy Report][safari] or
 [Edge's Tracking Preventation][edge].
-You can also see all the requests the app makes using developer tools such as
+You can also see all the requests the app makes using a developer tool such as
 [Chrome's DevTools][chrome].
 
 [safari]: https://support.apple.com/guide/safari/ibrw35004465/mac
