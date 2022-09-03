@@ -1,30 +1,29 @@
+import * as Radix from "@radix-ui/react-tooltip";
 import { ReactNode } from "react";
-import { useFloating } from "../floating/hook";
-import * as sCard from "../card/card.module.css";
+import { Card } from "../card/card";
 import * as s from "./tooltip.module.css";
 
-interface Props {
+interface Props extends Radix.TooltipProps {
   children: ReactNode;
-  text: string;
+  content: string;
+  shortcut?: string;
 }
 
 export const Tooltip = (props: Props): JSX.Element => {
-  const { children, text } = props;
-  const { floating, reference, strategy, x, y } = useFloating();
+  const { children, content, shortcut, ...rootProps } = props;
   return (
-    <>
-      <div ref={reference}>{children}</div>
-      <div
-        ref={floating}
-        className={[sCard.solid, s.container].join(" ")}
-        style={{
-          position: strategy,
-          top: y ?? 0,
-          left: x ?? 0,
-        }}
-      >
-        {text}
-      </div>
-    </>
+    <Radix.Root {...rootProps}>
+      <Radix.Trigger asChild>{children}</Radix.Trigger>
+      <Radix.Portal>
+        <Radix.Content
+          className={[s.container, Card.solid].join(" ")}
+          sideOffset={6}
+          collisionPadding={6}
+        >
+          <span>{content}</span>
+          {shortcut ? <span className={s.shortcut}>{shortcut}</span> : null}
+        </Radix.Content>
+      </Radix.Portal>
+    </Radix.Root>
   );
 };

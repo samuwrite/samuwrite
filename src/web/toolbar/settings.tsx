@@ -10,16 +10,15 @@ interface Props extends SettingsState, LayoutState {}
 
 export const ToolbarSettings = (props: Props): JSX.Element => {
   const [open, setOpen] = useState(false);
+
   return (
-    <Popover.Root open={open} onOpenChange={setOpen}>
-      <Popover.Trigger asChild>
+    <Popover
+      open={open}
+      onOpenChange={setOpen}
+      trigger={
         <ToolbarButton Icon={GearIcon} label="Settings" selected={open} />
-      </Popover.Trigger>
-      <Popover.Portal>
-        <Popover.Content>
-          <SettingsPanel {...props} />
-        </Popover.Content>
-      </Popover.Portal>
-    </Popover.Root>
+      }
+      content={<SettingsPanel {...props} />}
+    />
   );
 };
