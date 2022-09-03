@@ -4,6 +4,7 @@ import tinykeys from "tinykeys";
 import { Layout, LayoutState } from "../layout/type";
 import { getLayoutFromPreview } from "../settings/preview/preview";
 import { Settings } from "../settings/type";
+import { Tooltip } from "../tooltip/tooltip";
 import { ToolbarButton } from "./button/button";
 
 interface Props extends LayoutState {
@@ -30,11 +31,13 @@ export const ToolbarPreview = (props: Props): JSX.Element => {
   }, [toggleLayout]);
 
   return (
-    <ToolbarButton
-      onClick={toggleLayout}
-      Icon={LogIcon}
-      label="Preview"
-      selected={layout !== "editor"}
-    />
+    <Tooltip content="Preview" shortcut="⌘ R">
+      <ToolbarButton
+        onClick={toggleLayout}
+        Icon={LogIcon}
+        label="Preview"
+        selected={layout !== "editor"}
+      />
+    </Tooltip>
   );
 };

@@ -1,3 +1,4 @@
+import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { useState } from "react";
 import { Doc } from "../doc/type";
 import { Editor } from "../editor/type";
@@ -22,7 +23,7 @@ export const App = (): JSX.Element => {
   const [editor, setEditor] = useState<Editor | null>(null);
   const { setSettings, settings } = useSettingsState();
 
-  return (
+  const app = (
     <div className={s.container}>
       <AppTheme settings={settings} />
       {editor !== null ? (
@@ -48,4 +49,6 @@ export const App = (): JSX.Element => {
       </div>
     </div>
   );
+
+  return <TooltipProvider>{app}</TooltipProvider>;
 };

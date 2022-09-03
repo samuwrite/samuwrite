@@ -1,8 +1,11 @@
 import { FileDirectoryIcon } from "@primer/octicons-react";
+import { useEffect } from "react";
+import tinykeys from "tinykeys";
 import { Doc, DocState } from "../doc/type";
 import { Editor } from "../editor/type";
 import { getErrorMessage } from "../error/message";
 import { openDoc } from "../host/open";
+import { Tooltip } from "../tooltip/tooltip";
 import { ToolbarButton } from "./button/button";
 
 interface Props extends DocState {
@@ -39,11 +42,25 @@ const open = async (props: Props): Promise<void> => {
 };
 
 export const ToolbarOpen = (props: Props): JSX.Element => {
+  const { doc, editor, setDoc } = props;
+
+  useEffect(() => {
+    const unsub = tinykeys(window, {
+      "$mod+o": (event) => {
+        event.preventDefault();
+        open({ doc, editor, setDoc });
+      },
+    });
+    return () => unsub();
+  }, [doc, editor, setDoc]);
+
   return (
-    <ToolbarButton
-      Icon={FileDirectoryIcon}
-      label="Open"
-      onClick={() => open(props)}
-    />
+    <Tooltip content="Open…" shortcut="⌘ O">
+      <ToolbarButton
+        Icon={FileDirectoryIcon}
+        label="Open"
+        onClick={() => open(props)}
+      />
+    </Tooltip>
   );
 };
