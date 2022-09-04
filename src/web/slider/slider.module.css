@@ -1,0 +1,71 @@
+.root {
+  position: relative;
+
+  display: flex;
+  align-items: center;
+
+  user-select: none;
+  touch-action: none;
+
+  /* Only support horizontal for now */
+  width: 100%;
+  height: 24px;
+
+  --track-height: 4px;
+  --mark-height: 8px;
+  --mark-width: 2px;
+  /* --mark-step is set dynamically in "slider.tsx" */
+  --thumb-width: 8px;
+  --thumb-height: 20px;
+
+  --track-color: var(--color-highlightMed);
+  --mark-color: var(--color-highlightHigh);
+  --thumb-color: var(--color-subtle);
+}
+
+.track {
+  position: relative;
+  flex: 1;
+  background-color: var(--track-color);
+  height: var(--track-height);
+}
+
+.marks {
+  display: block;
+  position: absolute;
+  top: calc((var(--track-height) - var(--mark-height)) / 2);
+  left: 0;
+  width: 100%;
+
+  height: var(--mark-height);
+  background-size: var(--mark-step) 100%;
+  background-repeat: repeat;
+  /* first mark */
+  border-left: solid var(--mark-width) var(--mark-color);
+  /* 2nd mark to end */
+  background-image: linear-gradient(
+    to left,
+    var(--mark-color) 0px var(--mark-width),
+    transparent var(--mark-width)
+  );
+}
+
+.range {
+  position: absolute;
+  /* Don't support range yet */
+  background-color: transparent;
+  height: 100%;
+}
+
+.thumb {
+  display: block;
+  outline-offset: 2px;
+  width: var(--thumb-width);
+  height: var(--thumb-height);
+  border-radius: var(--thumb-height);
+  background-color: var(--thumb-color);
+}
+
+.thumb:active {
+  background-color: var(--color-text);
+}
