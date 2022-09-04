@@ -1,5 +1,6 @@
 import { FileDirectoryIcon } from "@primer/octicons-react";
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
+import { AlertContext } from "../alert/context";
 import { Doc, DocState } from "../doc/type";
 import { Editor } from "../editor/type";
 import { getErrorMessage } from "../error/message";
@@ -12,17 +13,18 @@ interface Props extends DocState {
   editor: Editor;
 }
 
-const open = async (props: Props): Promise<void> => {
-  const { doc, editor, setDoc } = props;
+const open = async (props: Props & AlertContext): Promise<void> => {
+  const { doc, editor, setDoc, alert } = props;
 
   // Unsaved changes
   if (editor.getValue() !== doc.content) {
-    const msg = [
-      "You have unsaved changes.",
-      "Are you sure you want to open a new file?",
-      "Any unsaved changes will be lost.",
-    ].join(" ");
-    const confirm = window.confirm(msg);
+    const confirm = await alert({
+      title: "Are you sure you want to open a new file?",
+      description: [
+        "You have unsaved changes.",
+        "Any unsaved changes will be lost.",
+      ].join(" "),
+    });
     if (confirm === false) return;
   }
 
@@ -43,10 +45,11 @@ const open = async (props: Props): Promise<void> => {
 
 export const ToolbarOpen = (props: Props): JSX.Element => {
   const { doc, editor, setDoc } = props;
+  const { alert } = useContext(AlertContext);
 
   const callback = useCallback(() => {
-    open({ doc, editor, setDoc });
-  }, [doc, editor, setDoc]);
+    open({ doc, editor, setDoc, alert });
+  }, [doc, editor, setDoc, alert]);
   useShortcut("$mod+o", callback);
 
   return (
@@ -54,7 +57,7 @@ export const ToolbarOpen = (props: Props): JSX.Element => {
       <ToolbarButton
         Icon={FileDirectoryIcon}
         label="Open"
-        onClick={() => open(props)}
+        onClick={() => open({ ...props, alert })}
       />
     </Tooltip>
   );

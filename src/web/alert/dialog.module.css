@@ -1,0 +1,43 @@
+.overlay {
+  background-color: var(--color-surface);
+  position: fixed;
+  inset: 0;
+  opacity: 0.5;
+}
+
+.content {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+
+  width: 90vw;
+  max-width: 480px;
+  max-height: 85vh;
+}
+
+.title {
+  color: var(--color-text);
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+}
+
+.description {
+  color: var(--color-subtle);
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.action {
+  background-color: green;
+}
+
+.cancel {
+  background-color: yellow;
+}

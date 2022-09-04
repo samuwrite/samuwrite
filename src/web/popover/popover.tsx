@@ -26,6 +26,5 @@ const Content = (props: Radix.PopoverContentProps): JSX.Element => {
 export const Popover = {
   Content,
   Root: Radix.Root,
-  // Separate Trigger so it easier to use Tooltip
   Trigger: Radix.Trigger,
 };

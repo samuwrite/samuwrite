@@ -1,5 +1,6 @@
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { useState } from "react";
+import { AlertProvider } from "../alert/context";
 import { Doc } from "../doc/type";
 import { Editor } from "../editor/type";
 import "../font/font.css";
@@ -50,5 +51,9 @@ export const App = (): JSX.Element => {
     </div>
   );
 
-  return <TooltipProvider>{app}</TooltipProvider>;
+  return (
+    <AlertProvider>
+      <TooltipProvider>{app}</TooltipProvider>
+    </AlertProvider>
+  );
 };
