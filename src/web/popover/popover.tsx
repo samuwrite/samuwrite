@@ -15,14 +15,9 @@ const Content = (props: Radix.PopoverContentProps): JSX.Element => {
         className={[s.container, Card.glass, animation.flip].join(" ")}
         {...rest}
       >
-        <Scroll.Root>
-          <Scroll.Viewport>
-            <div className={s.content}>{children}</div>
-          </Scroll.Viewport>
-          <Scroll.Track orientation="vertical">
-            <Scroll.Thumb />
-          </Scroll.Track>
-        </Scroll.Root>
+        <Scroll>
+          <div className={s.content}>{children}</div>
+        </Scroll>
       </Radix.Content>
     </Radix.Portal>
   );

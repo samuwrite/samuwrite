@@ -17,19 +17,14 @@ export const Preview = (props: Props): JSX.Element => {
   const html = usePreviewHtml({ editor });
 
   return (
-    <Scroll.Root>
-      <Scroll.Viewport>
-        <div className={s.container}>
-          <div className={[s.card, sCard.solid].join(" ")}>
-            <TemplateContainer template={settings.template}>
-              <div dangerouslySetInnerHTML={{ __html: html }} />
-            </TemplateContainer>
-          </div>
+    <Scroll>
+      <div className={s.container}>
+        <div className={[s.card, sCard.solid].join(" ")}>
+          <TemplateContainer template={settings.template}>
+            <div dangerouslySetInnerHTML={{ __html: html }} />
+          </TemplateContainer>
         </div>
-      </Scroll.Viewport>
-      <Scroll.Track orientation="vertical">
-        <Scroll.Thumb />
-      </Scroll.Track>
-    </Scroll.Root>
+      </div>
+    </Scroll>
   );
 };

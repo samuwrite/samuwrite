@@ -31,7 +31,7 @@
   min-height: 100%;
 }
 
-.track {
+.scrollbar {
   /* ensures no selection */
   user-select: none;
   /* disable browser handling of all panning and zooming gestures on touch devices */
@@ -43,11 +43,11 @@
   background-color: transparent;
 }
 
-.track[data-orientation="vertical"] {
+.scrollbar[data-orientation="vertical"] {
   width: 15px;
 }
 
-.track[data-orientation="horizontal"] {
+.scrollbar[data-orientation="horizontal"] {
   flex-direction: column;
   height: 15px;
 }
