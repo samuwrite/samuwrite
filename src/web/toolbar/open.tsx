@@ -24,6 +24,8 @@ const open = async (props: Props & AlertContext): Promise<void> => {
         "You have unsaved changes.",
         "Any unsaved changes will be lost.",
       ].join(" "),
+      action: { label: "Discard unsaved changes" },
+      cancel: { label: "Cancel" },
     });
     if (confirm === false) return;
   }

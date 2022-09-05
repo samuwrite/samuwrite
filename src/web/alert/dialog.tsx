@@ -1,18 +1,44 @@
 import * as Radix from "@radix-ui/react-alert-dialog";
 import { Card } from "../card/card";
-import { patch } from "../utils/patch";
 import * as s from "./dialog.module.css";
 
-const Content = (props: Radix.AlertDialogContentProps): JSX.Element => {
-  const { children, ...contentProps } = props;
+interface Button {
+  label: string;
+  onClick?: () => void;
+}
+
+export type { Button as AlertDialogContentButton };
+
+interface Props {
+  title: string;
+  description: string;
+  cancel?: Button;
+  action?: Button;
+  content?: Radix.AlertDialogContentProps;
+}
+
+export type { Props as AlertDialogContentProps };
+
+const Content = (props: Props): JSX.Element => {
+  const { title, description, cancel, action, content } = props;
   return (
     <Radix.Portal>
       <Radix.Overlay className={s.overlay} />
-      <Radix.Content
-        className={[s.content, Card.glass].join(" ")}
-        {...contentProps}
-      >
-        {children}
+      <Radix.Content className={[s.content, Card.glass].join(" ")} {...content}>
+        <Radix.Title className={s.title}>{title}</Radix.Title>
+        <Radix.Description className={s.description}>
+          {description}
+        </Radix.Description>
+        {cancel ? (
+          <Radix.Cancel className={s.cancel} onClick={cancel.onClick}>
+            {cancel.label}
+          </Radix.Cancel>
+        ) : null}
+        {action ? (
+          <Radix.Action className={s.action} onClick={action.onClick}>
+            {action.label}
+          </Radix.Action>
+        ) : null}
       </Radix.Content>
     </Radix.Portal>
   );
@@ -21,9 +47,5 @@ const Content = (props: Radix.AlertDialogContentProps): JSX.Element => {
 export const AlertDialog = {
   Root: Radix.Root,
   Trigger: Radix.Trigger,
-  Title: patch(Radix.Title, { className: s.title }),
-  Description: patch(Radix.Description, { className: s.description }),
-  Action: patch(Radix.Action, { className: s.action }),
-  Cancel: patch(Radix.Cancel, { className: s.cancel }),
   Content,
 };
