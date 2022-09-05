@@ -15,7 +15,7 @@ const openWeb = async (): Promise<Doc | null> => {
   if (window.showOpenFilePicker === undefined) {
     const msg = [
       "Your browser does not allow Samuwrite to open local files.",
-      "Please switch to another browser or use the Mac app of Samuwrite.",
+      "Please use another browser or the Mac app of Samuwrite.",
     ].join(" ");
     throw Error(msg);
   }

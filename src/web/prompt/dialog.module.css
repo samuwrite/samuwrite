@@ -34,10 +34,8 @@
   line-height: 20px;
 }
 
-.action {
-  background-color: green;
-}
-
-.cancel {
-  background-color: yellow;
+.footer {
+  display: flex;
+  justify-content: end;
+  gap: 24px;
 }
