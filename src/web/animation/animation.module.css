@@ -5,23 +5,46 @@
 }
 
 /* prettier-ignore */
-@keyframes in {
+@keyframes flip-in {
   from { opacity: 0; transform: rotateX(-10deg); }
   to { opacity: 1; transform: rotateX(0deg); }
 }
 
 /* prettier-ignore */
-@keyframes out {
+@keyframes flip-out {
   from { opacity: 1; transform: rotateX(0deg); }
   to { opacity: 0; transform: rotateX(-10deg); }
 }
 
 .flip[data-state="open"] {
-  animation-name: in;
-  animation-duration: 200ms;
+  animation-name: flip-in;
+  animation-duration: 0.2s;
 }
 
 .flip[data-state="closed"] {
-  animation-name: out;
-  animation-duration: 600ms;
+  animation-name: flip-out;
+  animation-duration: 0.6s;
+}
+
+/* Fade */
+
+.fade {
+  will-change: opacity;
+  animation-timing-function: var(--ease);
+}
+
+/* prettier-ignore */
+@keyframes fade-in { from { opacity: 0; } to { opacity: 1; } }
+
+/* prettier-ignore */
+@keyframes fade-out { from { opacity: 1; } to { opacity: 0; } }
+
+.fade[data-state="open"] {
+  animation-name: fade-in;
+  animation-duration: 0.4s;
+}
+
+.fade[data-state="closed"] {
+  animation-name: fade-out;
+  animation-duration: 0.8s;
 }
