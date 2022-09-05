@@ -1,11 +1,11 @@
 import { TooltipProvider } from "@radix-ui/react-tooltip";
 import { useState } from "react";
-import { AlertProvider } from "../alert/context";
 import { Doc } from "../doc/type";
 import { Editor } from "../editor/type";
 import "../font/font.css";
 import { LayoutContainer } from "../layout/container";
 import { Layout } from "../layout/type";
+import { PromptProvider } from "../prompt/context";
 import { useSettingsState } from "../settings/state";
 import { Toolbar } from "../toolbar/toolbar";
 import "./app.css";
@@ -52,8 +52,8 @@ export const App = (): JSX.Element => {
   );
 
   return (
-    <AlertProvider>
+    <PromptProvider>
       <TooltipProvider>{app}</TooltipProvider>
-    </AlertProvider>
+    </PromptProvider>
   );
 };
