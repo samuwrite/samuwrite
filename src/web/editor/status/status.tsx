@@ -10,13 +10,9 @@ interface Props {
   settings: Settings;
 }
 
-const envDone = { current: false };
-
-const createEnv = () => {
-  if (envDone.current) return;
+const mapKey = () => {
   VimMode.Vim.map("jj", "<Esc>", "insert");
   VimMode.Vim.map("jk", "<Esc>", "insert");
-  envDone.current = true;
 };
 
 export const EditorStatus = (props: Props): JSX.Element => {
@@ -26,12 +22,12 @@ export const EditorStatus = (props: Props): JSX.Element => {
   const { vim: settingsVim } = settings;
   useEffect(() => {
     if (settingsVim === false) return;
-    createEnv();
 
     const status = statusRef.current;
     if (status === null) throw Error("`status` is null");
 
     const vimMode = initVimMode(editor, status);
+    // mapKey();
     return () => vimMode.dispose();
   }, [editor, settingsVim, statusRef]);
 

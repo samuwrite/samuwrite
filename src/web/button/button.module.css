@@ -1,0 +1,30 @@
+.button {
+  display: block;
+  padding: 6px 15px;
+  border: none;
+  border-radius: 6px;
+
+  color: var(--color-text);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 18px;
+  text-decoration: none;
+  text-align: center;
+}
+
+.button:hover {
+  background-color: var(--color-overlay);
+}
+
+.button:active {
+  background-color: var(--color-highlightHigh);
+}
+
+.primary {
+  background-color: var(--color-overlay);
+}
+
+.secondary {
+  background-color: var(--color-overlay);
+  color: var(--color-subtle);
+}

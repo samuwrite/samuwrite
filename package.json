@@ -29,6 +29,7 @@
     "@radix-ui/react-radio-group": "1.0.0",
     "@radix-ui/react-scroll-area": "1.0.0",
     "@radix-ui/react-slider": "^1.0.0",
+    "@radix-ui/react-slot": "^1.0.0",
     "@radix-ui/react-switch": "1.0.0",
     "@radix-ui/react-tooltip": "1.0.0",
     "@rose-pine/palette": "3.0.1",

@@ -1,11 +1,12 @@
 import { FileDirectoryIcon } from "@primer/octicons-react";
 import { useCallback, useContext } from "react";
+import { Button } from "../button/button";
 import { Doc, DocState } from "../doc/type";
 import { Editor } from "../editor/type";
-import { getErrorMessage } from "../error/message";
 import { openDoc } from "../host/open";
 import { PromptContext, PromptState, PromptValue } from "../prompt/context";
 import { PromptDialog } from "../prompt/dialog";
+import { alertErrorWithMac } from "../prompt/mac";
 import { useShortcut } from "../shortcut/shortcut";
 import { Tooltip } from "../tooltip/tooltip";
 import { ToolbarButton } from "./button/button";
@@ -25,34 +26,11 @@ const confirmUnsaved = async ({
     ].join(" "),
     buttons: (resolve) => (
       <>
-        <PromptDialog.Cancel onClick={() => resolve(false)}>
-          cancel
+        <PromptDialog.Cancel asChild onClick={() => resolve(false)}>
+          <Button autoFocus>Cancel</Button>
         </PromptDialog.Cancel>
-        <PromptDialog.Action onClick={() => resolve(true)}>
-          Discard unsaved changes
-        </PromptDialog.Action>
-      </>
-    ),
-  });
-  return promise;
-};
-
-const alertError = async ({
-  prompt,
-  error,
-}: PromptState & { error: unknown }): Promise<PromptValue> => {
-  const promise = await prompt({
-    title: "Cannot open file",
-    description: getErrorMessage(error),
-    buttons: (resolve) => (
-      <>
-        <PromptDialog.Cancel onClick={() => resolve(false)} asChild>
-          <a href="https://google.com" target="_blank">
-            Download Mac App
-          </a>
-        </PromptDialog.Cancel>
-        <PromptDialog.Action onClick={() => resolve(true)}>
-          Dismiss
+        <PromptDialog.Action asChild onClick={() => resolve(true)}>
+          <Button primary>Discard changes</Button>
         </PromptDialog.Action>
       </>
     ),
@@ -75,8 +53,8 @@ const open = async (props: Props & PromptState): Promise<void> => {
     newDoc = await openDoc();
     if (newDoc === null) return;
   } catch (error: unknown) {
-    const alert = await alertError({ prompt, error });
-    console.log({ alert });
+    const title = "Cannot open file";
+    await alertErrorWithMac({ title, prompt, error });
     return;
   }
 
