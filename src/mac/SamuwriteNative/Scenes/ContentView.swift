@@ -38,7 +38,7 @@ struct ContentView: View {
         if let chosenFile = panel.url {
             let path = chosenFile.path
             guard let data = FileManager.default.contents(atPath: path) else { return }
-            let content = NSString(data: data, encoding: NSUTF8StringEncoding)
+            let content = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
             // TODO: Use `Document` object.
             let jsonData: [String: Any] = [
                 "path": path,
