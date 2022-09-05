@@ -5,11 +5,15 @@ type Value = string | boolean;
 
 export type { Value as PromptValue };
 
+export type PromptButtons = (resolve: (value: Value) => void) => ReactNode;
+
 interface DialogProps extends Omit<PromptDialogContentProps, "buttons"> {
-  buttons: (resolve: (value: Value) => void) => ReactNode;
+  buttons: PromptButtons;
 }
 
 type Prompt = (props: DialogProps) => Promise<Value>;
+
+export type { Prompt };
 
 export interface PromptState {
   prompt: Prompt;

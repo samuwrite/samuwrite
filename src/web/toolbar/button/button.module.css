@@ -12,7 +12,7 @@
 }
 
 .button:active {
-  background-color: var(--color-highlightMed);
+  background-color: var(--color-highlightHigh);
 }
 
 .button.selected {

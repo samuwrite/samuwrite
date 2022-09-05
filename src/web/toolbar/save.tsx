@@ -1,10 +1,14 @@
 import { DownloadIcon } from "@primer/octicons-react";
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
+import { Button } from "../button/button";
 import { DocState } from "../doc/type";
 import { Editor } from "../editor/type";
 import { getErrorMessage } from "../error/message";
 import { saveDoc } from "../host/save";
 import { saveDocAs } from "../host/save-as";
+import { PromptContext, PromptState, PromptValue } from "../prompt/context";
+import { PromptDialog } from "../prompt/dialog";
+import { alertErrorWithMac } from "../prompt/mac";
 import { useShortcut } from "../shortcut/shortcut";
 import { Tooltip } from "../tooltip/tooltip";
 import { ToolbarButton } from "./button/button";
@@ -13,8 +17,8 @@ interface Props extends DocState {
   editor: Editor;
 }
 
-const save = async (props: Props): Promise<void> => {
-  const { doc, editor, setDoc } = props;
+const save = async (props: Props & PromptState): Promise<void> => {
+  const { doc, editor, setDoc, prompt } = props;
 
   const content = editor.getValue();
 
@@ -30,17 +34,19 @@ const save = async (props: Props): Promise<void> => {
       setDoc({ ...doc, content });
     }
   } catch (error: unknown) {
-    window.alert(`Cannot save: ${getErrorMessage(error)}`);
+    const title = "Cannot save file";
+    await alertErrorWithMac({ title, error, prompt });
     return;
   }
 };
 
 export const ToolbarSave = (props: Props): JSX.Element => {
   const { doc, editor, setDoc } = props;
+  const { prompt } = useContext(PromptContext);
 
   const callback = useCallback(() => {
-    save({ doc, editor, setDoc });
-  }, [doc, editor, setDoc]);
+    save({ doc, editor, setDoc, prompt });
+  }, [doc, editor, setDoc, prompt]);
   useShortcut("$mod+s", callback);
 
   return (
@@ -48,7 +54,7 @@ export const ToolbarSave = (props: Props): JSX.Element => {
       <ToolbarButton
         Icon={DownloadIcon}
         label="Save"
-        onClick={() => save(props)}
+        onClick={() => save({ ...props, prompt })}
       />
     </Tooltip>
   );
