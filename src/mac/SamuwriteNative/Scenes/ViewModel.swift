@@ -9,6 +9,6 @@ import Foundation
 import Combine
 
 final class ViewModel: ObservableObject {
-    var contentValuePublisher = PassthroughSubject<[String: Any], Never>()
+    var contentValuePublisher = PassthroughSubject<[String: Any], ErrorHandling>()
     var pathValuePublisher = PassthroughSubject<String, Never>()
 }

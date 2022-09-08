@@ -48,7 +48,10 @@ extension WebViewCoordinator: WKScriptMessageHandlerWithReply {
                 .viewModel
                 .contentValuePublisher
                 .receive(on: RunLoop.main)
-                .sink(receiveValue: { jsonData in
+                .sink(receiveCompletion: { error in
+                    print(error)
+                    replyHandler(nil, nil)
+                }, receiveValue: { jsonData in
                     replyHandler(jsonData, nil)
                 })
             delegate?.openFile()

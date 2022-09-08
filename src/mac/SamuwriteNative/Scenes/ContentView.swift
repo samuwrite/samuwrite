@@ -34,17 +34,20 @@ struct ContentView: View {
         panel.allowsMultipleSelection = false
         panel.canChooseDirectories = false
         panel.allowedFileTypes = ["TXT", "txt", "md", "MD"]
-        panel.runModal()
-        if let chosenFile = panel.url {
-            let path = chosenFile.path
-            guard let data = FileManager.default.contents(atPath: path) else { return }
-            let content = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
-            // TODO: Use `Document` object.
-            let jsonData: [String: Any] = [
-                "path": path,
-                "content": content ?? ""
-            ]
-            viewModel.contentValuePublisher.send(jsonData)
+        if panel.runModal() == .OK {
+            if let chosenFile = panel.url {
+                let path = chosenFile.path
+                guard let data = FileManager.default.contents(atPath: path) else { return }
+                let content = NSString(data: data, encoding: String.Encoding.utf8.rawValue)
+                // TODO: Use `Document` object.
+                let jsonData: [String: Any] = [
+                    "path": path,
+                    "content": content ?? ""
+                ]
+                viewModel.contentValuePublisher.send(jsonData)
+            }
+        } else {
+            viewModel.contentValuePublisher.send(completion: .failure(.cannotOpenFile))
         }
     }
     
