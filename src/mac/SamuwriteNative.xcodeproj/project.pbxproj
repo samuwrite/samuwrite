@@ -16,7 +16,7 @@
 		6A2F552928A8E459003DE456 /* NSNotificationName+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A2F552828A8E459003DE456 /* NSNotificationName+.swift */; };
 		6A33E93F28BFE50500973451 /* dist in Resources */ = {isa = PBXBuildFile; fileRef = 9AA4E6DD640177114C88AF13 /* dist */; };
 		6A8DB0EE28BE4492002702B1 /* DraggableWebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A8DB0ED28BE4492002702B1 /* DraggableWebView.swift */; };
-		6AA7105028C9BA7E00B400F1 /* Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA7104F28C9BA7E00B400F1 /* Error.swift */; };
+		6AA7105028C9BA7E00B400F1 /* ErrorHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AA7104F28C9BA7E00B400F1 /* ErrorHandler.swift */; };
 		6AC66F3828B691A2000D75B2 /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC66F3728B691A2000D75B2 /* Document.swift */; };
 		6AC673B42855DDDE009D58A2 /* SamuwriteNativeApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC673B32855DDDE009D58A2 /* SamuwriteNativeApp.swift */; };
 		6AC673B62855DDDE009D58A2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AC673B52855DDDE009D58A2 /* ContentView.swift */; };
@@ -36,7 +36,7 @@
 		6A2F552828A8E459003DE456 /* NSNotificationName+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSNotificationName+.swift"; sourceTree = "<group>"; };
 		6A89EB8E28589C70006D2258 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		6A8DB0ED28BE4492002702B1 /* DraggableWebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DraggableWebView.swift; sourceTree = "<group>"; };
-		6AA7104F28C9BA7E00B400F1 /* Error.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Error.swift; sourceTree = "<group>"; };
+		6AA7104F28C9BA7E00B400F1 /* ErrorHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorHandler.swift; sourceTree = "<group>"; };
 		6AC66F3728B691A2000D75B2 /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
 		6AC673B02855DDDE009D58A2 /* Samuwrite.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Samuwrite.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6AC673B32855DDDE009D58A2 /* SamuwriteNativeApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SamuwriteNativeApp.swift; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 				6AC673C22855E8DE009D58A2 /* WebViewRepresentable.swift */,
 				6A8DB0ED28BE4492002702B1 /* DraggableWebView.swift */,
 				6A2F552428A8DD5D003DE456 /* ViewModel.swift */,
-				6AA7104F28C9BA7E00B400F1 /* Error.swift */,
+				6AA7104F28C9BA7E00B400F1 /* ErrorHandler.swift */,
 				6A2F552228A8D77E003DE456 /* WebViewCoordinator.swift */,
 				6A2F551528A7942F003DE456 /* JavaScriptInterfaceDelegate.swift */,
 			);
@@ -225,7 +225,7 @@
 				6A2F552328A8D77E003DE456 /* WebViewCoordinator.swift in Sources */,
 				6A2F552928A8E459003DE456 /* NSNotificationName+.swift in Sources */,
 				6A2F552528A8DD5D003DE456 /* ViewModel.swift in Sources */,
-				6AA7105028C9BA7E00B400F1 /* Error.swift in Sources */,
+				6AA7105028C9BA7E00B400F1 /* ErrorHandler.swift in Sources */,
 				6A2F551628A7942F003DE456 /* JavaScriptInterfaceDelegate.swift in Sources */,
 				6A2F551C28A79DE8003DE456 /* Environment.swift in Sources */,
 				6A2F552728A8E39F003DE456 /* View+NotificationCenter.swift in Sources */,
