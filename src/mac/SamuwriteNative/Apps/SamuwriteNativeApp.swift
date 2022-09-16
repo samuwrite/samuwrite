@@ -9,6 +9,8 @@ import SwiftUI
 
 @main
 struct SamuwriteNativeApp: App {
+    @NSApplicationDelegateAdaptor(AppDelegate.self) private var appDelegate
+    
     var body: some Scene {
         WindowGroup {
             ContentView()
@@ -27,5 +29,6 @@ struct SamuwriteNativeApp: App {
         }
         .windowStyle(.hiddenTitleBar)
         .windowToolbarStyle(.unified)
+        .handlesExternalEvents(matching: [])
     }
 }
