@@ -160,6 +160,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6AC673BF2855DDDF009D58A2 /* Build configuration list for PBXNativeTarget "SamuwriteNative" */;
 			buildPhases = (
+				6AD38F1028D6156600ABD1E8 /* Check webview is running */,
 				6AC673AC2855DDDE009D58A2 /* Sources */,
 				6AC673AD2855DDDE009D58A2 /* Frameworks */,
 				6AC673AE2855DDDE009D58A2 /* Resources */,
@@ -219,6 +220,28 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		6AD38F1028D6156600ABD1E8 /* Check webview is running */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = "Check webview is running";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\nif [ \"${APP_DISPLAY_NAME}\" == \"SamuwriteDev\" ] ; then\n    if ! lsof -Pi :1234 -sTCP:LISTEN -t >/dev/null ; then\n        echo \"error: Please run 'npm run dev' to start local webview.\" >&2\n        exit 1\n    fi\nfi\n\necho \"SUCCESS run on port :1234\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6AC673AC2855DDDE009D58A2 /* Sources */ = {
