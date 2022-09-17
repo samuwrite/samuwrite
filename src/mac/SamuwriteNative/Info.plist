@@ -12,10 +12,10 @@
 			</array>
 			<key>CFBundleTypeIconSystemGenerated</key>
 			<true/>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
 			<key>CFBundleTypeName</key>
 			<string>Markdown</string>
+			<key>CFBundleTypeRole</key>
+			<string>Editor</string>
 			<key>LSHandlerRank</key>
 			<string>Default</string>
 		</dict>
