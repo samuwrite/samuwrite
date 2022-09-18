@@ -274,6 +274,7 @@
 /* Begin XCBuildConfiguration section */
 		6AC673BD2855DDDF009D58A2 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AD38F1F28D61EED00ABD1E8 /* SamuwriteNative.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -334,6 +335,7 @@
 		};
 		6AC673BE2855DDDF009D58A2 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6AD38F1F28D61EED00ABD1E8 /* SamuwriteNative.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -410,7 +412,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = "$(MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ldakhoa.SamuwriteNative;
 				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -442,7 +444,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.3.0;
+				MARKETING_VERSION = "$(MARKETING_VERSION)";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ldakhoa.SamuwriteNative;
 				PRODUCT_NAME = "$(APP_DISPLAY_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
