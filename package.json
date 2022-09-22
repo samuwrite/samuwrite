@@ -7,6 +7,7 @@
   },
   "devDependencies": {
     "@parcel/transformer-sass": "2.7.0",
+    "@types/lodash.debounce": "^4.0.7",
     "@types/react": "18.0.18",
     "@types/react-dom": "18.0.6",
     "@types/wicg-file-system-access": "2020.9.5",
@@ -33,6 +34,7 @@
     "@radix-ui/react-switch": "1.0.0",
     "@radix-ui/react-tooltip": "1.0.0",
     "@rose-pine/palette": "3.0.1",
+    "lodash.debounce": "^4.0.8",
     "monaco-editor": "0.31.0",
     "monaco-vim": "0.3.4",
     "react": "18.2.0",

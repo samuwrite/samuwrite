@@ -5,6 +5,7 @@ import { usePreviewHtml } from "./html";
 import * as s from "./preview.module.css";
 import * as sCard from "../card/card.module.css";
 import { Scroll } from "../scroll/scroll";
+import { usePreviewScroll } from "./state/scroll";
 
 interface Props {
   editor: Editor;
@@ -15,6 +16,7 @@ export const Preview = (props: Props): JSX.Element => {
   const { editor, settings } = props;
 
   const html = usePreviewHtml({ editor });
+  const contentRef = usePreviewScroll({ editor });
 
   return (
     <Scroll>
