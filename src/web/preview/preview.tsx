@@ -14,9 +14,9 @@ interface Props {
 
 export const Preview = (props: Props): JSX.Element => {
   const { editor, settings } = props;
-
   const html = usePreviewHtml({ editor });
-  const contentRef = usePreviewScroll({ editor });
+
+  usePreviewScroll({ editor });
 
   return (
     <Scroll>

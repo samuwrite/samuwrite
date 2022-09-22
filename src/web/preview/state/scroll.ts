@@ -19,9 +19,8 @@ const scrollPreview = (editor: Editor): void => {
   });
 };
 
-export const usePreviewScroll = (params: Params): Ref => {
+export const usePreviewScroll = (params: Params) => {
   const { editor } = params;
-  const contentRef = useRef<HTMLDivElement | null>(null);
 
   const listener: null | (() => void) = useMemo(() => {
     if (editor === null) return null;
@@ -33,6 +32,4 @@ export const usePreviewScroll = (params: Params): Ref => {
     const disposable = editor.onDidScrollChange(listener);
     return () => disposable.dispose();
   }, [editor, listener]);
-
-  return contentRef;
 };
