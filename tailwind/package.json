@@ -1,0 +1,15 @@
+{
+  "name": "@samuwrite/tailwind",
+  "version": "1.0.1",
+  "scripts": {
+    "build": "./scripts/build.sh"
+  },
+  "files": [
+    "dist/index.css"
+  ],
+  "devDependencies": {
+    "@tailwindcss/typography": "0.5.7",
+    "sass": "1.55.0",
+    "tailwindcss": "3.1.8"
+  }
+}

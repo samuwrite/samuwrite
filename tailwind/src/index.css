@@ -1,0 +1,4 @@
+/* Prose requires base/preflight styles */
+@tailwind base;
+/* Prose is technically a tailwind component */
+@tailwind components;
