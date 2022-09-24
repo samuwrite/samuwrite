@@ -10,6 +10,6 @@
     // Require to import JSON
     "allowSyntheticDefaultImports": true
   },
-  "include": ["src/web/**/*"],
+  "include": ["src/**/*"],
   "exclude": ["node_modules"]
 }
