@@ -1,6 +1,6 @@
 {
   "name": "@samuwrite/tailwind",
-  "version": "1.0.1",
+  "version": "1.0.3",
   "scripts": {
     "build": "./scripts/build.sh"
   },

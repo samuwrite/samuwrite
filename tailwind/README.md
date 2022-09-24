@@ -27,7 +27,7 @@ npm install @samuwrite/tailwind
 
 ```ts
 // app.ts
-import "@samuwrite/tailwind/dist/index.css";
+import "@samuwrite/tailwind";
 ```
 
 ```html
@@ -42,10 +42,7 @@ import "@samuwrite/tailwind/dist/index.css";
 ```html
 <!-- app.html -->
 <head>
-  <link
-    rel="stylesheet"
-    href="https://unpkg.com/@samuwrite/tailwind/dist/index.css"
-  />
+  <link rel="stylesheet" href="https://unpkg.com/@samuwrite/tailwind" />
 </head>
 <body>
   <div class="tailwind">
