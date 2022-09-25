@@ -24,11 +24,11 @@
     "@rose-pine/palette": "3.0.1",
     "@samuwrite/markdown": "^1.0.0",
     "@samuwrite/radix": "^1.0.0",
-    "@samuwrite/tailwind": "^1.0.3",
+    "@samuwrite/tailwind": "^1.0.4",
     "monaco-editor": "0.31.0",
     "monaco-vim": "0.3.4",
-    "react-dom": "18.2.0",
     "react": "18.2.0",
+    "react-dom": "18.2.0",
     "tinykeys": "1.4.0"
   }
 }
