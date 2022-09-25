@@ -1,15 +1,15 @@
 import { useState } from "react";
-import { AppLayoutState } from "~src/app/layout";
 import { Doc } from "~src/doc/type";
-import { SettingsState } from "~src/settings/type";
-import { EditorInput } from "./input/input";
+import { Settings } from "~src/settings/type";
 import * as s from "./editor.module.css";
+import { EditorInput } from "./input/input";
 import { EditorStatus } from "./status/status";
 import { useEditorTheme } from "./theme/theme";
-import { EditorToolbar } from "./toolbar/toolbar";
 import { EditorState } from "./type";
 
-interface Props extends EditorState, AppLayoutState, SettingsState {}
+interface Props extends EditorState {
+  settings: Settings;
+}
 
 const initialDoc: Doc = {
   handle: null,
@@ -18,21 +18,13 @@ const initialDoc: Doc = {
 };
 
 export const Editor = (props: Props): JSX.Element => {
-  const { editor, setEditor, settings, setSettings, layout, setLayout } = props;
+  const { editor, setEditor, settings } = props;
   const [doc, setDoc] = useState<Doc>(initialDoc);
 
   useEditorTheme({ settings });
 
   return (
     <div className={s.container}>
-      {editor !== null ? (
-        <div className={s.toolbar}>
-          <EditorToolbar
-            {...{ layout, setLayout, settings, setSettings }}
-            {...{ doc, setDoc, editor }}
-          />
-        </div>
-      ) : null}
       <div className={s.input}>
         <EditorInput {...{ setEditor, editor, settings }} />
       </div>

@@ -21,7 +21,10 @@ export const Preview = (props: Props): JSX.Element => {
       <div className={s.container}>
         <div className={[s.card, sCard.solid].join(" ")}>
           <TemplateContainer template={settings.template}>
-            <div dangerouslySetInnerHTML={{ __html: html }} />
+            <div
+              className={s.content}
+              dangerouslySetInnerHTML={{ __html: html }}
+            />
           </TemplateContainer>
         </div>
       </div>

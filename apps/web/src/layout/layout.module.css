@@ -1,0 +1,14 @@
+.container {
+  display: flex;
+  height: 100%;
+}
+
+.editor,
+.preview {
+  flex: 1 1 0px;
+  overflow: hidden;
+}
+
+.hide {
+  display: none;
+}

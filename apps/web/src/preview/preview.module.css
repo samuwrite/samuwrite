@@ -1,5 +1,6 @@
 .container {
   padding: 24px;
+  padding-top: 72px;
 
   /* Fix for "min-height: 100%"
   https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
@@ -13,4 +14,8 @@
   padding: 48px;
   /* Fix for min-height */
   flex: 1;
+}
+
+.content > *:first-child {
+  margin-top: 0;
 }

@@ -1,20 +1,16 @@
 .container {
-  display: flex;
   height: 100%;
+  position: relative;
 }
 
-.editor,
-.preview {
-  flex: 1 1 0px;
-  overflow: hidden;
+.toolbar {
+  position: absolute;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
-.hide {
-  display: none;
-}
-
-@media print {
-  .editor {
-    display: none;
-  }
+.body {
+  height: 100%;
 }
