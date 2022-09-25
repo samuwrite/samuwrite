@@ -1,16 +1,19 @@
 import { GearIcon } from "@primer/octicons-react";
 import { useCallback, useState } from "react";
-import { LayoutState } from "../layout/type";
-import { Popover } from "../popover/popover";
-import { SettingsPanel } from "../settings/panel";
-import { SettingsState } from "../settings/type";
-import { useShortcut } from "../shortcut/shortcut";
-import { Tooltip } from "../tooltip/tooltip";
-import { ToolbarButton } from "./button/button";
+import { Popover } from "~src/popover/popover";
+import { SettingsFontSize } from "~src/settings/font-size";
+import { SettingsPanel } from "~src/settings/panel";
+import { SettingsTheme } from "~src/settings/theme/theme";
+import { SettingsState } from "~src/settings/type";
+import { SettingsVim } from "~src/settings/vim";
+import { SettingsWrapColumn } from "~src/settings/wrap-column";
+import { useShortcut } from "~src/shortcut/shortcut";
+import { ToolbarButton } from "~src/toolbar/button/button";
+import { Tooltip } from "~src/tooltip/tooltip";
 
-interface Props extends SettingsState, LayoutState {}
+interface Props extends SettingsState {}
 
-export const ToolbarSettings = (props: Props): JSX.Element => {
+export const EditorSettings = (props: Props): JSX.Element => {
   const [open, setOpen] = useState(false);
 
   const callback = useCallback(() => setOpen((open) => !open), []);
@@ -24,7 +27,9 @@ export const ToolbarSettings = (props: Props): JSX.Element => {
         </Popover.Trigger>
       </Tooltip>
       <Popover.Content>
-        <SettingsPanel {...props} />
+        <SettingsPanel {...props}>
+          {[SettingsTheme, SettingsVim, SettingsWrapColumn, SettingsFontSize]}
+        </SettingsPanel>
       </Popover.Content>
     </Popover.Root>
   );

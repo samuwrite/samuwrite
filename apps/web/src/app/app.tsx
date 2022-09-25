@@ -1,6 +1,5 @@
 import { Tooltip } from "@samuwrite/radix";
 import { useState } from "react";
-import { Doc } from "../doc/type";
 import { Editor } from "~src/editor/editor";
 import { Editor as EditorType } from "../editor/type";
 import "../font/font.css";
@@ -9,18 +8,11 @@ import { PromptProvider } from "../prompt/context";
 import { useSettingsState } from "../settings/state";
 import "./app.css";
 import * as s from "./app.module.css";
+import { AppLayout } from "./layout";
 import { AppTheme } from "./theme";
 
-const initialDoc: Doc = {
-  handle: null,
-  name: "Untitled",
-  content: "",
-};
-
-export type Layout = "editor" | "preview" | "split";
-
 export const App = (): JSX.Element => {
-  const [layout, setLayout] = useState<Layout>("editor");
+  const [layout, setLayout] = useState<AppLayout>("editor");
   const [editor, setEditor] = useState<EditorType | null>(null);
   const { setSettings, settings } = useSettingsState();
 
@@ -28,7 +20,10 @@ export const App = (): JSX.Element => {
     <div className={s.container}>
       {/* Always render Editor to persist its state */}
       <div className={[layout === "preview" ? s.hide : "", s.editor].join(" ")}>
-        <EditorMain editor={editor} setEditor={setEditor} settings={settings} />
+        <Editor
+          {...{ editor, setEditor }}
+          {...{ layout, setLayout, settings, setSettings }}
+        />
       </div>
       {/* Only render Preview when necessary to avoid re-calculating HTML
       unnecessarily */}

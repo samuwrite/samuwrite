@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import { Settings } from "../../settings/type";
+import { Settings } from "~src/settings/type";
 import { EditorState } from "../type";
 import { useEditorCreate } from "./create";
 import * as s from "./input.module.css";

@@ -1,17 +1,17 @@
-import { ThreeBarsIcon } from "@primer/octicons-react";
+import { QuestionIcon } from "@primer/octicons-react";
 import { useState } from "react";
-import { Dropdown } from "../dropdown/dropdown";
-import { Link } from "../link/link";
-import { Tooltip } from "../tooltip/tooltip";
-import { ToolbarButton } from "./button/button";
+import { Dropdown } from "~src/dropdown/dropdown";
+import { Link } from "~src/link/link";
+import { ToolbarButton } from "~src/toolbar/button/button";
+import { Tooltip } from "~src/tooltip/tooltip";
 
-export const ToolbarMenu = (): JSX.Element => {
+export const EditorHelp = (): JSX.Element => {
   const [open, setOpen] = useState(false);
   return (
     <Dropdown.Root open={open} onOpenChange={setOpen}>
-      <Tooltip content="Menu">
+      <Tooltip content="Help">
         <Dropdown.Trigger asChild>
-          <ToolbarButton Icon={ThreeBarsIcon} label="Menu" selected={open} />
+          <ToolbarButton Icon={QuestionIcon} label="Help" selected={open} />
         </Dropdown.Trigger>
       </Tooltip>
       <Dropdown.Portal>

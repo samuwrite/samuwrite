@@ -1,5 +1,6 @@
 import { Dispatch, SetStateAction } from "react";
 import { variants } from "@rose-pine/palette";
+import { AppLayout } from "~src/app/layout";
 
 export interface Settings {
   // app
@@ -9,7 +10,7 @@ export interface Settings {
   fontSize: number;
   wrapColumn: number;
   // preview
-  preview: "full" | "split";
+  preview: Exclude<AppLayout, "editor">;
   template: string;
 }
 

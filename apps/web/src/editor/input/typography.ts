@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { Settings } from "../../settings/type";
+import { Settings } from "~src/settings/type";
 import { Editor } from "../type";
 
 // These properties are calculated based on font size

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { initVimMode, VimMode } from "monaco-vim";
-import { Settings } from "../../settings/type";
+import { Settings } from "~src/settings/type";
 import { Editor } from "../type";
 import * as s from "./status.module.css";
 import { getEditorContentWidth } from "../input/layout";

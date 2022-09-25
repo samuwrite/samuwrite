@@ -1,5 +1,5 @@
 import { RefObject, useEffect } from "react";
-import { Settings } from "../../settings/type";
+import { Settings } from "~src/settings/type";
 import { Editor } from "../type";
 
 interface Params {

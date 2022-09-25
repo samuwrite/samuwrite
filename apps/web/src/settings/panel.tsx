@@ -1,26 +1,19 @@
-import { LayoutState } from "../layout/type";
-import { SettingsPreview } from "./preview/preview";
-import { SettingsVim } from "../settings/vim";
-import { SettingsFontSize } from "./font-size";
-import { SettingsTheme } from "./theme/theme";
-import { SettingsState } from "./type";
-import { SettingsWrapColumn } from "./wrap-column";
 import * as s from "./panel.module.css";
+import { SettingsState } from "./type";
 
-interface Props extends SettingsState, LayoutState {}
+type SettingComponent = (props: SettingsState) => JSX.Element;
+
+interface Props extends SettingsState {
+  children: SettingComponent[];
+}
 
 export const SettingsPanel = (props: Props): JSX.Element => {
+  const { children, ...settings } = props;
   return (
     <div className={s.container}>
-      {[
-        <SettingsTheme {...props} />,
-        <SettingsPreview {...props} />,
-        <SettingsVim {...props} />,
-        <SettingsWrapColumn {...props} />,
-        <SettingsFontSize {...props} />,
-      ].map((element, index) => (
+      {children.map((Component, index) => (
         <div className={s.item} key={index}>
-          {element}
+          <Component {...settings} />
         </div>
       ))}
     </div>

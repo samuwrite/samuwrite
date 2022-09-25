@@ -1,17 +1,18 @@
 import { IDisposable } from "monaco-editor";
 import { useEffect, useState } from "react";
+import { AppLayoutState } from "~src/app/layout";
 import { DocState } from "~src/doc/type";
 import { Editor } from "~src/editor/type";
 import { getHost } from "~src/host/get";
 import { SettingsState } from "~src/settings/type";
-import { ToolbarMenu } from "./menu";
-import { ToolbarOpen } from "./open";
-import { ToolbarPreview } from "./preview";
-import { ToolbarSave } from "./save";
-import { ToolbarSettings } from "./settings";
+import { EditorHelp } from "./help";
+import { EditorOpen } from "./open";
+import { EditorPreview } from "./preview";
+import { EditorSave } from "./save";
+import { EditorSettings } from "./settings";
 import * as s from "./toolbar.module.css";
 
-interface Props extends SettingsState, LayoutState, DocState {
+interface Props extends SettingsState, AppLayoutState, DocState {
   editor: Editor;
 }
 
@@ -25,6 +26,7 @@ const getTitle = (props: Props): string => {
 
 export const EditorToolbar = (props: Props): JSX.Element => {
   const { editor, doc, setDoc } = props;
+  const { layout, setLayout, settings, setSettings } = props;
 
   const [show, setShow] = useState(true);
 
@@ -44,14 +46,14 @@ export const EditorToolbar = (props: Props): JSX.Element => {
     >
       <div className={s.left}>
         {getHost() === "mac" ? <div className={s.macPad} /> : null}
-        <ToolbarOpen {...{ editor, doc, setDoc }} />
-        <ToolbarSave {...{ editor, doc, setDoc }} />
+        <EditorOpen {...{ editor, doc, setDoc }} />
+        <EditorSave {...{ editor, doc, setDoc }} />
       </div>
       <h1 className={s.title}>{getTitle(props)}</h1>
       <div className={s.right}>
-        {/* <ToolbarPreview {...props} /> */}
-        <ToolbarSettings {...props} />
-        <ToolbarMenu />
+        <EditorPreview {...{ settings, layout, setLayout }} />
+        <EditorSettings {...{ settings, setSettings }} />
+        <EditorHelp />
       </div>
     </div>
   );

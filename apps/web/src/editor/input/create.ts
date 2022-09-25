@@ -1,6 +1,6 @@
 import * as monaco from "monaco-editor";
 import { RefObject, useEffect } from "react";
-import { SAMPLE_TAILWIND } from "../../samples/tailwind";
+import { SAMPLE_TAILWIND } from "~src/samples/tailwind";
 import { EditorState } from "../type";
 
 const envDone = { current: false };
