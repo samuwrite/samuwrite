@@ -1,0 +1,28 @@
+{
+  "name": "@samuwrite/markdown",
+  "version": "1.0.0",
+  "description": "Parse markdown files for Samuwrite. Based on Unified.",
+  "main": "dist/index.js",
+  "type": "module",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "./scripts/build.sh"
+  },
+  "author": "thien@samuwrite.com",
+  "license": "ISC",
+  "dependencies": {
+    "rehype-dom-stringify": "^3.0.1",
+    "rehype-external-links": "^2.0.1",
+    "rehype-source-map": "^1.0.1",
+    "remark-gfm": "^3.0.1",
+    "remark-parse": "^10.0.1",
+    "remark-rehype": "^10.1.0",
+    "unified": "^10.1.2"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.3"
+  }
+}
