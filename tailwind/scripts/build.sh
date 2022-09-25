@@ -5,9 +5,9 @@ mkdir ./tmp
 npx tailwindcss -i ./src/index.css -o ./tmp/tw-out.css
 
 # Scoped with Sass
-echo ".tailwind { \n" >>./tmp/ss-in.scss
+cat ./src/tw-pre.txt >>./tmp/ss-in.scss
 cat ./tmp/tw-out.css >>./tmp/ss-in.scss
-echo "\n}\n" >>./tmp/ss-in.scss
+cat ./src/tw-suf.txt >>./tmp/ss-in.scss
 sass \
   --style=compressed \
   --no-source-map \

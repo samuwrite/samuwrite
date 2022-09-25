@@ -5,7 +5,9 @@ as a static, standalone CSS file.
 
 ## Features
 
-- Include scoped [preflight](https://tailwindcss.com/docs/preflight) styles
+- Include
+  [`all: revert`](https://developer.mozilla.org/en-US/docs/Web/CSS/revert) and
+  scoped [preflight](https://tailwindcss.com/docs/preflight) styles
   under `.tailwind`
 - Support
   [class-based](https://tailwindcss.com/docs/dark-mode#toggling-dark-mode-manually)

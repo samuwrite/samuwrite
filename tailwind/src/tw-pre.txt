@@ -1,0 +1,5 @@
+.tailwind * {
+  all: revert;
+}
+
+.tailwind {

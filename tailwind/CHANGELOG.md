@@ -1,3 +1,7 @@
+# 1.0.4
+
+- fix: Add revert CSS
+
 # 1.0.3
 
 - docs: Update README
