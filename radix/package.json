@@ -1,0 +1,56 @@
+{
+  "name": "@samuwrite/radix",
+  "version": "1.0.0",
+  "description": "All Radix primitives in one package",
+  "main": "dist/index.js",
+  "type": "module",
+  "typings": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "./scripts/build.sh"
+  },
+  "author": "thien@samuwrite.com",
+  "license": "ISC",
+  "dependencies": {
+    "@radix-ui/react-accessible-icon": "^1.0.0",
+    "@radix-ui/react-accordion": "^1.0.0",
+    "@radix-ui/react-alert-dialog": "^1.0.0",
+    "@radix-ui/react-announce": "^0.1.5",
+    "@radix-ui/react-aspect-ratio": "^1.0.0",
+    "@radix-ui/react-avatar": "^1.0.0",
+    "@radix-ui/react-checkbox": "^1.0.0",
+    "@radix-ui/react-collapsible": "^1.0.0",
+    "@radix-ui/react-context-menu": "^1.0.0",
+    "@radix-ui/react-context": "^1.0.0",
+    "@radix-ui/react-dialog": "^1.0.0",
+    "@radix-ui/react-dropdown-menu": "^1.0.0",
+    "@radix-ui/react-hover-card": "^1.0.0",
+    "@radix-ui/react-id": "^1.0.0",
+    "@radix-ui/react-label": "^1.0.0",
+    "@radix-ui/react-menu": "^1.0.0",
+    "@radix-ui/react-navigation-menu": "^1.0.0",
+    "@radix-ui/react-popover": "^1.0.0",
+    "@radix-ui/react-portal": "^1.0.0",
+    "@radix-ui/react-primitive": "^1.0.0",
+    "@radix-ui/react-progress": "^1.0.0",
+    "@radix-ui/react-radio-group": "^1.0.0",
+    "@radix-ui/react-scroll-area": "^1.0.0",
+    "@radix-ui/react-select": "^1.0.0",
+    "@radix-ui/react-separator": "^1.0.0",
+    "@radix-ui/react-slider": "^1.0.0",
+    "@radix-ui/react-slot": "^1.0.0",
+    "@radix-ui/react-switch": "^1.0.0",
+    "@radix-ui/react-tabs": "^1.0.0",
+    "@radix-ui/react-toast": "^1.0.0",
+    "@radix-ui/react-toggle-group": "^1.0.0",
+    "@radix-ui/react-toggle": "^1.0.0",
+    "@radix-ui/react-toolbar": "^1.0.0",
+    "@radix-ui/react-tooltip": "^1.0.0",
+    "@radix-ui/react-visually-hidden": "^1.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^4.8.3"
+  }
+}
