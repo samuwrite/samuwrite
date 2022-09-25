@@ -1,23 +1,20 @@
 .container {
+  display: flex;
   height: 100%;
-  position: relative;
-  isolation: isolate;
 }
 
-.toolbar {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1;
+.editor,
+.preview {
+  flex: 1 1 0px;
+  overflow: hidden;
 }
 
-.body {
-  height: 100%;
+.hide {
+  display: none;
 }
 
 @media print {
-  .toolbar {
+  .editor {
     display: none;
   }
 }

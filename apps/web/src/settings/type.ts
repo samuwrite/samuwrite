@@ -2,11 +2,14 @@ import { Dispatch, SetStateAction } from "react";
 import { variants } from "@rose-pine/palette";
 
 export interface Settings {
-  preview: "full" | "split";
-  vim: boolean;
+  // app
   theme: keyof typeof variants;
+  // editor
+  vim: boolean;
   fontSize: number;
   wrapColumn: number;
+  // preview
+  preview: "full" | "split";
   template: string;
 }
 

@@ -1,15 +1,15 @@
 import { FileDirectoryIcon } from "@primer/octicons-react";
 import { useCallback, useContext } from "react";
-import { Button } from "../button/button";
-import { Doc, DocState } from "../doc/type";
-import { Editor } from "../editor/type";
-import { openDoc } from "../host/open";
-import { PromptContext, PromptState, PromptValue } from "../prompt/context";
-import { PromptDialog } from "../prompt/dialog";
-import { alertErrorWithMac } from "../prompt/mac";
-import { useShortcut } from "../shortcut/shortcut";
-import { Tooltip } from "../tooltip/tooltip";
-import { ToolbarButton } from "./button/button";
+import { Button } from "~src/button/button";
+import { Doc, DocState } from "~src/doc/type";
+import { Editor } from "~src/editor/type";
+import { openDoc } from "~src/host/open";
+import { PromptContext, PromptState, PromptValue } from "~src/prompt/context";
+import { PromptDialog } from "~src/prompt/dialog";
+import { alertErrorWithMac } from "~src/prompt/mac";
+import { useShortcut } from "~src/shortcut/shortcut";
+import { ToolbarButton } from "~src/toolbar/button/button";
+import { Tooltip } from "~src/tooltip/tooltip";
 
 interface Props extends DocState {
   editor: Editor;
@@ -63,7 +63,7 @@ const open = async (props: Props & PromptState): Promise<void> => {
   setDoc(newDoc);
 };
 
-export const ToolbarOpen = (props: Props): JSX.Element => {
+export const EditorOpen = (props: Props): JSX.Element => {
   const { doc, editor, setDoc } = props;
   const { prompt } = useContext(PromptContext);
 

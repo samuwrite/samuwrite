@@ -1,10 +1,9 @@
 import { IDisposable } from "monaco-editor";
 import { useEffect, useState } from "react";
-import { DocState } from "../doc/type";
-import { Editor } from "../editor/type";
-import { getHost } from "../host/get";
-import { LayoutState } from "../layout/type";
-import { SettingsState } from "../settings/type";
+import { DocState } from "~src/doc/type";
+import { Editor } from "~src/editor/type";
+import { getHost } from "~src/host/get";
+import { SettingsState } from "~src/settings/type";
 import { ToolbarMenu } from "./menu";
 import { ToolbarOpen } from "./open";
 import { ToolbarPreview } from "./preview";
@@ -24,7 +23,7 @@ const getTitle = (props: Props): string => {
   return title;
 };
 
-export const Toolbar = (props: Props): JSX.Element => {
+export const EditorToolbar = (props: Props): JSX.Element => {
   const { editor, doc, setDoc } = props;
 
   const [show, setShow] = useState(true);
@@ -50,7 +49,7 @@ export const Toolbar = (props: Props): JSX.Element => {
       </div>
       <h1 className={s.title}>{getTitle(props)}</h1>
       <div className={s.right}>
-        <ToolbarPreview {...props} />
+        {/* <ToolbarPreview {...props} /> */}
         <ToolbarSettings {...props} />
         <ToolbarMenu />
       </div>

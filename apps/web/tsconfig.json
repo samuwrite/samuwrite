@@ -4,6 +4,10 @@
     "moduleResolution": "node",
     "strict": true,
     "jsx": "react-jsx",
+    // Support parcel resolution
+    // https://parceljs.org/features/dependency-resolution/#typescript
+    "baseUrl": ".",
+    "paths": { "~*": ["./*"] },
     // Rose pine vsc themes are JSON
     "resolveJsonModule": true,
     // Require to import JSON

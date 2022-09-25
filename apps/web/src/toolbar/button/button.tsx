@@ -1,6 +1,6 @@
 import { Icon } from "@primer/octicons-react";
 import { ButtonHTMLAttributes, forwardRef } from "react";
-import { outline } from "../../outline/outline";
+import { outline } from "~src/outline/outline";
 import * as s from "./button.module.css";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {

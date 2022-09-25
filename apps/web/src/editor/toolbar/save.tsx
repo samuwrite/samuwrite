@@ -1,17 +1,14 @@
 import { DownloadIcon } from "@primer/octicons-react";
 import { useCallback, useContext } from "react";
-import { Button } from "../button/button";
-import { DocState } from "../doc/type";
-import { Editor } from "../editor/type";
-import { getErrorMessage } from "../error/message";
-import { saveDoc } from "../host/save";
-import { saveDocAs } from "../host/save-as";
-import { PromptContext, PromptState, PromptValue } from "../prompt/context";
-import { PromptDialog } from "../prompt/dialog";
-import { alertErrorWithMac } from "../prompt/mac";
-import { useShortcut } from "../shortcut/shortcut";
-import { Tooltip } from "../tooltip/tooltip";
-import { ToolbarButton } from "./button/button";
+import { DocState } from "~src/doc/type";
+import { Editor } from "~src/editor/type";
+import { saveDoc } from "~src/host/save";
+import { saveDocAs } from "~src/host/save-as";
+import { PromptContext, PromptState } from "~src/prompt/context";
+import { alertErrorWithMac } from "~src/prompt/mac";
+import { useShortcut } from "~src/shortcut/shortcut";
+import { ToolbarButton } from "~src/toolbar/button/button";
+import { Tooltip } from "~src/tooltip/tooltip";
 
 interface Props extends DocState {
   editor: Editor;
@@ -40,7 +37,7 @@ const save = async (props: Props & PromptState): Promise<void> => {
   }
 };
 
-export const ToolbarSave = (props: Props): JSX.Element => {
+export const EditorSave = (props: Props): JSX.Element => {
   const { doc, editor, setDoc } = props;
   const { prompt } = useContext(PromptContext);
 
