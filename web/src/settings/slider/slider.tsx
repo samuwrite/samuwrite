@@ -1,5 +1,5 @@
 import { Slider, SliderProps } from "../../slider/slider";
-import { Label } from "@radix-ui/react-label";
+import { Label } from "@samuwrite/radix";
 import * as s from "./slider.module.css";
 
 interface Props {
@@ -21,9 +21,9 @@ export const SettingsSlider = (props: Props): JSX.Element => {
   return (
     <div className={s.container}>
       <span className={s.header}>
-        <Label className={s.label} htmlFor={input.id}>
+        <Label.Root className={s.label} htmlFor={input.id}>
           {label}
-        </Label>
+        </Label.Root>
         <span className={s.value}>{value}</span>
       </span>
       <span className={s.control}>

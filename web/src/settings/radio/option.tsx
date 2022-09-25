@@ -1,4 +1,4 @@
-import { RadioGroupItem } from "@radix-ui/react-radio-group";
+import { RadioGroup } from "@samuwrite/radix";
 import { outline } from "../../outline/outline";
 import * as s from "./option.module.css";
 
@@ -12,12 +12,12 @@ export const SettingsRadioOption = (props: Props): JSX.Element => {
   const { icon, label, value } = props;
 
   return (
-    <RadioGroupItem
+    <RadioGroup.Item
       value={value}
       className={[s.container, outline.onFocus].join(" ")}
     >
       <span className={s.icon}>{icon}</span>
       <span className={s.label}>{label}</span>
-    </RadioGroupItem>
+    </RadioGroup.Item>
   );
 };

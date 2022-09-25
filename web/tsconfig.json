@@ -4,7 +4,6 @@
     "moduleResolution": "node",
     "strict": true,
     "jsx": "react-jsx",
-    "plugins": [{ "name": "typescript-plugin-css-modules" }],
     // Rose pine vsc themes are JSON
     "resolveJsonModule": true,
     // Require to import JSON

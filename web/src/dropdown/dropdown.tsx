@@ -1,4 +1,4 @@
-import * as Radix from "@radix-ui/react-dropdown-menu";
+import { DropdownMenu as Radix } from "@samuwrite/radix";
 import { animation } from "../animation/animation";
 import { Card } from "../card/card";
 import { outline } from "../outline/outline";

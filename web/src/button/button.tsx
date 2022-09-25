@@ -1,4 +1,4 @@
-import { Slot } from "@radix-ui/react-slot";
+import { Slot } from "@samuwrite/radix";
 import { ButtonHTMLAttributes, forwardRef } from "react";
 import { outline } from "../outline/outline";
 import * as s from "./button.module.css";
@@ -11,7 +11,7 @@ interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
 export const Button = forwardRef<HTMLButtonElement, Props>(
   (props, ref): JSX.Element => {
     const { asChild, primary, ...rest } = props;
-    const Comp = asChild ? Slot : "button";
+    const Comp = asChild ? Slot.Root : "button";
     return (
       <Comp
         ref={ref}

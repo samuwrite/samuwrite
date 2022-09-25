@@ -1,7 +1,7 @@
 import { DashIcon, DotIcon } from "@primer/octicons-react";
+import { Switch as Radix } from "@samuwrite/radix";
 import { outline } from "../outline/outline";
 import * as s from "./switch.module.css";
-import * as Radix from "@radix-ui/react-switch";
 
 interface Props extends Radix.SwitchProps {}
 

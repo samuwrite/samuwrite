@@ -1,9 +1,8 @@
-import { RadioGroup, RadioGroupProps } from "@radix-ui/react-radio-group";
-import { Label } from "@radix-ui/react-label";
+import { RadioGroup, Label } from "@samuwrite/radix";
 import { SettingsRadioOption } from "./option";
 import * as s from "./group.module.css";
 
-interface Props extends RadioGroupProps {
+interface Props extends RadioGroup.RadioGroupProps {
   label: string;
   options: { value: string; label: string; icon: JSX.Element }[];
 }
@@ -11,8 +10,8 @@ interface Props extends RadioGroupProps {
 export const SettingsRadioGroup = (props: Props): JSX.Element => {
   const { label, options, ...rest } = props;
   return (
-    <RadioGroup className={s.container} {...rest}>
-      <Label>{label}</Label>
+    <RadioGroup.Root className={s.container} {...rest}>
+      <Label.Root>{label}</Label.Root>
       <div className={s.options}>
         {options.map((option) => (
           <SettingsRadioOption
@@ -23,6 +22,6 @@ export const SettingsRadioGroup = (props: Props): JSX.Element => {
           />
         ))}
       </div>
-    </RadioGroup>
+    </RadioGroup.Root>
   );
 };

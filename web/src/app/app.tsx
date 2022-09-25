@@ -1,4 +1,4 @@
-import { TooltipProvider } from "@radix-ui/react-tooltip";
+import { Tooltip } from "@samuwrite/radix";
 import { useState } from "react";
 import { Doc } from "../doc/type";
 import { Editor } from "../editor/type";
@@ -53,7 +53,7 @@ export const App = (): JSX.Element => {
 
   return (
     <PromptProvider>
-      <TooltipProvider>{app}</TooltipProvider>
+      <Tooltip.Provider>{app}</Tooltip.Provider>
     </PromptProvider>
   );
 };

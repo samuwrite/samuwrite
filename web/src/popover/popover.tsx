@@ -1,4 +1,4 @@
-import * as Radix from "@radix-ui/react-popover";
+import { Popover as Radix } from "@samuwrite/radix";
 import { animation } from "../animation/animation";
 import { Card } from "../card/card";
 import { Scroll } from "../scroll/scroll";
