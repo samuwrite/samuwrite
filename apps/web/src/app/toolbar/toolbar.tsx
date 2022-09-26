@@ -2,11 +2,12 @@ import { IDisposable } from "monaco-editor";
 import { useEffect, useState } from "react";
 import { DocState } from "~src/doc/type";
 import { Editor } from "~src/editor/type";
-import { getHost } from "~src/host/get";
 import { LayoutState } from "~src/layout/type";
 import { SettingsState } from "~src/settings/type";
+import { ToolbarStack } from "./container/stack";
 import { EditorHelp } from "./help";
 import { EditorOpen } from "./open";
+import { ToolbarPadMac } from "./pad/mac";
 import { EditorPreview } from "./preview";
 import { EditorSave } from "./save";
 import { EditorSettings } from "./settings";
@@ -44,17 +45,48 @@ export const Toolbar = (props: Props): JSX.Element => {
       className={[s.container, show ? s.show : s.hide].join(" ")}
       onMouseEnter={() => setShow(true)}
     >
-      <div className={s.left}>
-        {getHost() === "mac" ? <div className={s.macPad} /> : null}
-        <EditorOpen {...{ editor, doc, setDoc }} />
-        <EditorSave {...{ editor, doc, setDoc }} />
-      </div>
-      <h1 className={s.title}>{getTitle(props)}</h1>
-      <div className={s.right}>
-        <EditorSettings {...{ settings, setSettings }} />
-        <EditorPreview {...{ settings, layout, setLayout }} />
-        <EditorHelp />
-      </div>
+      {layout !== "preview" ? (
+        <div className={s.editor}>
+          <ToolbarStack
+            left={
+              <>
+                <ToolbarPadMac />
+                <EditorOpen {...{ editor, doc, setDoc }} />
+                <EditorSave {...{ editor, doc, setDoc }} />
+              </>
+            }
+            center={<h1 className={s.title}>{getTitle(props)}</h1>}
+            right={
+              <>
+                <EditorSettings {...{ settings, setSettings }} />
+                <EditorPreview {...{ settings, layout, setLayout }} />
+                <EditorHelp />
+              </>
+            }
+          />
+        </div>
+      ) : null}
+      {layout !== "editor" ? (
+        <div className={s.preview}>
+          <ToolbarStack
+            left={
+              <>
+                <ToolbarPadMac />
+                <EditorOpen {...{ editor, doc, setDoc }} />
+                <EditorSave {...{ editor, doc, setDoc }} />
+              </>
+            }
+            center={<h1 className={s.title}>{getTitle(props)}</h1>}
+            right={
+              <>
+                <EditorSettings {...{ settings, setSettings }} />
+                <EditorPreview {...{ settings, layout, setLayout }} />
+                <EditorHelp />
+              </>
+            }
+          />
+        </div>
+      ) : null}
     </div>
   );
 };

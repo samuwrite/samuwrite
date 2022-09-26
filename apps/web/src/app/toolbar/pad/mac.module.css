@@ -1,0 +1,11 @@
+/* Mac's traffic light + padding - gap
+- Don't use .left > padding-left to avoid miscalculating flex layout */
+.pad {
+  --a: 20px; /* mac padding */
+  --b: 52px; /* mac traffic lights */
+  --c: calc(var(--a) + var(--b) + var(--a)); /* mac reserved space */
+  --d: 8px; /* toolbar flex gap */
+  --e: 16px; /* toolbar padding */
+  --f: calc(var(--d) + var(--e)); /* toolbar provided space */
+  width: calc(var(--c) - var(--f));
+}

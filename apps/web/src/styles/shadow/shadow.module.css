@@ -1,0 +1,5 @@
+.card {
+  box-shadow: transparent 0 0 0 /* to align the shadows below */,
+    rgba(0, 0, 0, calc(var(--shadow-opacity) * 1)) 0px 3px 6px,
+    rgba(0, 0, 0, calc(var(--shadow-opacity) * 2)) 0px 9px 24px;
+}

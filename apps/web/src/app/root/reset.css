@@ -21,7 +21,7 @@
 */
 html,
 body,
-#root {
+:global(#root) {
   height: 100%;
 }
 
@@ -74,8 +74,8 @@ h6 {
 /*
   9. Create a root stacking context
 */
-#root,
-#__next {
+:global(#root),
+:global(#__next) {
   isolation: isolate;
 }
 

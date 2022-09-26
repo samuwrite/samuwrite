@@ -1,0 +1,26 @@
+.container {
+  padding-left: 24px;
+  /* Fix for "min-height: 100%"
+  https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
+  */
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  flex: 1;
+  border-left: solid 1px var(--color-highlightHigh);
+  background-color: var(--color-surface);
+  box-shadow: transparent 0 0 0 /* to align the shadows below */,
+    rgba(0, 0, 0, calc(var(--shadow-opacity) * 1)) 0px 3px 6px,
+    rgba(0, 0, 0, calc(var(--shadow-opacity) * 2)) 0px 9px 24px;
+}
+
+.content {
+  padding: 96px 48px;
+}
+
+.content > *:first-child {
+  margin-top: 0;
+}

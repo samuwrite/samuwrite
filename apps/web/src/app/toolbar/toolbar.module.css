@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  /* Mac's toolbar height */
+  height: 52px;
+  overflow: hidden;
+
+  transition-property: opacity;
+  transition-timing-function: var(--ease);
+}
+
+.editor,
+.preview {
+  flex: 1 1 0px;
+  backdrop-filter: blur(20px);
+}
+
+.editor {
+  background-color: rgba(var(--color-base-rgb), 0.7);
+}
+
+.preview {
+  background-color: rgba(var(--color-surface-rgb), 0.7);
+  border-left: solid 1px var(--color-highlightHigh);
+  /* background-color: var(--color-surface); */
+  box-shadow: transparent 0 0 0 /* to align the shadows below */,
+    rgba(0, 0, 0, calc(var(--shadow-opacity) * 1)) 0px 3px 6px,
+    rgba(0, 0, 0, calc(var(--shadow-opacity) * 2)) 0px 9px 24px;
+}
+
+.container.hide {
+  opacity: 0;
+  transition-duration: 0.6s;
+}
+
+.container.show {
+  opacity: 1;
+  transition-duration: 0.2s;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 500;
+}

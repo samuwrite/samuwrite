@@ -1,31 +1,27 @@
 import { Tooltip } from "@samuwrite/radix";
 import { useState } from "react";
-import { Doc } from "~src/doc/type";
-import { Editor } from "~src/editor/editor";
-import { Editor as EditorType } from "~src/editor/type";
-import "~src/font/font.css";
-import { Layout } from "~src/layout/layout";
-import { Layout as LayoutType } from "~src/layout/type";
-import { Preview } from "~src/preview/preview";
-import { PromptProvider } from "~src/prompt/context";
-import { useSettingsState } from "~src/settings/state";
-import { Toolbar } from "~src/toolbar/toolbar";
-import "./app.css";
-import * as s from "./app.module.css";
+// import "~src/font/font.css";
+import "./reset.css";
+import * as s from "./root.css";
 import { AppTheme } from "./theme";
 
+/*
 const initialDoc: Doc = {
   handle: null,
   name: "Untitled",
   content: "",
 };
+*/
 
-export const App = (): JSX.Element => {
+export const AppRoot = (): JSX.Element => {
+  /*
   const [layout, setLayout] = useState<LayoutType>("editor");
   const [editor, setEditor] = useState<EditorType | null>(null);
   const { setSettings, settings } = useSettingsState();
   const [doc, setDoc] = useState<Doc>(initialDoc);
+  */
 
+  /*
   const body = (
     <div className={s.container}>
       {editor !== null ? (
@@ -56,4 +52,6 @@ export const App = (): JSX.Element => {
       </Tooltip.Provider>
     </PromptProvider>
   );
+  */
+  return <div className={s.container}>ahihi</div>;
 };

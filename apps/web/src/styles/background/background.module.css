@@ -1,0 +1,16 @@
+.surface {
+  background-color: var(--color-surface);
+}
+
+.base {
+  background-color: var(--color-base);
+}
+
+.overlay {
+  background-color: var(--color-overlay);
+}
+
+.baseBlur {
+  background-color: rgba(var(--color-base-rgb), 0.7);
+  backdrop-filter: blur(20px);
+}

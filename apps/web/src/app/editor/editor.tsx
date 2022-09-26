@@ -11,15 +11,8 @@ interface Props extends EditorState {
   settings: Settings;
 }
 
-const initialDoc: Doc = {
-  handle: null,
-  name: "Untitled",
-  content: "",
-};
-
 export const Editor = (props: Props): JSX.Element => {
   const { editor, setEditor, settings } = props;
-  const [doc, setDoc] = useState<Doc>(initialDoc);
 
   useEditorTheme({ settings });
 
