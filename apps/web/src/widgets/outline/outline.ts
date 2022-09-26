@@ -1,4 +1,4 @@
-import * as s from "./outline.module.css";
+import * as s from "./outline.css";
 
 export const outline = {
   none: s.none,

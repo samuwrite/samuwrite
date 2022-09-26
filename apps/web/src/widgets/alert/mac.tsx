@@ -1,4 +1,4 @@
-import { getErrorMessage } from "~src/app/error/message";
+import { getErrorMessage } from "~src/utils/error/message";
 import { Button } from "../button/button";
 import { AlertButtons, AlertState, AlertValue } from "./context";
 import { AlertDialog } from "./dialog";

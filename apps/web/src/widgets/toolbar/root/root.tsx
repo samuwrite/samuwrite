@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
-import * as s from "./stack.module.css";
+import { Toolbar as Radix } from "@samuwrite/radix";
+import * as s from "./toolbar.css";
 
 interface Props {
   left: ReactNode;
@@ -7,13 +8,13 @@ interface Props {
   center: ReactNode;
 }
 
-export const ToolbarStack = (props: Props): JSX.Element => {
+export const ToolbarRoot = (props: Props): JSX.Element => {
   const { left, right, center } = props;
   return (
-    <div className={s.container}>
+    <Radix.Root className={s.container}>
       <div className={s.left}>{left}</div>
       <div className={s.center}>{center}</div>
       <div className={s.right}>{right}</div>
-    </div>
+    </Radix.Root>
   );
 };

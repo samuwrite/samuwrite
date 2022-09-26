@@ -1,5 +1,5 @@
-import { getHost } from "~src/host/get";
-import * as s from "./mac.module.css";
+import { getHost } from "~src/utils/host/get";
+import * as s from "./mac.css";
 
 export const ToolbarPadMac = (): JSX.Element | null => {
   if (getHost() !== "mac") return null;

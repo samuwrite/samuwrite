@@ -1,6 +1,6 @@
 import { Tooltip as Radix } from "@samuwrite/radix";
 import { ReactNode } from "react";
-import * as s from "./tooltip.module.css";
+import * as s from "./tooltip.css";
 
 interface Props extends Radix.TooltipProps {
   children: ReactNode;

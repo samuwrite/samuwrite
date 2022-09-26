@@ -1,7 +1,7 @@
 import { DropdownMenu as Radix } from "@samuwrite/radix";
 import { animation } from "../animation/animation";
 import { outline } from "../outline/outline";
-import * as s from "./dropdown.module.css";
+import * as s from "./dropdown.css";
 
 const Content = (props: Radix.MenuContentProps): JSX.Element => {
   return (
