@@ -1,4 +1,9 @@
 .content {
+  /* Card */
+  background-color: rgba(var(--color-surface-rgb), 0.7);
+  backdrop-filter: blur(20px);
+  border: solid 1px var(--color-highlightHigh);
+
   padding: 6px;
   /* panel radius = control radius + panel padding / 2 */
   border-radius: calc(6px + 6px / 2);

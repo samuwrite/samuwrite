@@ -85,8 +85,14 @@ body {
   color: var(--color-text);
   font-family: "Inter var", sans-serif;
   font-size: 14px;
+}
 
+:root {
   /* Better ease */
   /* https://www.joshwcomeau.com/animation/css-transitions/ */
   --ease: cubic-bezier(0.44, 0.21, 0, 1);
+
+  --shadow-card: transparent 0 0 0 /* to align the shadows below */,
+    rgba(0, 0, 0, calc(var(--shadow-opacity) * 1)) 0px 3px 6px,
+    rgba(0, 0, 0, calc(var(--shadow-opacity) * 2)) 0px 9px 24px;
 }

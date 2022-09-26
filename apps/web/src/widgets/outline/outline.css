@@ -1,19 +1,21 @@
+/* Inactive */
 .onClassActive,
 .onDataHighlighted,
 .onFocus {
+  outline: solid 8px transparent;
   transition: outline 300ms var(--ease);
 }
 
-.none,
-.onClassActive,
-.onDataHighlighted,
-.onFocus,
-.onFocus:focus {
-  outline: solid 8px transparent;
-}
-
+/* Active */
 .onClassActive.active,
 .onDataHighlighted[data-highlighted],
 .onFocus:focus-visible {
   outline: solid 2px var(--color-rose);
+}
+
+/* Remove default */
+.none,
+.onFocus:focus {
+  /* Avoid "outline: none" as it shifts layout */
+  outline: solid 8px transparent;
 }

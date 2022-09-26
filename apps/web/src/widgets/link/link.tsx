@@ -1,6 +1,6 @@
 import { forwardRef, ReactNode, Ref } from "react";
-import { getHost } from "../host/get";
-import { postMacMessage } from "../host/mac";
+import { getHost } from "~src/app/host/get";
+import { postMacMessage } from "~src/app/host/mac";
 
 interface Props {
   href: string;

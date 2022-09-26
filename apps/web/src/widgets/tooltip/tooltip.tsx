@@ -1,6 +1,5 @@
 import { Tooltip as Radix } from "@samuwrite/radix";
 import { ReactNode } from "react";
-import { Card } from "../card/card";
 import * as s from "./tooltip.module.css";
 
 interface Props extends Radix.TooltipProps {
@@ -16,7 +15,7 @@ export const Tooltip = (props: Props): JSX.Element => {
       <Radix.Trigger asChild>{children}</Radix.Trigger>
       <Radix.Portal>
         <Radix.Content
-          className={[s.container, Card.solid].join(" ")}
+          className={s.container}
           sideOffset={6}
           collisionPadding={6}
         >

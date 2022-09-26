@@ -1,17 +1,17 @@
+import { getErrorMessage } from "~src/app/error/message";
 import { Button } from "../button/button";
-import { getErrorMessage } from "../error/message";
-import { PromptButtons, PromptState, PromptValue } from "./context";
-import { PromptDialog } from "./dialog";
+import { AlertButtons, AlertState, AlertValue } from "./context";
+import { AlertDialog } from "./dialog";
 
-interface Params extends PromptState {
+interface Params extends AlertState {
   title: string;
   error: unknown;
 }
 
-const buttons: PromptButtons = (resolve) => {
+const buttons: AlertButtons = (resolve) => {
   return (
     <>
-      <PromptDialog.Cancel onClick={() => resolve(false)} asChild>
+      <AlertDialog.Cancel onClick={() => resolve(false)} asChild>
         <Button asChild>
           <a
             href="https://apps.apple.com/vn/app/samuwrite/id1629628152"
@@ -20,21 +20,21 @@ const buttons: PromptButtons = (resolve) => {
             Download Mac App
           </a>
         </Button>
-      </PromptDialog.Cancel>
-      <PromptDialog.Action onClick={() => resolve(true)} asChild>
+      </AlertDialog.Cancel>
+      <AlertDialog.Action onClick={() => resolve(true)} asChild>
         <Button autoFocus primary>
           Dismiss
         </Button>
-      </PromptDialog.Action>
+      </AlertDialog.Action>
     </>
   );
 };
 
 export const alertErrorWithMac = async (
   params: Params
-): Promise<PromptValue> => {
-  const { title, error, prompt } = params;
-  const promise = await prompt({
+): Promise<AlertValue> => {
+  const { title, error, alert } = params;
+  const promise = await alert({
     title,
     description: getErrorMessage(error),
     buttons,

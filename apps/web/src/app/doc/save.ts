@@ -1,6 +1,6 @@
-import { DocHandleMac, DocHandleWeb } from "../doc/type";
-import { getHost } from "./get";
-import { postMacMessage } from "./mac";
+import { getHost } from "../host/get";
+import { postMacMessage } from "../host/mac";
+import { DocHandleMac, DocHandleWeb } from "./type";
 
 const saveMac = async (
   handle: DocHandleMac,

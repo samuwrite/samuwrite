@@ -1,7 +1,7 @@
 import { Slot } from "@samuwrite/radix";
 import { ButtonHTMLAttributes, forwardRef } from "react";
 import { outline } from "../outline/outline";
-import * as s from "./button.module.css";
+import * as s from "./button.css";
 
 interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {
   asChild?: boolean;

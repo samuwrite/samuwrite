@@ -1,27 +1,27 @@
 import { createContext, ReactNode, useCallback, useState } from "react";
-import { PromptDialog, PromptDialogContentProps } from "./dialog";
+import { AlertDialog, AlertDialogContentProps } from "./dialog";
 
 type Value = string | boolean;
 
-export type { Value as PromptValue };
+export type { Value as AlertValue };
 
-export type PromptButtons = (resolve: (value: Value) => void) => ReactNode;
+export type AlertButtons = (resolve: (value: Value) => void) => ReactNode;
 
-interface DialogProps extends Omit<PromptDialogContentProps, "buttons"> {
-  buttons: PromptButtons;
+interface DialogProps extends Omit<AlertDialogContentProps, "buttons"> {
+  buttons: AlertButtons;
 }
 
-type Prompt = (props: DialogProps) => Promise<Value>;
+type Alert = (props: DialogProps) => Promise<Value>;
 
-export type { Prompt };
+export type { Alert };
 
-export interface PromptState {
-  prompt: Prompt;
+export interface AlertState {
+  alert: Alert;
 }
 
-export const PromptContext = createContext<PromptState>({
-  prompt: () => {
-    throw Error("Prompt context is not implemented");
+export const AlertContext = createContext<AlertState>({
+  alert: () => {
+    throw Error("Alert context is not implemented");
   },
 });
 
@@ -34,12 +34,12 @@ interface DialogPromise {
   resolve: (value: Value) => void;
 }
 
-export const PromptProvider = (props: ProviderProps) => {
+export const AlertProvider = (props: ProviderProps) => {
   const { children } = props;
 
   const [promise, setPromise] = useState<DialogPromise | null>(null);
 
-  const prompt: Prompt = useCallback(async (dialog) => {
+  const alert: Alert = useCallback(async (dialog) => {
     const promise = new Promise<Value>((resolve) => {
       setPromise({ dialog, resolve });
     });
@@ -47,21 +47,21 @@ export const PromptProvider = (props: ProviderProps) => {
   }, []);
 
   return (
-    <PromptContext.Provider value={{ prompt }}>
+    <AlertContext.Provider value={{ alert }}>
       {children}
-      <PromptDialog.Root
+      <AlertDialog.Root
         open={promise !== null}
         onOpenChange={(open) => {
           if (open === false) setPromise(null);
         }}
       >
         {promise !== null ? (
-          <PromptDialog.Content
+          <AlertDialog.Content
             {...promise.dialog}
             buttons={promise.dialog.buttons(promise.resolve)}
           />
         ) : null}
-      </PromptDialog.Root>
-    </PromptContext.Provider>
+      </AlertDialog.Root>
+    </AlertContext.Provider>
   );
 };

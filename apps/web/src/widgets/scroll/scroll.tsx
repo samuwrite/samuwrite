@@ -1,6 +1,6 @@
 import { ScrollArea as Radix } from "@samuwrite/radix";
 import { ReactNode } from "react";
-import * as s from "./scroll.module.css";
+import * as s from "./scroll.css";
 
 interface Props extends Radix.ScrollAreaProps {
   children: ReactNode;

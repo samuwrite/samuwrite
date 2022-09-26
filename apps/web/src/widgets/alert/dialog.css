@@ -16,6 +16,11 @@
 }
 
 .content {
+  /* card */
+  background-color: rgba(var(--color-surface-rgb), 0.7);
+  backdrop-filter: blur(20px);
+  border: solid 1px var(--color-highlightHigh);
+
   padding: 18px;
   display: flex;
   flex-direction: column;

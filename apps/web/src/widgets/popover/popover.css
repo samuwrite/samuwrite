@@ -1,4 +1,29 @@
-[data-radix-popper-content-wrapper] {
+.container {
+  /* Card */
+  background-color: rgba(var(--color-surface-rgb), 0.7);
+  backdrop-filter: blur(20px);
+  border: solid 1px var(--color-highlightHigh);
+
+  /* panel radius = control radius + panel padding / 2 */
+  border-radius: calc(6px + 18px / 2);
+
+  /* toolbar is about 50px */
+  max-height: calc(100vh - 70px);
+  overflow: hidden;
+
+  /*
+  For scroll area
+  https://stackoverflow.com/questions/8468066/child-inside-parent-with-min-height-100-not-inheriting-height
+  */
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  padding: 18px;
+}
+
+:global([data-radix-popper-content-wrapper]) {
   perspective: 100vh;
   perspective-origin: top center;
 }

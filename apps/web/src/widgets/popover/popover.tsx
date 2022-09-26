@@ -1,9 +1,7 @@
 import { Popover as Radix } from "@samuwrite/radix";
 import { animation } from "../animation/animation";
-import { Card } from "../card/card";
 import { Scroll } from "../scroll/scroll";
-import "./popover.css";
-import * as s from "./popover.module.css";
+import * as s from "./popover.css";
 
 const Content = (props: Radix.PopoverContentProps): JSX.Element => {
   const { children, ...rest } = props;
@@ -12,7 +10,7 @@ const Content = (props: Radix.PopoverContentProps): JSX.Element => {
       <Radix.Content
         sideOffset={12}
         collisionPadding={12}
-        className={[s.container, Card.glass, animation.flip].join(" ")}
+        className={[s.container, animation.flip].join(" ")}
         {...rest}
       >
         <Scroll>

@@ -1,23 +1,33 @@
 import { DropdownMenu as Radix } from "@samuwrite/radix";
 import { animation } from "../animation/animation";
-import { Card } from "../card/card";
 import { outline } from "../outline/outline";
-import { patch } from "../utils/patch";
 import * as s from "./dropdown.module.css";
 
+const Content = (props: Radix.MenuContentProps): JSX.Element => {
+  return (
+    <Radix.Portal>
+      <Radix.Content
+        className={[s.content, animation.flip].join(" ")}
+        sideOffset={12}
+        collisionPadding={12}
+        {...props}
+      />
+    </Radix.Portal>
+  );
+};
+
+const Separator = (props: Radix.MenuSeparatorProps): JSX.Element => {
+  return <Radix.Separator className={s.separator} {...props} />;
+};
+
+const Item = (props: Radix.MenuItemProps): JSX.Element => {
+  return <Radix.Item className={[s.item, outline.none].join(" ")} {...props} />;
+};
+
 export const Dropdown = {
-  Content: patch(Radix.Content, {
-    className: [s.content, Card.glass, animation.flip].join(" "),
-    sideOffset: 12,
-    collisionPadding: 12,
-  }),
+  Content,
+  Separator,
+  Item,
   Root: Radix.Root,
   Trigger: Radix.Trigger,
-  Portal: Radix.Portal,
-  Separator: patch(Radix.Separator, {
-    className: s.separator,
-  }),
-  Item: patch(Radix.Item, {
-    className: [s.item, outline.none].join(" "),
-  }),
 };

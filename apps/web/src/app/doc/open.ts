@@ -1,6 +1,6 @@
-import { Doc } from "../doc/type";
-import { getHost } from "./get";
-import { postMacMessage } from "./mac";
+import { getHost } from "../host/get";
+import { postMacMessage } from "../host/mac";
+import { Doc } from "./type";
 
 const openMac = async (): Promise<Doc> => {
   const { content, path } = await postMacMessage("openFile", {});

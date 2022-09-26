@@ -1,4 +1,9 @@
 .container {
+  /* Card */
+  background-color: rgba(var(--color-surface-rgb), 0.7);
+  backdrop-filter: blur(20px);
+  border: solid 1px var(--color-highlightHigh);
+
   font-size: 12px;
   line-height: 15px;
   padding: 3px 6px;

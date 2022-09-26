@@ -1,7 +1,7 @@
 import { Slider as Radix } from "@samuwrite/radix";
 import { CSSProperties } from "react";
 import { outline } from "../outline/outline";
-import * as s from "./slider.module.css";
+import * as s from "./slider.css";
 
 interface Props extends Radix.SliderProps {}
 

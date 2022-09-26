@@ -1,8 +1,7 @@
 import { AlertDialog as Radix } from "@samuwrite/radix";
 import { ReactNode } from "react";
 import { animation } from "../animation/animation";
-import { Card } from "../card/card";
-import * as s from "./dialog.module.css";
+import * as s from "./dialog.css";
 
 interface Props {
   title: string;
@@ -10,7 +9,7 @@ interface Props {
   buttons: ReactNode;
 }
 
-export type { Props as PromptDialogContentProps };
+export type { Props as AlertDialogContentProps };
 
 const Content = (props: Props): JSX.Element => {
   const { title, description, buttons } = props;
@@ -21,9 +20,7 @@ const Content = (props: Props): JSX.Element => {
       ></Radix.Overlay>
       {/* Container to apply transform animation to Content */}
       <div className={s.container}>
-        <Radix.Content
-          className={[s.content, Card.glass, animation.flip].join(" ")}
-        >
+        <Radix.Content className={[s.content, animation.flip].join(" ")}>
           <Radix.Title className={s.title}>{title}</Radix.Title>
           <Radix.Description className={s.description}>
             {description}
@@ -35,7 +32,7 @@ const Content = (props: Props): JSX.Element => {
   );
 };
 
-export const PromptDialog = {
+export const AlertDialog = {
   Root: Radix.Root,
   Trigger: Radix.Trigger,
   Content,
