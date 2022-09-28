@@ -1,0 +1,55 @@
+/*
+Note:
+1. The selectors in this file should be the same with the original selectors,
+   with a :not(.x) to win the specificity.
+2. Don't know how to escape this file from CSS Modules so we need to use
+   `:global` for each and every class here.
+   - See: https://github.com/parcel-bundler/parcel/discussions/8508
+*/
+
+/* Only smooth caret horizontal movements */
+:global(.monaco-editor)
+  :global(.cursors-layer):global(.cursor-smooth-caret-animation)
+  > :global(.cursor):not(.x) {
+  transition: left 100ms ease-out;
+}
+
+/* Longer blinking */
+:global(.cursor-smooth):not(.x) {
+  animation-duration: 1s;
+  animation-delay: 1s;
+}
+
+/* Don't use the wrapped character (inside caret). It does not work well with
+the fat + smooth cursor */
+:global(.monaco-editor) :global(.cursors-layer) :global(.cursor):not(.x) {
+  color: transparent;
+}
+
+/* Put the caret behind the text */
+:global(.monaco-editor) :global(.cursors-layer):not(.x) {
+  z-index: -1;
+}
+:global(.monaco-editor) :global(.lines-content) :global(.cslr):not(.x) {
+  z-index: -1;
+}
+
+/* Hide the textarea. Actually the original code should also hide it already,
+but we don't know why it still leave a gray background */
+:global(.monaco-editor) :global(.inputarea):not(.x) {
+  opacity: 0;
+}
+
+/* Set scrollbar color. The one in "options" is only for minimap
+https://github.com/microsoft/monaco-editor/issues/2650 */
+:global(.vs-dark)
+  :global(.monaco-scrollable-element)
+  > :global(.scrollbar)
+  > :global(.slider):not(.x) {
+  background-color: var(--color-muted);
+  border-radius: 8px;
+
+  /* The magic padding https://stackoverflow.com/a/21684424 */
+  border: 4px solid transparent;
+  background-clip: padding-box;
+}

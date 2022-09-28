@@ -4,20 +4,26 @@ import { Settings } from "~src/settings/type";
 import * as s from "./editor.module.css";
 import { EditorInput } from "./input/input";
 import { EditorStatus } from "./status/status";
-import { useEditorTheme } from "./theme/theme";
 import { EditorState } from "./type";
 
 interface Props extends EditorState {
   settings: Settings;
 }
 
+const initialDoc: Doc = {
+  handle: null,
+  name: "Untitled",
+  content: "",
+};
+
 export const Editor = (props: Props): JSX.Element => {
   const { editor, setEditor, settings } = props;
 
-  useEditorTheme({ settings });
+  const [doc, setDoc] = useState<Doc>(initialDoc);
 
   return (
     <div className={s.container}>
+      <div className={s.toolbar}>Toolbar</div>
       <div className={s.input}>
         <EditorInput {...{ setEditor, editor, settings }} />
       </div>

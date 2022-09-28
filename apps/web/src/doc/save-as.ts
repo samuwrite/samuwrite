@@ -1,5 +1,5 @@
-import { getHost } from "../host/get";
-import { postMacMessage } from "../host/mac";
+import { getHost } from "~src/utils/host/get";
+import { postMacMessage } from "~src/utils/host/mac";
 import { Doc } from "./type";
 
 const saveAsMac = async (content: string): Promise<Doc> => {

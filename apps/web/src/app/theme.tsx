@@ -1,5 +1,5 @@
-import { Settings } from "../settings/type";
 import { Roles, variants } from "@rose-pine/palette";
+import { Settings } from "~src/settings/type";
 
 interface Props {
   settings: Settings;

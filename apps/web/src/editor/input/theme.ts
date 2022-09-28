@@ -2,9 +2,11 @@ import { variants } from "@rose-pine/palette";
 import { editor } from "monaco-editor";
 import { useEffect } from "react";
 import { Settings } from "~/src/settings/type";
-import themeMain from "./themes/rose-pine-color-theme.json";
-import themeDawn from "./themes/rose-pine-dawn-color-theme.json";
-import themeMoon from "./themes/rose-pine-moon-color-theme.json";
+
+// Heads up: "rose-pine" is a GitHub repo. See package.json.
+import themeMain from "rose-pine/themes/rose-pine-color-theme.json";
+import themeDawn from "rose-pine/themes/rose-pine-dawn-color-theme.json";
+import themeMoon from "rose-pine/themes/rose-pine-moon-color-theme.json";
 
 // Heads-up: these infer types are very complicated
 type VscodeTheme = typeof themeMain | typeof themeMoon | typeof themeDawn;

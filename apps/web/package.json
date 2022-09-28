@@ -29,6 +29,7 @@
     "monaco-vim": "0.3.4",
     "react": "18.2.0",
     "react-dom": "18.2.0",
+    "rose-pine": "github:rose-pine/vscode",
     "tinykeys": "1.4.0"
   },
   "@parcel/transformer-css": {

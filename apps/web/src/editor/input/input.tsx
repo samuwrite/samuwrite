@@ -2,9 +2,11 @@ import { useRef } from "react";
 import { Settings } from "~src/settings/type";
 import { EditorState } from "../type";
 import { useEditorCreate } from "./create";
-import * as s from "./input.module.css";
+import "./font/font.css";
+import * as s from "./input.css";
+import "./input.global.css";
 import { useEditorLayout } from "./layout";
-import "./input.css";
+import { useEditorTheme } from "./theme";
 import { useEditorTypography } from "./typography";
 
 interface Props extends EditorState {
@@ -16,6 +18,7 @@ export const EditorInput = (props: Props): JSX.Element => {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
+  useEditorTheme({ settings });
   useEditorCreate({ containerRef, setEditor });
   useEditorLayout({ containerRef, editor, settings });
   useEditorTypography({ editor, settings });

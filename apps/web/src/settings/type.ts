@@ -1,6 +1,6 @@
-import { Dispatch, SetStateAction } from "react";
 import { variants } from "@rose-pine/palette";
-import { AppLayout } from "~src/app/layout";
+import { Dispatch, SetStateAction } from "react";
+import { Layout } from "~src/app/layout/type";
 
 export interface Settings {
   // app
@@ -10,7 +10,7 @@ export interface Settings {
   fontSize: number;
   wrapColumn: number;
   // preview
-  preview: Exclude<AppLayout, "editor">;
+  preview: Exclude<Layout, "editor">;
   template: string;
 }
 
