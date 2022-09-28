@@ -1,6 +1,6 @@
-import { Slider, SliderProps } from "../../slider/slider";
 import { Label } from "@samuwrite/radix";
-import * as s from "./slider.module.css";
+import { Slider, SliderProps } from "../../slider/slider";
+import * as s from "./slider.css";
 
 interface Props {
   input: SliderProps;

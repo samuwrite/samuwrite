@@ -1,6 +1,6 @@
 import { Label } from "@samuwrite/radix";
-import { SwitchButton } from "../../switch/switch";
-import * as s from "./switch.module.css";
+import { SwitchButton } from "~src/widgets/switch/switch";
+import * as s from "./switch.css";
 
 interface Props {
   id: string;

@@ -1,6 +1,6 @@
 import { RadioGroup } from "@samuwrite/radix";
-import { outline } from "../../outline/outline";
-import * as s from "./option.module.css";
+import { outline } from "~src/widgets/outline/outline";
+import * as s from "./option.css";
 
 interface Props {
   icon: JSX.Element;

@@ -1,6 +1,6 @@
 import { RadioGroup, Label } from "@samuwrite/radix";
 import { SettingsRadioOption } from "./option";
-import * as s from "./group.module.css";
+import * as s from "./group.css";
 
 interface Props extends RadioGroup.RadioGroupProps {
   label: string;
@@ -13,14 +13,12 @@ export const SettingsRadioGroup = (props: Props): JSX.Element => {
     <RadioGroup.Root className={s.container} {...rest}>
       <Label.Root>{label}</Label.Root>
       <div className={s.options}>
-        {options.map((option) => (
-          <SettingsRadioOption
-            key={option.value}
-            value={option.value}
-            label={option.label}
-            icon={option.icon}
-          />
-        ))}
+        {options.map((option) => {
+          const { value, label, icon } = option;
+          return (
+            <SettingsRadioOption key={value} {...{ value, label, icon }} />
+          );
+        })}
       </div>
     </RadioGroup.Root>
   );
