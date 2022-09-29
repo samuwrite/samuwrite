@@ -63,6 +63,7 @@ export const useEditorTypography = (params: Params): void => {
     const { fontWeight, letterSpacing, lineHeight } = getOptions(fontSize);
 
     editor.updateOptions({
+      fontFamily: "iA Writer Duo", // Static for now
       fontSize,
       lineHeight: Math.round(fontSize * lineHeight),
       fontWeight: fontWeight.toString(),

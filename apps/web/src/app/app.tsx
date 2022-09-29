@@ -4,6 +4,7 @@ import { Editor } from "~src/editor/editor";
 import { Editor as EditorType } from "~src/editor/type";
 import { useSettingsState } from "~src/settings/state";
 import { AlertProvider } from "~src/widgets/alert/context";
+import { Toolbar } from "~src/toolbar/type";
 import * as s from "./app.css";
 import "./font/font.css";
 import { Layout } from "./layout";
@@ -14,6 +15,7 @@ export const App = (): JSX.Element => {
   const [layout, setLayout] = useState<Layout>("editor");
   const { setSettings, settings } = useSettingsState();
   const [editor, setEditor] = useState<null | EditorType>(null);
+  const [toolbar, setToolbar] = useState<Toolbar>(true);
 
   // Always render Editor to persist its state
   const editorElement = (

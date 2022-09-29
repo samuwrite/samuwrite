@@ -1,3 +1,5 @@
+/* stack */
+
 .container {
   display: flex;
   align-items: center;
@@ -27,4 +29,21 @@
 
 .right {
   justify-content: end;
+}
+
+/* show hide */
+
+.container {
+  transition-property: opacity;
+  transition-timing-function: var(--ease);
+}
+
+.container.hide {
+  opacity: 0;
+  transition-duration: 0.6s;
+}
+
+.container.show {
+  opacity: 1;
+  transition-duration: 0.2s;
 }

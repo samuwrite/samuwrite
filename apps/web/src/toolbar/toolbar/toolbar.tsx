@@ -1,4 +1,3 @@
-import { IDisposable } from "monaco-editor";
 import { useEffect, useState } from "react";
 import { DocState } from "~src/doc/type";
 import { Editor } from "~src/editor/type";
@@ -17,20 +16,7 @@ interface Props extends SettingsState, LayoutState, DocState {
   editor: Editor;
 }
 
-const getTitle = (props: Props): string => {
-  const { editor, doc } = props;
-  // change in editor.getValue does not trigger re-render
-  // const suffix = editor.getValue() === doc.content ? "*" : "";
-  const title = [doc.name].join(" ");
-  return title;
-};
-
-export const Toolbar = (props: Props): JSX.Element => {
-  const { editor, doc, setDoc } = props;
-  const { layout, setLayout, settings, setSettings } = props;
-
-  const [show, setShow] = useState(true);
-
+/*
   useEffect(() => {
     const disposables: IDisposable[] = [];
     disposables.push(editor.onDidChangeModelContent(() => setShow(false)));
@@ -39,6 +25,19 @@ export const Toolbar = (props: Props): JSX.Element => {
       disposables.forEach((disposable) => disposable.dispose());
     };
   }, [editor]);
+*/
+
+const getTitle = (props: Props): string => {
+  const { editor, doc } = props;
+  // change in editor.getValue does not trigger re-render
+  // const suffix = editor.getValue() === doc.content ? "*" : "";
+  const title = [doc.name].join(" ");
+  return title;
+};
+
+export const EditorToolbar = (props: Props): JSX.Element => {
+  const { editor, doc, setDoc } = props;
+  const { layout, setLayout, settings, setSettings } = props;
 
   return (
     <div

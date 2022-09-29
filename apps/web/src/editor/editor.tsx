@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { Doc } from "~src/doc/type";
 import { Settings } from "~src/settings/type";
-import * as s from "./editor.module.css";
+import * as s from "./editor.css";
+import "./font/font.css";
 import { EditorInput } from "./input/input";
-import { EditorStatus } from "./status/status";
+import "./monaco.css";
 import { EditorState } from "./type";
+import { EditorStatus } from "./vim/status";
 
 interface Props extends EditorState {
   settings: Settings;
@@ -25,7 +27,7 @@ export const Editor = (props: Props): JSX.Element => {
     <div className={s.container}>
       <div className={s.toolbar}>Toolbar</div>
       <div className={s.input}>
-        <EditorInput {...{ setEditor, editor, settings }} />
+        <EditorInput {...{ editor, setEditor, settings }} />
       </div>
       {editor !== null ? (
         <div className={s.status}>

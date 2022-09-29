@@ -5,7 +5,7 @@ import { Editor } from "../type";
 interface Params {
   editor: Editor | null;
   settings: Settings;
-  containerRef: RefObject<HTMLDivElement>;
+  inputRef: RefObject<HTMLDivElement>;
 }
 
 export const getEditorContentWidth = (params: {
@@ -40,13 +40,13 @@ const getLeftPad = (params: {
 };
 
 export const useEditorLayout = (params: Params): void => {
-  const { containerRef, editor, settings } = params;
+  const { inputRef, editor, settings } = params;
 
   const { fontSize, wrapColumn } = settings;
   useEffect(() => {
     if (editor === null) return;
 
-    const container = containerRef.current;
+    const container = inputRef.current;
     if (container === null) throw Error("`container` is not defined");
 
     const observer = new ResizeObserver(() => {
@@ -57,5 +57,5 @@ export const useEditorLayout = (params: Params): void => {
 
     observer.observe(container);
     return () => void observer.unobserve(container);
-  }, [containerRef, editor, fontSize, wrapColumn]);
+  }, [inputRef, editor, fontSize, wrapColumn]);
 };

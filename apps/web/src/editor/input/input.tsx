@@ -1,11 +1,11 @@
 import { useRef } from "react";
 import { Settings } from "~src/settings/type";
 import { EditorState } from "../type";
-import { useEditorCreate } from "./create";
 import "./font/font.css";
+import { useEditorInit } from "./init";
 import * as s from "./input.css";
-import "./input.global.css";
 import { useEditorLayout } from "./layout";
+import "./monaco.css";
 import { useEditorTheme } from "./theme";
 import { useEditorTypography } from "./typography";
 
@@ -14,14 +14,14 @@ interface Props extends EditorState {
 }
 
 export const EditorInput = (props: Props): JSX.Element => {
-  const { setEditor, editor, settings } = props;
+  const { editor, setEditor, settings } = props;
 
-  const containerRef = useRef<HTMLDivElement>(null);
+  const inputRef = useRef<HTMLDivElement>(null);
 
+  useEditorInit({ inputRef, setEditor });
   useEditorTheme({ settings });
-  useEditorCreate({ containerRef, setEditor });
-  useEditorLayout({ containerRef, editor, settings });
+  useEditorLayout({ inputRef, editor, settings });
   useEditorTypography({ editor, settings });
 
-  return <div className={s.container} ref={containerRef} />;
+  return <div className={s.container} ref={inputRef} />;
 };

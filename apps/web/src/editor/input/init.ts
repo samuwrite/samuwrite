@@ -34,12 +34,11 @@ const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
   cursorWidth: 3,
   disableMonospaceOptimizations: true,
   folding: false,
-  fontFamily: "iA Writer Duo",
   fontLigatures: true,
   glyphMargin: false,
   hideCursorInOverviewRuler: true,
   language: "markdown",
-  lineNumbers: "off",
+  lineNumbers: "relative",
   minimap: { enabled: false },
   occurrencesHighlight: false,
   overviewRulerBorder: false,
@@ -66,14 +65,14 @@ const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
 
 interface Params {
   setEditor: EditorState["setEditor"];
-  containerRef: RefObject<HTMLDivElement>;
+  inputRef: RefObject<HTMLDivElement>;
 }
 
-export const useEditorCreate = (params: Params): void => {
-  const { setEditor, containerRef } = params;
+export const useEditorInit = (params: Params): void => {
+  const { setEditor, inputRef } = params;
 
   useEffect(() => {
-    const container = containerRef.current;
+    const container = inputRef.current;
     if (container === null) throw Error("`container` is null");
 
     createEnv();
@@ -88,5 +87,5 @@ export const useEditorCreate = (params: Params): void => {
       setEditor(null);
       editor.dispose();
     };
-  }, [setEditor, containerRef]);
+  }, [setEditor, inputRef]);
 };
