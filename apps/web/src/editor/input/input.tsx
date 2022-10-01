@@ -1,27 +1,45 @@
-import { useRef } from "react";
+import { CSSProperties, RefObject, useEffect, useState } from "react";
 import { Settings } from "~src/settings/type";
-import { EditorState } from "../type";
-import "./font/font.css";
-import { useEditorInit } from "./init";
+import { Editor } from "../type";
 import * as s from "./input.css";
-import { useEditorLayout } from "./layout";
-import "./monaco.css";
-import { useEditorTheme } from "./theme";
-import { useEditorTypography } from "./typography";
 
-interface Props extends EditorState {
+interface Props {
+  inputRef: RefObject<HTMLDivElement>;
   settings: Settings;
+  editor: Editor | null;
 }
 
 export const EditorInput = (props: Props): JSX.Element => {
-  const { editor, setEditor, settings } = props;
+  const { inputRef, settings, editor } = props;
 
-  const inputRef = useRef<HTMLDivElement>(null);
+  const [margin, setMargin] = useState<number>(50);
 
-  useEditorInit({ inputRef, setEditor });
-  useEditorTheme({ settings });
-  useEditorLayout({ inputRef, editor, settings });
-  useEditorTypography({ editor, settings });
+  // Set margin value by querying DOM
+  useEffect(() => {
+    // Editor is not ready
+    if (editor === null) return;
 
-  return <div className={s.container} ref={inputRef} />;
+    window.setTimeout(() => {
+      const input = inputRef.current;
+      const element = input?.querySelector(".monaco-editor .margin") ?? null;
+      if (element === null) throw Error("Cannot get editor margin element");
+
+      const margin = element.clientWidth;
+      setMargin(margin);
+    }, 1000);
+  }, [inputRef, editor]);
+
+  const style: CSSProperties = {
+    "--editor-font-size": settings.fontSize,
+    "--editor-wrap-column": settings.wrapColumn,
+    "--editor-margin": margin,
+  } as CSSProperties;
+
+  return (
+    // Better putting "style" here to avoid messing with "input" (which is
+    // managed by monaco)
+    <div className={s.container} style={style}>
+      <div className={s.input} ref={inputRef} />
+    </div>
+  );
 };

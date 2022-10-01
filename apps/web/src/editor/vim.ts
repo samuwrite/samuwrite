@@ -1,13 +1,12 @@
 import { initVimMode, VimMode } from "monaco-vim";
-import { useEffect, useRef } from "react";
+import { RefObject, useEffect } from "react";
 import { Settings } from "~src/settings/type";
-import { getEditorContentWidth } from "../input/layout";
-import { Editor } from "../type";
-import * as s from "./status.css";
+import { Editor } from "./type";
 
-interface Props {
-  editor: Editor;
+interface Params {
+  editor: Editor | null;
   settings: Settings;
+  statusRef: RefObject<HTMLDivElement>;
 }
 
 const envDone = { current: false };
@@ -19,13 +18,13 @@ const ensureEnv = () => {
   envDone.current = true;
 };
 
-export const EditorStatus = (props: Props): JSX.Element => {
-  const { editor, settings } = props;
-  const statusRef = useRef<HTMLDivElement>(null);
+export const useEditorVim = (params: Params): void => {
+  const { editor, settings, statusRef } = params;
 
   const { vim: settingsVim } = settings;
   useEffect(() => {
     if (settingsVim === false) return;
+    if (editor === null) return;
 
     const status = statusRef.current;
     if (status === null) throw Error("`status` is null");
@@ -34,8 +33,4 @@ export const EditorStatus = (props: Props): JSX.Element => {
     const vimMode = initVimMode(editor, status);
     return () => vimMode.dispose();
   }, [editor, settingsVim, statusRef]);
-
-  const width = getEditorContentWidth(settings);
-
-  return <div className={s.container} ref={statusRef} style={{ width }} />;
 };

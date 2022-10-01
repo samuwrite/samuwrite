@@ -1,9 +1,4 @@
 .container {
-  margin: auto;
-  /* width is set dynamically in JSX */
-  /* 48px is left padding, same for editor */
-  max-width: calc(100% - 2 * 48px);
-
   font-size: 12px;
   line-height: 24px;
   color: var(--color-subtle);

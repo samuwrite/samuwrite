@@ -1,3 +1,14 @@
 .container {
   height: 100%;
 }
+
+.input {
+  height: 100%;
+
+  /* This does not control the editor text but to ensure the "ch" unit works */
+  font-family: "iA Writer Duo";
+  font-size: calc(1px * var(--editor-font-size));
+
+  margin: auto;
+  width: calc(1ch * var(--editor-wrap-column) + 1px * var(--editor-margin));
+}

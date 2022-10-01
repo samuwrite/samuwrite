@@ -1,7 +1,7 @@
 import * as monaco from "monaco-editor";
 import { RefObject, useEffect } from "react";
+import { EditorState } from "./type";
 import { SAMPLE_TAILWIND } from "./samples/tailwind";
-import { EditorState } from "../type";
 
 const envDone = { current: false };
 
@@ -53,7 +53,9 @@ const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
   suggestOnTriggerCharacters: false,
   value: "",
   wordBasedSuggestions: false,
-  wordWrap: "bounded",
+  // Don't rely on wordwrap column (i.e. "bounded") in order to manage width
+  // and align center with CSS (see editor/layout)
+  wordWrap: "on",
   scrollbar: {
     useShadows: false,
     horizontal: "hidden",

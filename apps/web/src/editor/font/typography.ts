@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { Settings } from "~src/settings/type";
-import { Editor } from "../type";
+import { Editor } from "~src/editor/type";
 
 // These properties are calculated based on font size
 interface Options {
@@ -35,8 +35,6 @@ const OPTION_ENTRIES: [number, Options][] = [
 });
 
 const OPTIONS: Map<number, Options> = new Map(OPTION_ENTRIES);
-
-export { OPTIONS as EDITOR_TYPOGRAPHY_OPTIONS };
 
 const OPTION_FALLBACK = (() => {
   const fallback = OPTIONS.get(20);
