@@ -20,7 +20,7 @@ export const App = (): JSX.Element => {
   // Always render Editor to persist its state
   const editorElement = (
     <div className={[layout === "preview" ? s.hide : "", s.editor].join(" ")}>
-      <Editor {...{ editor, setEditor, settings }} />
+      <Editor {...{ editor, setEditor, settings, setToolbar, toolbar }} />
     </div>
   );
 

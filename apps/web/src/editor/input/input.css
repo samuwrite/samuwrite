@@ -1,14 +1,31 @@
-.container {
-  height: 100%;
-}
+/*
+Our goal to align the editor is that:
+- The text should be true center horizontally
+- The line numbers should be on the left, but not affect the centering of the editor 
+  (think "position: relative; left: -xxx")
+- The built-in scrollbar of the editor should be on the right edge of the **screen**
 
-.input {
+Therefore:
+- The ".input" is aligned via a "padding-left" of the ".container"
+- The padding must compensate for the editor margin, which includes:
+  - Line numbers, which is always 5ch by monaco
+  - Line decoration widths, which is set by us in init > options
+*/
+
+.container {
   height: 100%;
 
   /* This does not control the editor text but to ensure the "ch" unit works */
   font-family: "iA Writer Duo";
   font-size: calc(1px * var(--editor-font-size));
 
-  margin: auto;
-  width: calc(1ch * var(--editor-wrap-column) + 1px * var(--editor-margin));
+  --a: calc(1ch * var(--editor-wrap-column)); /* width of text */
+  --b: calc((100% - var(--a)) / 2); /* padding of one side */
+  --c: calc(5ch + 2ch); /* editor margin */
+  --d: calc(var(--b) - var(--c)); /* compensate for margin */
+  padding-left: var(--d);
+}
+
+.input {
+  height: 100%;
 }

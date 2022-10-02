@@ -9,10 +9,12 @@ import "./monaco.css";
 import "./font/font.css";
 import { useEditorInit } from "./init";
 import { useEditorTheme } from "./theme";
-import { useEditorTypography } from "./font/typography";
+import { useEditorTypography } from "./typography";
 import { useEditorVim } from "./vim";
+import { ToolbarState } from "~src/toolbar/type";
+import { EditorToolbar } from "./toolbar/toolbar";
 
-interface Props extends EditorState {
+interface Props extends EditorState, ToolbarState {
   settings: Settings;
 }
 
@@ -23,7 +25,7 @@ const initialDoc: Doc = {
 };
 
 export const Editor = (props: Props): JSX.Element => {
-  const { editor, setEditor, settings } = props;
+  const { editor, setEditor, settings, setToolbar, toolbar } = props;
 
   const [doc, setDoc] = useState<Doc>(initialDoc);
 
@@ -37,13 +39,15 @@ export const Editor = (props: Props): JSX.Element => {
 
   return (
     <div className={s.container}>
-      <div className={s.toolbar}>Toolbar</div>
+      <div className={s.toolbar}>
+        <EditorToolbar {...{ setToolbar, toolbar }} />
+      </div>
       <div className={s.input}>
-        <EditorInput inputRef={inputRef} settings={settings} />
+        <EditorInput {...{ editor, inputRef, settings }} />
       </div>
       {editor !== null ? (
         <div className={s.status}>
-          <EditorStatus statusRef={statusRef} />
+          <EditorStatus {...{ statusRef }} />
         </div>
       ) : null}
     </div>

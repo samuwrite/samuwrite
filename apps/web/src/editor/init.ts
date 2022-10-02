@@ -17,7 +17,9 @@ const createEnv = (): void => {
 
   // https://github.com/microsoft/monaco-editor/issues/392
   document.fonts.ready.then(() => {
+    console.log("1");
     monaco.editor.remeasureFonts();
+    console.log("2");
   });
 
   envDone.current = true;
@@ -53,9 +55,7 @@ const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
   suggestOnTriggerCharacters: false,
   value: "",
   wordBasedSuggestions: false,
-  // Don't rely on wordwrap column (i.e. "bounded") in order to manage width
-  // and align center with CSS (see editor/layout)
-  wordWrap: "on",
+  wordWrap: "bounded",
   scrollbar: {
     useShadows: false,
     horizontal: "hidden",
@@ -63,6 +63,7 @@ const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
     verticalSliderSize: 16,
     verticalScrollbarSize: 16,
   },
+  lineDecorationsWidth: "2ch",
 };
 
 interface Params {
