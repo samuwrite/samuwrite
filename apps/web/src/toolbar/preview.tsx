@@ -1,6 +1,5 @@
 import { LogIcon } from "@primer/octicons-react";
-import { useCallback, useEffect } from "react";
-import tinykeys from "tinykeys";
+import { useCallback } from "react";
 import { Layout, LayoutState } from "../layout/type";
 import { getLayoutFromPreview } from "../settings/preview/preview";
 import { Settings } from "../settings/type";
@@ -21,7 +20,14 @@ export const ToolbarPreview = (props: Props): JSX.Element => {
     setLayout(target);
   }, [layout, settings, setLayout]);
 
+  const exitPreviewMode = useCallback((): void => {
+    if (layout !== "editor") {
+      setLayout("editor");
+    }
+  }, [layout, setLayout]);
+
   useShortcut("$mod+r", callback);
+  useShortcut("Escape", exitPreviewMode);
 
   return (
     <Tooltip content="Preview" shortcut="⌘ R">
