@@ -11,6 +11,14 @@ interface Props extends EditorState {
   settings: Settings;
 }
 
+export enum EditorStoreName {
+  Database = "monacoEditorDB",
+  Object = "unsavedChanges",
+  Key = "data",
+}
+
+export const StoreInterval = 2000;
+
 export const EditorInput = (props: Props): JSX.Element => {
   const { setEditor, editor, settings } = props;
 

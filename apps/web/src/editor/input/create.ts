@@ -2,6 +2,9 @@ import * as monaco from "monaco-editor";
 import { RefObject, useEffect } from "react";
 import { SAMPLE_TAILWIND } from "../../samples/tailwind";
 import { EditorState } from "../type";
+import { StoreInterval } from "./input";
+import { loadChangesFromIndexedDB } from "./load";
+import { autoSaveWorkerURL, debounce, saveChangesToIndexedDB } from "./store";
 
 const envDone = { current: false };
 
@@ -76,17 +79,29 @@ export const useEditorCreate = (params: Params): void => {
     const container = containerRef.current;
     if (container === null) throw Error("`container` is null");
 
-    createEnv();
-    const editor = monaco.editor.create(container, {
-      ...OPTIONS,
-      value: SAMPLE_TAILWIND,
-      // value: "",
-    });
-    setEditor(editor);
+    (async () => {
+      const storedEditorValue = await loadChangesFromIndexedDB();
 
-    return () => {
-      setEditor(null);
-      editor.dispose();
-    };
+      createEnv();
+      const editor = monaco.editor.create(container, {
+        ...OPTIONS,
+        value: storedEditorValue || SAMPLE_TAILWIND,
+        // value: "",
+      });
+
+      const autoSave = debounce(() => {
+        const editorValue: string = editor.getValue();
+        saveChangesToIndexedDB(editorValue);
+      }, StoreInterval);
+
+      editor.onDidChangeModelContent(autoSave);
+
+      setEditor(editor);
+
+      return () => {
+        setEditor(null);
+        editor.dispose();
+      };
+    })();
   }, [setEditor, containerRef]);
 };
