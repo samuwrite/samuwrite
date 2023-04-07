@@ -8,6 +8,7 @@ const fallback: Settings = {
   fontSize: 20,
   wrapColumn: 80,
   template: "tailwind",
+  lines: "off",
 };
 
 export const useSettingsState = (): SettingsState => {

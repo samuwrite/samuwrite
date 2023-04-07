@@ -1,6 +1,7 @@
 import * as monaco from "monaco-editor";
 import { RefObject, useEffect } from "react";
 import { SAMPLE_TAILWIND } from "../../samples/tailwind";
+import { Settings } from "../../settings/type";
 import { EditorState } from "../type";
 
 const envDone = { current: false };
@@ -67,10 +68,11 @@ const OPTIONS: monaco.editor.IStandaloneEditorConstructionOptions = {
 interface Params {
   setEditor: EditorState["setEditor"];
   containerRef: RefObject<HTMLDivElement>;
+  settings: Settings;
 }
 
 export const useEditorCreate = (params: Params): void => {
-  const { setEditor, containerRef } = params;
+  const { setEditor, containerRef, settings } = params;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -79,6 +81,7 @@ export const useEditorCreate = (params: Params): void => {
     createEnv();
     const editor = monaco.editor.create(container, {
       ...OPTIONS,
+      lineNumbers: settings.lines,
       value: SAMPLE_TAILWIND,
       // value: "",
     });
