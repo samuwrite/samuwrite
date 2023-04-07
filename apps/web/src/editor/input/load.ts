@@ -22,7 +22,6 @@ export const loadChangesFromIndexedDB = async (): Promise<string> => {
       const request = store.get(EditorStoreName.Key);
 
       request.onsuccess = () => {
-        // only get the last changes
         resolve(request.result);
       };
 
