@@ -16,7 +16,7 @@ export const EditorInput = (props: Props): JSX.Element => {
 
   const containerRef = useRef<HTMLDivElement>(null);
 
-  useEditorCreate({ containerRef, setEditor });
+  useEditorCreate({ containerRef, setEditor, settings });
   useEditorLayout({ containerRef, editor, settings });
   useEditorTypography({ editor, settings });
 

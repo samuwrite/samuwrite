@@ -16,7 +16,9 @@ export const SettingsRadioOption = (props: Props): JSX.Element => {
       value={value}
       className={[s.container, outline.onFocus].join(" ")}
     >
-      <span className={s.icon}>{icon}</span>
+      {!!Object.keys(icon.props).length && (
+        <span className={s.icon}>{icon}</span>
+      )}
       <span className={s.label}>{label}</span>
     </RadioGroup.Item>
   );

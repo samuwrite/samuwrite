@@ -6,6 +6,7 @@ import { SettingsTheme } from "./theme/theme";
 import { SettingsState } from "./type";
 import { SettingsWrapColumn } from "./wrap-column";
 import * as s from "./panel.module.css";
+import { SettingsLines } from "./lines/lines";
 
 interface Props extends SettingsState, LayoutState {}
 
@@ -16,6 +17,7 @@ export const SettingsPanel = (props: Props): JSX.Element => {
         <SettingsTheme {...props} />,
         <SettingsPreview {...props} />,
         <SettingsVim {...props} />,
+        <SettingsLines {...props} />,
         <SettingsWrapColumn {...props} />,
         <SettingsFontSize {...props} />,
       ].map((element, index) => (

@@ -8,6 +8,7 @@ export interface Settings {
   fontSize: number;
   wrapColumn: number;
   template: string;
+  lines: "on" | "off" | "relative";
 }
 
 export interface SettingsState {
