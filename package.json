@@ -1,0 +1,25 @@
+{
+  "name": "samuwrite",
+  "version": "1.0.0",
+  "description": "Hello",
+  "main": "index.js",
+  "workspaces": [
+    "./libs/*",
+    "./apps/*"
+  ],
+  "scripts": {
+    "dev": "sh scripts/dev.sh",
+    "build-web": "sh scripts/build-web.sh",
+    "build-mac": "sh scripts/build-mac.sh",
+    "build-markdown": "cd libs/markdown && npm run build",
+    "build-radix": "cd libs/radix && npm run build",
+    "build-tailwind": "cd libs/tailwind && npm run build",
+    "build": "npm run build-markdown && npm run build-radix && npm run build-tailwind && npm run build-web"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "@parcel/resolver-default": {
+    "packageExports": true
+  }
+}

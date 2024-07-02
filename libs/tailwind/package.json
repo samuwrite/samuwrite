@@ -10,8 +10,8 @@
   "main": "dist/index.css",
   "author": "thien@samuwrite.com",
   "devDependencies": {
-    "@tailwindcss/typography": "0.5.7",
-    "sass": "1.55.0",
-    "tailwindcss": "3.1.8"
+    "@tailwindcss/typography": "0.5.13",
+    "sass": "1.77.6",
+    "tailwindcss": "3.4.4"
   }
 }
