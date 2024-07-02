@@ -1,34 +1,32 @@
 {
-  "name": "samuwrite.com",
-  "scripts": {
-    "dev": "sh scripts/dev.sh",
-    "build": "sh scripts/build.sh",
-    "mac:build": "sh scripts/mac/build.sh"
-  },
+  "name": "@samuwrite/web",
   "devDependencies": {
-    "@parcel/transformer-sass": "2.7.0",
-    "@types/react": "18.0.21",
-    "@types/react-dom": "18.0.6",
-    "@types/wicg-file-system-access": "2020.9.5",
-    "@typescript-eslint/eslint-plugin": "5.38.0",
-    "@typescript-eslint/parser": "5.38.0",
+    "@parcel/transformer-sass": "2.12.0",
+    "@types/react": "18.3.3",
+    "@types/react-dom": "18.3.0",
+    "@types/wicg-file-system-access": "2023.10.5",
+    "@typescript-eslint/eslint-plugin": "7.15.0",
+    "@typescript-eslint/parser": "7.15.0",
     "buffer": "6.0.3",
-    "eslint": "8.24.0",
-    "eslint-plugin-react": "7.31.8",
-    "eslint-plugin-react-hooks": "4.6.0",
-    "parcel": "2.7.0",
+    "eslint": "^8.56.0",
+    "eslint-plugin-react": "7.34.3",
+    "eslint-plugin-react-hooks": "4.6.2",
+    "parcel": "2.12.0",
     "process": "0.11.10"
   },
   "dependencies": {
-    "@primer/octicons-react": "17.5.0",
-    "@rose-pine/palette": "3.0.1",
+    "@primer/octicons-react": "19.10.0",
+    "@rose-pine/palette": "4.0.1",
     "@samuwrite/markdown": "^1.0.0",
     "@samuwrite/radix": "^1.0.0",
     "@samuwrite/tailwind": "^1.0.4",
-    "monaco-editor": "0.31.0",
-    "monaco-vim": "0.3.4",
-    "react": "18.2.0",
-    "react-dom": "18.2.0",
-    "tinykeys": "1.4.0"
+    "monaco-editor": "0.50.0",
+    "monaco-vim": "0.4.1",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "tinykeys": "2.1.0"
+  },
+  "@parcel/resolver-default": {
+    "packageExports": true
   }
 }

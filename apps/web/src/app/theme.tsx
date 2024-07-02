@@ -1,5 +1,5 @@
 import { Settings } from "../settings/type";
-import { Roles, variants } from "@rose-pine/palette";
+import { variants } from "@rose-pine/palette";
 
 interface Props {
   settings: Settings;
@@ -31,13 +31,12 @@ export const AppTheme = (props: Props): JSX.Element => {
   const variables: string[] = [];
 
   // Theme colors
-  Object.keys(variant).map((key) => {
-    const role = key as keyof Roles<unknown, unknown>;
-    const color = variant[role];
-    variables.push(`--color-${role}: ${color.hex}`);
+  Object.keys(variant.colors).map((key) => {
+    const role = key as keyof typeof variant.colors;
+    const {hex, rgb} = variant.colors[role];
+    variables.push(`--color-${role}: #${hex}`);
     // RGB parts for alpha mixing
-    const rgb = color.rgb.replace("rgb(", "").replace(")", "");
-    variables.push(`--color-${role}-rgb: ${rgb}`);
+    variables.push(`--color-${role}-rgb: ${rgb.join(", ")}`);
   });
 
   // Other theme details like shadow opacity (dark themes need stronger shadow

@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import tinykeys from "tinykeys";
+import { tinykeys } from "tinykeys";
 
 export const useShortcut = (keys: string, callback: () => void) => {
   useEffect(() => {

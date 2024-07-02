@@ -38,7 +38,7 @@ const getMonacoTheme = (params: {
     base: vscode.type === "dark" ? "vs-dark" : "vs",
     colors: {
       ...vscode.colors,
-      "editorCursor.foreground": variant.rose.hex,
+      "editorCursor.foreground": `#${variant.colors.rose.hex}`,
     },
     inherit: false,
     rules: vscode.tokenColors.flatMap(toMonacoTokens),
